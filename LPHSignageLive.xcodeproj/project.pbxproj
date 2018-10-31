@@ -18,6 +18,10 @@
 		4A44FA972189CA5900AC735A /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA962189CA5900AC735A /* MainCollectionViewCell.swift */; };
 		4A44FA992189CCA100AC735A /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA982189CCA100AC735A /* DataSource.swift */; };
 		4A44FA9E2189E3DC00AC735A /* TimeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA9D2189E3DC00AC735A /* TimeSelectorViewController.swift */; };
+		4A44FAA02189E58000AC735A /* TimeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA9F2189E58000AC735A /* TimeSelectorView.swift */; };
+		4A44FAA22189E72200AC735A /* MSCircularSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A44FAA12189E72200AC735A /* MSCircularSlider.framework */; };
+		7A65CEF94AEA084BB661ED61 /* Pods_LPHSignageLiveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7621AD12F21BA396B0F2C /* Pods_LPHSignageLiveTests.framework */; };
+		EFBF2FEAB9AB2405B2BDCF62 /* Pods_LPHSignageLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE0DB65A0782DEBC1EF41EE /* Pods_LPHSignageLive.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D421270ABE11F408E7CB163 /* Pods-LPHSignageLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLive/Pods-LPHSignageLive.debug.xcconfig"; sourceTree = "<group>"; };
+		34E7621AD12F21BA396B0F2C /* Pods_LPHSignageLiveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLiveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E428841F22B4013B70FEAA2 /* Pods-LPHSignageLiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLiveTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLiveTests/Pods-LPHSignageLiveTests.release.xcconfig"; sourceTree = "<group>"; };
 		4A44FA6C2189C02200AC735A /* LPHSignageLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPHSignageLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A44FA6F2189C02200AC735A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A44FA742189C02200AC735A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,6 +53,11 @@
 		4A44FA962189CA5900AC735A /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A44FA982189CCA100AC735A /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		4A44FA9D2189E3DC00AC735A /* TimeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorViewController.swift; sourceTree = "<group>"; };
+		4A44FA9F2189E58000AC735A /* TimeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorView.swift; sourceTree = "<group>"; };
+		4A44FAA12189E72200AC735A /* MSCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MSCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		50E1C622D320D24A8DE9627E /* Pods-LPHSignageLiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLiveTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLiveTests/Pods-LPHSignageLiveTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6BE0DB65A0782DEBC1EF41EE /* Pods_LPHSignageLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D673EA1C30A55D2301F09D37 /* Pods-LPHSignageLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLive/Pods-LPHSignageLive.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A44FAA22189E72200AC735A /* MSCircularSlider.framework in Frameworks */,
+				EFBF2FEAB9AB2405B2BDCF62 /* Pods_LPHSignageLive.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A65CEF94AEA084BB661ED61 /* Pods_LPHSignageLiveTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +87,8 @@
 				4A44FA6E2189C02200AC735A /* LPHSignageLive */,
 				4A44FA862189C02300AC735A /* LPHSignageLiveTests */,
 				4A44FA6D2189C02200AC735A /* Products */,
+				E82472840EE568849B50BA35 /* Pods */,
+				7CD93F26048335D9E71B9491 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				4A44FA962189CA5900AC735A /* MainCollectionViewCell.swift */,
+				4A44FA9F2189E58000AC735A /* TimeSelectorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +153,27 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		7CD93F26048335D9E71B9491 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A44FAA12189E72200AC735A /* MSCircularSlider.framework */,
+				6BE0DB65A0782DEBC1EF41EE /* Pods_LPHSignageLive.framework */,
+				34E7621AD12F21BA396B0F2C /* Pods_LPHSignageLiveTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E82472840EE568849B50BA35 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D421270ABE11F408E7CB163 /* Pods-LPHSignageLive.debug.xcconfig */,
+				D673EA1C30A55D2301F09D37 /* Pods-LPHSignageLive.release.xcconfig */,
+				50E1C622D320D24A8DE9627E /* Pods-LPHSignageLiveTests.debug.xcconfig */,
+				3E428841F22B4013B70FEAA2 /* Pods-LPHSignageLiveTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,9 +181,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A44FA8C2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLive" */;
 			buildPhases = (
+				2BA030E1EE374DC701A3DD20 /* [CP] Check Pods Manifest.lock */,
 				4A44FA682189C02200AC735A /* Sources */,
 				4A44FA692189C02200AC735A /* Frameworks */,
 				4A44FA6A2189C02200AC735A /* Resources */,
+				F4707B6CA39AA6CDF36E1EC9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,6 +200,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A44FA8F2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLiveTests" */;
 			buildPhases = (
+				1075837F3E381BDD7B774780 /* [CP] Check Pods Manifest.lock */,
 				4A44FA7F2189C02300AC735A /* Sources */,
 				4A44FA802189C02300AC735A /* Frameworks */,
 				4A44FA812189C02300AC735A /* Resources */,
@@ -231,6 +273,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1075837F3E381BDD7B774780 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LPHSignageLiveTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BA030E1EE374DC701A3DD20 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LPHSignageLive-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4707B6CA39AA6CDF36E1EC9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LPHSignageLive/Pods-LPHSignageLive-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MSCircularSlider/MSCircularSlider.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MSCircularSlider.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LPHSignageLive/Pods-LPHSignageLive-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4A44FA682189C02200AC735A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -240,6 +339,7 @@
 				4A44FA702189C02200AC735A /* AppDelegate.swift in Sources */,
 				4A44FA932189C4B300AC735A /* MainPageCollectionViewController.swift in Sources */,
 				4A44FA9E2189E3DC00AC735A /* TimeSelectorViewController.swift in Sources */,
+				4A44FAA02189E58000AC735A /* TimeSelectorView.swift in Sources */,
 				4A44FA972189CA5900AC735A /* MainCollectionViewCell.swift in Sources */,
 				4A44FA952189CA1C00AC735A /* Features.swift in Sources */,
 				4A44FA782189C02200AC735A /* LPHSignageLive.xcdatamodeld in Sources */,
@@ -402,6 +502,7 @@
 		};
 		4A44FA8D2189C02300AC735A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D421270ABE11F408E7CB163 /* Pods-LPHSignageLive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -420,6 +521,7 @@
 		};
 		4A44FA8E2189C02300AC735A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D673EA1C30A55D2301F09D37 /* Pods-LPHSignageLive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -438,6 +540,7 @@
 		};
 		4A44FA902189C02300AC735A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50E1C622D320D24A8DE9627E /* Pods-LPHSignageLiveTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -459,6 +562,7 @@
 		};
 		4A44FA912189C02300AC735A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E428841F22B4013B70FEAA2 /* Pods-LPHSignageLiveTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

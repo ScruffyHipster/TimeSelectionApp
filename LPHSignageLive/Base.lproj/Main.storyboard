@@ -57,7 +57,6 @@
                                 <connections>
                                     <outlet property="image" destination="zhY-IG-q2i" id="YEi-gj-59V"/>
                                     <outlet property="title" destination="3Jp-N0-y7g" id="pUv-xo-uqM"/>
-                                    <segue destination="b9d-Yt-opf" kind="show" id="abv-XV-bgi"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -67,25 +66,120 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="FZy-G9-9yC"/>
+                    <connections>
+                        <segue destination="b9d-Yt-opf" kind="show" identifier="TimeSegue" id="vdE-O1-kW1"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vX-jv-6Pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="991" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--Time Selector View Controller-->
         <scene sceneID="FQl-Dw-ztq">
             <objects>
-                <viewController id="b9d-Yt-opf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZNW-4X-7GO">
+                <viewController id="b9d-Yt-opf" customClass="TimeSelectorViewController" customModule="LPHSignageLive" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZNW-4X-7GO" customClass="TimeSelectorView" customModule="LPHSignageLive" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Xo-Gf-YYt" customClass="MSCircularSlider">
+                                <rect key="frame" x="80" y="233" width="214" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8Xo-Gf-YYt" secondAttribute="height" multiplier="107:100" id="Vl4-rl-gd3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_minimumValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_maximumValue">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_currentValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_maximumAngle">
+                                        <real key="value" value="300"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_lineWidth">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_unfilledColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_rotationAngle">
+                                        <real key="value" value="210"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_handleType">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="_commaSeparatedLabels" value="0, 5, 10, 30"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="_handleColor">
+                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_handleEnlargementPoints">
+                                        <integer key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="_handleHighlightable" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_labelOffset">
+                                        <real key="value" value="-8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="_snapToLabels" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_markerCount">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="_snapToMarkers" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSh-uX-xP3">
+                                <rect key="frame" x="137" y="498" width="101" height="43"/>
+                                <state key="normal" title="Select"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="WuG-6C-d7X">
+                                <rect key="frame" x="10" y="88" width="365" height="112.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time to show" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NC-Ag-6fM">
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sk6-R6-L9b">
+                                        <rect key="frame" x="0.0" y="81" width="61.5" height="31.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8Xo-Gf-YYt" firstAttribute="top" secondItem="Jeo-p6-l6h" secondAttribute="top" constant="169" id="2jM-xO-F5d"/>
+                            <constraint firstItem="Jeo-p6-l6h" firstAttribute="trailing" secondItem="WuG-6C-d7X" secondAttribute="trailing" id="D3b-Nd-Qed"/>
+                            <constraint firstItem="Jeo-p6-l6h" firstAttribute="bottom" secondItem="8Xo-Gf-YYt" secondAttribute="bottom" constant="234" id="Gn4-Ot-nGD"/>
+                            <constraint firstItem="Jeo-p6-l6h" firstAttribute="trailing" secondItem="8Xo-Gf-YYt" secondAttribute="trailing" constant="81" id="Xja-SX-Sxq"/>
+                            <constraint firstItem="HSh-uX-xP3" firstAttribute="top" secondItem="8Xo-Gf-YYt" secondAttribute="bottom" constant="65" id="bh9-zQ-qxN"/>
+                            <constraint firstItem="8Xo-Gf-YYt" firstAttribute="leading" secondItem="Jeo-p6-l6h" secondAttribute="leading" constant="80" id="cEl-HB-MXQ"/>
+                            <constraint firstItem="WuG-6C-d7X" firstAttribute="leading" secondItem="Jeo-p6-l6h" secondAttribute="leading" constant="10" id="gIC-6t-GiB"/>
+                            <constraint firstItem="Jeo-p6-l6h" firstAttribute="trailing" secondItem="HSh-uX-xP3" secondAttribute="trailing" constant="137" id="geH-Wa-mWU"/>
+                            <constraint firstItem="Jeo-p6-l6h" firstAttribute="bottom" secondItem="HSh-uX-xP3" secondAttribute="bottom" constant="126" id="jDf-Xi-S6G"/>
+                            <constraint firstItem="WuG-6C-d7X" firstAttribute="top" secondItem="Jeo-p6-l6h" secondAttribute="top" constant="24" id="w50-9l-T2S"/>
+                            <constraint firstItem="HSh-uX-xP3" firstAttribute="leading" secondItem="Jeo-p6-l6h" secondAttribute="leading" constant="137" id="wNo-BU-xcE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Jeo-p6-l6h"/>
+                        <connections>
+                            <outlet property="sliderView" destination="8Xo-Gf-YYt" id="adO-YM-ZMz"/>
+                            <outlet property="timeLabel" destination="sk6-R6-L9b" id="3dF-9O-kRV"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="timeView" destination="ZNW-4X-7GO" id="UHO-kO-2sY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48Y-x3-JJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="134"/>
+            <point key="canvasLocation" x="1892" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uwn-g7-Ve3">

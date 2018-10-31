@@ -31,11 +31,13 @@ class MainPageCollectionViewController: UICollectionViewController {
 	
 	// MARK: - Navigation
 	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "TimeSelector" {
-			let destination = segue.destination as! TimeSelectorViewController
-		}
-	}
+//	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//		if segue.identifier == "TimeSelector" {
+//			let destination = segue.destination as! TimeSelectorViewController
+//		}
+//	}
+	
+	
 	
 	// MARK: UICollectionViewDataSource
 	
@@ -67,6 +69,10 @@ class MainPageCollectionViewController: UICollectionViewController {
 	}
 	
 	// MARK: UICollectionViewDelegate
-	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		if indexPath.row == 0 {
+			performSegue(withIdentifier: "TimeSegue", sender: self)
+		}
+	}
 	
 }

@@ -7,24 +7,36 @@
 //
 
 import UIKit
+import MSCircularSlider
 
 class TimeSelectorViewController: UIViewController {
+	
+	@IBOutlet weak var timeView: TimeSelectorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		setupView()
     }
-    
+	
+	func setupView() {
+		timeView.slider?.delegate = self
+		timeView.slider = MSCircularSlider(frame: timeView.sliderView.frame)
+	}
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension TimeSelectorViewController: MSCircularSliderDelegate {
+	//MARK:- Delegate functions
+	func circularSlider(_ slider: MSCircularSlider, valueChangedTo value: Double, fromUser: Bool) {
+		timeView.timeLabel.text = String(value)
+		print(value)
+	}
+	
+	func circularSlider(_ slider: MSCircularSlider, startedTrackingWith value: Double) {
+		//Optional
+	}
+	
+	func circularSlider(_ slider: MSCircularSlider, endedTrackingWith value: Double) {
+		//Optional
+	}
 }
