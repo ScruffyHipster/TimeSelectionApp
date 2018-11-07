@@ -72,6 +72,7 @@
                     <navigationItem key="navigationItem" id="FZy-G9-9yC"/>
                     <connections>
                         <segue destination="b9d-Yt-opf" kind="show" identifier="TimeSegue" id="vdE-O1-kW1"/>
+                        <segue destination="4VW-dd-AUz" kind="show" id="m4O-dD-jVD"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vX-jv-6Pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,7 +218,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48Y-x3-JJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1892" y="-195"/>
+        </scene>
+        <!--Emergency Event View Controller-->
+        <scene sceneID="VNi-tM-YAI">
+            <objects>
+                <viewController id="4VW-dd-AUz" customClass="EmergencyEventViewController" customModule="LPHSignageLive" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="31X-8c-E1D">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-J8-2Pv">
+                                <rect key="frame" x="163" y="250" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Emergency event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6o-hU-y80">
+                                <rect key="frame" x="16" y="85" width="259" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14f-Cz-dgN">
+                                <rect key="frame" x="126" y="371" width="120" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Initiate"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Fdr-Tc-so2"/>
+                    </view>
+                    <connections>
+                        <outlet property="eventSwitch" destination="5bc-J8-2Pv" id="T3u-7H-3IF"/>
+                        <outlet property="selectButton" destination="14f-Cz-dgN" id="LZb-g7-0TX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="40s-rO-Qbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1892" y="530.28485757121439"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uwn-g7-Ve3">

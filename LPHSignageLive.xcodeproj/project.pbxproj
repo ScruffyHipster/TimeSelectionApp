@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A07B8DE21931C2C00E86E08 /* EmergencyEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A07B8DD21931C2C00E86E08 /* EmergencyEventViewController.swift */; };
 		4A44FA702189C02200AC735A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA6F2189C02200AC735A /* AppDelegate.swift */; };
 		4A44FA752189C02200AC735A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A44FA732189C02200AC735A /* Main.storyboard */; };
 		4A44FA782189C02200AC735A /* LPHSignageLive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA762189C02200AC735A /* LPHSignageLive.xcdatamodeld */; };
@@ -39,6 +40,7 @@
 		1D421270ABE11F408E7CB163 /* Pods-LPHSignageLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLive.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLive/Pods-LPHSignageLive.debug.xcconfig"; sourceTree = "<group>"; };
 		34E7621AD12F21BA396B0F2C /* Pods_LPHSignageLiveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLiveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E428841F22B4013B70FEAA2 /* Pods-LPHSignageLiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLiveTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLiveTests/Pods-LPHSignageLiveTests.release.xcconfig"; sourceTree = "<group>"; };
+		4A07B8DD21931C2C00E86E08 /* EmergencyEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyEventViewController.swift; sourceTree = "<group>"; };
 		4A44FA6C2189C02200AC735A /* LPHSignageLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPHSignageLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A44FA6F2189C02200AC735A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A44FA742189C02200AC735A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				4A44FA922189C4B300AC735A /* MainPageCollectionViewController.swift */,
 				4A44FA9D2189E3DC00AC735A /* TimeSelectorViewController.swift */,
+				4A07B8DD21931C2C00E86E08 /* EmergencyEventViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				4A44FA702189C02200AC735A /* AppDelegate.swift in Sources */,
 				4A44FA932189C4B300AC735A /* MainPageCollectionViewController.swift in Sources */,
 				4A44FA9E2189E3DC00AC735A /* TimeSelectorViewController.swift in Sources */,
+				4A07B8DE21931C2C00E86E08 /* EmergencyEventViewController.swift in Sources */,
 				4A44FAA02189E58000AC735A /* TimeSelectorView.swift in Sources */,
 				4A44FA972189CA5900AC735A /* MainCollectionViewCell.swift in Sources */,
 				4A44FA952189CA1C00AC735A /* Features.swift in Sources */,
