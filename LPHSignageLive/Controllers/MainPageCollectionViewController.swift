@@ -18,12 +18,13 @@ class MainPageCollectionViewController: UICollectionViewController {
 		super.viewDidLoad()
 		setupCollectionView()
 		navigationController?.navigationBar.prefersLargeTitles = true
+		navigationItem.title = "Main menu"
 		// Do any additional setup after loading the view.
 	}
 	
 	func setupCollectionView() {
 		//set up cells
-		let width = view.frame.width
+		let width = view.frame.width - 10
 		let height = view.frame.height / 3
 		let cv = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 		cv.itemSize = CGSize(width: width, height: height)
@@ -65,6 +66,7 @@ class MainPageCollectionViewController: UICollectionViewController {
 		default:
 			cell.backgroundColor = .white
 		}
+		cell.layer.cornerRadius = 10
 		return cell
 	}
 	

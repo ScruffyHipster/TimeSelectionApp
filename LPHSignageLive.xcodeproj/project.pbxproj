@@ -20,6 +20,7 @@
 		4A44FA9E2189E3DC00AC735A /* TimeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA9D2189E3DC00AC735A /* TimeSelectorViewController.swift */; };
 		4A44FAA02189E58000AC735A /* TimeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA9F2189E58000AC735A /* TimeSelectorView.swift */; };
 		4A44FAA22189E72200AC735A /* MSCircularSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A44FAA12189E72200AC735A /* MSCircularSlider.framework */; };
+		4AAFE7A72190AFE700F9C081 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */; };
 		7A65CEF94AEA084BB661ED61 /* Pods_LPHSignageLiveTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34E7621AD12F21BA396B0F2C /* Pods_LPHSignageLiveTests.framework */; };
 		EFBF2FEAB9AB2405B2BDCF62 /* Pods_LPHSignageLive.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE0DB65A0782DEBC1EF41EE /* Pods_LPHSignageLive.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		4A44FA9D2189E3DC00AC735A /* TimeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorViewController.swift; sourceTree = "<group>"; };
 		4A44FA9F2189E58000AC735A /* TimeSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorView.swift; sourceTree = "<group>"; };
 		4A44FAA12189E72200AC735A /* MSCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MSCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		50E1C622D320D24A8DE9627E /* Pods-LPHSignageLiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLiveTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLiveTests/Pods-LPHSignageLiveTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6BE0DB65A0782DEBC1EF41EE /* Pods_LPHSignageLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D673EA1C30A55D2301F09D37 /* Pods-LPHSignageLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLive.release.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLive/Pods-LPHSignageLive.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				4A44FA942189CA1C00AC735A /* Features.swift */,
 				4A44FA982189CCA100AC735A /* DataSource.swift */,
+				4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AAFE7A72190AFE700F9C081 /* HTTPRequest.swift in Sources */,
 				4A44FA992189CCA100AC735A /* DataSource.swift in Sources */,
 				4A44FA702189C02200AC735A /* AppDelegate.swift in Sources */,
 				4A44FA932189C4B300AC735A /* MainPageCollectionViewController.swift in Sources */,
