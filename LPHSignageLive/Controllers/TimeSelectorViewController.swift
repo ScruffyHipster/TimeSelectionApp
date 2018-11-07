@@ -68,6 +68,9 @@ extension TimeSelectorViewController {
 	//MARK:- http methods
 	
 	func sendTime() {
+		//hudView with spinning animator
+		let hudView = HUDView.hud(inView: (navigationController?.view)!, animated: true)
+		hudView.text = "Sending request"
 		//unwraps options theatre screens first
 		guard let theatre = theatre else {return}
 		//gets the time to send from the slider view
