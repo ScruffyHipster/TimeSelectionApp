@@ -35,7 +35,11 @@ class TimeSelectorViewController: UIViewController {
 	
 	
 	//MARK:- Properties
-	var timeToSend: Double?
+	var timeToSend: Int {
+		get {
+			return Int(sliderView!.currentValue)
+		}
+	}
 	var theatre: Int? {
 		get {
 			return theatreSelection?.selectedSegmentIndex
@@ -43,7 +47,9 @@ class TimeSelectorViewController: UIViewController {
 	}
 	
 	var httpRequest: HTTPRequest?
-
+	var interrupt: HTTPRequest.Interrupt?
+	
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		sliderView.delegate = self
@@ -60,10 +66,15 @@ class TimeSelectorViewController: UIViewController {
 
 extension TimeSelectorViewController {
 	//MARK:- http methods
+	
 	func sendTime() {
+		//unwraps options theatre screens first
 		guard let theatre = theatre else {return}
-		guard let category = HTTPRequest.Theatre(rawValue: theatre) else {return}
-		httpRequest?.setTime(for: category, in: sliderView.currentValue, with: .time, completion: { (success) in
+		//gets the time to send from the slider view
+		guard let interrupt = HTTPRequest.Interrupt(rawValue: timeToSend) else {return}
+		//gets the group from the segmented selection using the unwraped var above
+		guard let group = HTTPRequest.Group(rawValue: theatre) else {return}
+		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
 			if success == true {
 				print("yay")
 			} else {

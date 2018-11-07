@@ -72,7 +72,7 @@
                     <navigationItem key="navigationItem" id="FZy-G9-9yC"/>
                     <connections>
                         <segue destination="b9d-Yt-opf" kind="show" identifier="TimeSegue" id="vdE-O1-kW1"/>
-                        <segue destination="4VW-dd-AUz" kind="show" id="m4O-dD-jVD"/>
+                        <segue destination="4VW-dd-AUz" kind="show" identifier="emergencySegue" id="m4O-dD-jVD"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vX-jv-6Pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -228,24 +228,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-J8-2Pv">
-                                <rect key="frame" x="163" y="250" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Emergency event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6o-hU-y80">
-                                <rect key="frame" x="16" y="85" width="259" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14f-Cz-dgN">
-                                <rect key="frame" x="126" y="371" width="120" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Initiate"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="160" translatesAutoresizingMaskIntoConstraints="NO" id="bOB-Fy-Yxq">
+                                <rect key="frame" x="76" y="125" width="223.5" height="417"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6o-hU-y80">
+                                        <rect key="frame" x="0.0" y="0.0" width="223.5" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5bc-J8-2Pv">
+                                        <rect key="frame" x="87.5" y="196" width="51" height="31"/>
+                                    </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14f-Cz-dgN">
+                                        <rect key="frame" x="89" y="387" width="46" height="30"/>
+                                        <state key="normal" title="Initiate"/>
+                                        <connections>
+                                            <action selector="didTapInitiateButton:" destination="4VW-dd-AUz" eventType="touchUpInside" id="2C6-OX-nCL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Fdr-Tc-so2" firstAttribute="trailing" secondItem="bOB-Fy-Yxq" secondAttribute="trailing" constant="75.5" id="1S3-eb-Nku"/>
+                            <constraint firstItem="bOB-Fy-Yxq" firstAttribute="top" secondItem="Fdr-Tc-so2" secondAttribute="top" constant="61" id="3yr-CO-gjA"/>
+                            <constraint firstItem="Fdr-Tc-so2" firstAttribute="bottom" secondItem="bOB-Fy-Yxq" secondAttribute="bottom" constant="125" id="Htc-mH-6Hg"/>
+                            <constraint firstItem="bOB-Fy-Yxq" firstAttribute="leading" secondItem="Fdr-Tc-so2" secondAttribute="leading" constant="76" id="OkT-gx-RFL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Fdr-Tc-so2"/>
                     </view>
                     <connections>

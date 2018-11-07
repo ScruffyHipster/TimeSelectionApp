@@ -74,6 +74,8 @@ class MainPageCollectionViewController: UICollectionViewController {
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		if indexPath.row == 0 {
 			performSegue(withIdentifier: "TimeSegue", sender: self)
+		} else if indexPath.row == 1 {
+			performSegue(withIdentifier: "emergencySegue", sender: self)
 		}
 	}
 	

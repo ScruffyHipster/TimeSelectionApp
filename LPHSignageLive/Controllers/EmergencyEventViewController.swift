@@ -13,11 +13,16 @@ class EmergencyEventViewController: UIViewController {
 	@IBOutlet weak var eventSwitch: UISwitch!
 	@IBOutlet weak var selectButton: UIButton!
 
-	var http: Htttp
+	var http: HTTPRequest?
+	var interrupt: HTTPRequest.Interrupt?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		eventSwitch.addTarget(self, action: #selector(switchChanged), for: UISwitch.Event.valueChanged)
+		http = HTTPRequest.shared
+		selectButton.isEnabled = false
+		//sets value to the fire value
+		interrupt = HTTPRequest.Interrupt(rawValue: 100)
 	}
 	
 	@objc func switchChanged(mySwitch: UISwitch) {
@@ -29,12 +34,22 @@ class EmergencyEventViewController: UIViewController {
 	}
 	
 	@IBAction func didTapInitiateButton(_ sender: UIButton) {
-		let alert = UIAlertController(title: "action", message: "ok", preferredStyle: .actionSheet)
-		alert.addAction(UIAlertAction(title: "ok", style: .destructive, handler: {(_) in
-			
+		//unwraps value for use (set at 100 on view did load)
+		guard let interrupt = interrupt else {return}
+		let alert = UIAlertController(title: "Trigger Emergency Messaging", message: "Tap 'OK' to start emergency messaging on digital panels", preferredStyle: .actionSheet)
+		alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: {(_) in
+			self.http?.setTime(for: .all, with: interrupt, completion: { (success) in
+				if success {
+					print("ok")
+				} else {
+					print("non")
+				}
+			})
 		}))
-		alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { (_) in
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
 			self.eventSwitch.isOn = false
 	  }))
+		present(alert, animated: true
+		)
 	}
 }
