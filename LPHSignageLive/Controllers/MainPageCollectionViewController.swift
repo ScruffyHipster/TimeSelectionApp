@@ -7,19 +7,32 @@
 //
 
 import UIKit
+import Reachability
 
 private let reuseIdentifier = "Cell"
 
 class MainPageCollectionViewController: UICollectionViewController {
 	
 	private let dataSource = DataSource()
+	private var reachability: Reachability?
+	private var connection: Bool?
+	private lazy var notification: NotificationCenter = {
+		var notification = NotificationCenter()
+		return notification
+	}()
+	private let hostNames = [nil, "google.com", "invalid host"]
+	let host = 1
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupCollectionView()
 		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationItem.title = "Main menu"
-		// Do any additional setup after loading the view.
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		startReachability(at: host)
 	}
 	
 	func setupCollectionView() {
@@ -30,16 +43,73 @@ class MainPageCollectionViewController: UICollectionViewController {
 		cv.itemSize = CGSize(width: width, height: height)
 	}
 	
-	// MARK: - Navigation
 	
-//	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//		if segue.identifier == "TimeSelector" {
-//			let destination = segue.destination as! TimeSelectorViewController
-//		}
-//	}
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "noInternet" {
+			let vc = segue.destination as! NoInternetViewController
+			vc.reachability = reachability
+		}
+	}
 	
+}
+
+extension MainPageCollectionViewController {
+	//MARK:- Reachability
 	
+	@objc func reachabilityChanged(notification: Notification) {
+		let reachability = notification.object as! Reachability
+		reachability.whenReachable = { reachability in
+			switch reachability.connection {
+			case .cellular:
+				print("cellular")
+				self.dismiss(animated: true, completion: nil)
+			case .wifi:
+				print("wifi")
+				self.dismiss(animated: true, completion: nil)
+			case .none:
+				print("none")
+				self.connection = false
+			}
+		}
+		reachability.whenUnreachable = { reachability in
+			print("not avaliable")
+			self.performSegue(withIdentifier: "noInternet", sender: self)
+		}
+		
+	}
 	
+	func startReachability(at index: Int) {
+		stopNotifier()
+		setupReachability(hostNames[index])
+		startNotifier()
+	}
+	
+	func setupReachability(_ hostName: String?) {
+		guard let hostName = hostName else {return}
+		reachability = Reachability(hostname: hostName)
+		NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(notification:)), name: .reachabilityChanged, object: reachability)
+	}
+	
+	func startNotifier() {
+		print("Start notifier")
+		do {
+			try reachability?.startNotifier()
+		} catch {
+			print("Notifier failed to start")
+		}
+	}
+	
+	func stopNotifier() {
+		print("stop notifier")
+		reachability?.stopNotifier()
+		NotificationCenter.default.removeObserver(self, name: .reachabilityChanged, object: reachability)
+		reachability = nil
+	}
+}
+
+
+
+extension MainPageCollectionViewController {
 	// MARK: UICollectionViewDataSource
 	
 	override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -72,11 +142,16 @@ class MainPageCollectionViewController: UICollectionViewController {
 	
 	// MARK: UICollectionViewDelegate
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		if indexPath.row == 0 {
+		switch indexPath.row {
+		case 0:
 			performSegue(withIdentifier: "TimeSegue", sender: self)
-		} else if indexPath.row == 1 {
+		case 1:
 			performSegue(withIdentifier: "emergencySegue", sender: self)
+		default:
+			let alert = UIAlertController(title: "ok", message: "Cannot find segue", preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+			present(alert, animated: true)
 		}
 	}
-	
 }
+

@@ -8,6 +8,7 @@
 
 import UIKit
 import MSCircularSlider
+import Reachability
 
 class TimeSelectorViewController: UIViewController {
 	
@@ -48,6 +49,7 @@ class TimeSelectorViewController: UIViewController {
 	
 	var httpRequest: HTTPRequest?
 	var interrupt: HTTPRequest.Interrupt?
+	var reachability = Reachability()
 	
 	
     override func viewDidLoad() {
@@ -56,11 +58,14 @@ class TimeSelectorViewController: UIViewController {
 		selectTimeButton.isEnabled = false
 		httpRequest = HTTPRequest.shared
 		navigationItem.title = "Time selector"
+		theatreSelection.selectedSegmentIndex = 0
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 	}
+	
+	
 	
 }
 
@@ -77,11 +82,14 @@ extension TimeSelectorViewController {
 		guard let interrupt = HTTPRequest.Interrupt(rawValue: timeToSend) else {return}
 		//gets the group from the segmented selection using the unwraped var above
 		guard let group = HTTPRequest.Group(rawValue: theatre) else {return}
+		print("got a group")
 		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
 			if success == true {
 				print("yay")
+				hudView.hide()
 			} else {
 				print("boo")
+				hudView.hide()
 			}
 		})
 	}

@@ -8,15 +8,18 @@
 
 import UIKit
 import CoreData
+import Reachability
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
-
+	var reachability: Reachability?
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+//		let nav = self.window?.rootViewController as! UINavigationController
+//		let mainVc = nav.viewControllers[0] as! MainPageCollectionViewController
 		return true
 	}
 

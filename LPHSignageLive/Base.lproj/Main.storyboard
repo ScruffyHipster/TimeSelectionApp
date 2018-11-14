@@ -12,7 +12,7 @@
         <!--Main Page Collection View Controller-->
         <scene sceneID="3Mx-wc-j8d">
             <objects>
-                <collectionViewController id="h0k-dT-FUb" customClass="MainPageCollectionViewController" customModule="LPHSignageLive" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MainPageCollectionViewController" id="h0k-dT-FUb" customClass="MainPageCollectionViewController" customModule="LPHSignageLive" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Nco-S5-xWt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,6 +73,7 @@
                     <connections>
                         <segue destination="b9d-Yt-opf" kind="show" identifier="TimeSegue" id="vdE-O1-kW1"/>
                         <segue destination="4VW-dd-AUz" kind="show" identifier="emergencySegue" id="m4O-dD-jVD"/>
+                        <segue destination="0kk-LQ-I58" kind="presentation" identifier="noInternet" id="pxA-xz-ZDB"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4vX-jv-6Pk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -219,6 +220,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48Y-x3-JJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1892" y="-195"/>
+        </scene>
+        <!--No Internet View Controller-->
+        <scene sceneID="LXP-uM-wKa">
+            <objects>
+                <viewController storyboardIdentifier="NoInternetViewController" id="0kk-LQ-I58" customClass="NoInternetViewController" customModule="LPHSignageLive" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rZf-nM-wj0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" alignment="center" spacing="112" translatesAutoresizingMaskIntoConstraints="NO" id="2nr-4r-F5p">
+                                <rect key="frame" x="89" y="95" width="196" height="476.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipx-Pw-kCE">
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HuJ-Fz-it4">
+                                        <rect key="frame" x="0.0" y="148" width="196" height="196"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeA-J1-NlW">
+                                        <rect key="frame" x="0.0" y="456" width="196" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ipx-Pw-kCE" firstAttribute="width" secondItem="2nr-4r-F5p" secondAttribute="width" id="Z1s-JG-M9v"/>
+                                    <constraint firstItem="WeA-J1-NlW" firstAttribute="width" secondItem="ipx-Pw-kCE" secondAttribute="width" id="qqL-8F-TRU"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2nr-4r-F5p" firstAttribute="leading" secondItem="XoB-Ca-1Ki" secondAttribute="leading" constant="89" id="7CH-dP-elo"/>
+                            <constraint firstItem="XoB-Ca-1Ki" firstAttribute="bottom" secondItem="2nr-4r-F5p" secondAttribute="bottom" constant="95.5" id="fan-AK-dvg"/>
+                            <constraint firstItem="XoB-Ca-1Ki" firstAttribute="trailing" secondItem="2nr-4r-F5p" secondAttribute="trailing" constant="90" id="iMj-7p-mlb"/>
+                            <constraint firstItem="2nr-4r-F5p" firstAttribute="top" secondItem="XoB-Ca-1Ki" secondAttribute="top" constant="75" id="ph1-NB-HwL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XoB-Ca-1Ki"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageWifi" destination="HuJ-Fz-it4" id="jin-mb-GV9"/>
+                        <outlet property="messageLabel" destination="WeA-J1-NlW" id="Oab-Qb-RJg"/>
+                        <outlet property="titleLabel" destination="ipx-Pw-kCE" id="PHq-rd-fXx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tes-sX-g9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="989.60000000000002" y="846.9265367316342"/>
         </scene>
         <!--Emergency Event View Controller-->
         <scene sceneID="VNi-tM-YAI">
