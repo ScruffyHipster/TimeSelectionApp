@@ -21,10 +21,10 @@ class HTTPRequest {
 	}
 	
 	 enum Group: Int {
-		case theatreOne = 1
-		case theatreTwo = 2
-		case theatreThree = 3
-		case all = 4
+		case theatreOne = 0
+		case theatreTwo = 1
+		case theatreThree = 2
+		case all = 3
 		
 		var screenGroup: Int {
 			//return the screen group number

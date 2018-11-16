@@ -28,6 +28,7 @@ class TimeSelectorViewController: UIViewController {
 	@IBAction func resetTimer(_ sender: Any) {
 		if sliderView.currentValue != 0 {
 			sliderView.currentValue = 0
+			theatreSelection.selectedSegmentIndex = 0
 		}
 	}
 	@IBAction func selectLabelTapped(_ sender: UIButton) {
@@ -43,10 +44,9 @@ class TimeSelectorViewController: UIViewController {
 	}
 	var theatre: Int? {
 		get {
-			return theatreSelection?.selectedSegmentIndex
+			return theatreSelection.selectedSegmentIndex
 		}
 	}
-	
 	var httpRequest: HTTPRequest?
 	var interrupt: HTTPRequest.Interrupt?
 	var reachability = Reachability()
@@ -58,7 +58,6 @@ class TimeSelectorViewController: UIViewController {
 		selectTimeButton.isEnabled = false
 		httpRequest = HTTPRequest.shared
 		navigationItem.title = "Time selector"
-		theatreSelection.selectedSegmentIndex = 0
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -107,8 +106,8 @@ extension TimeSelectorViewController: MSCircularSliderDelegate {
 			timeView.timeLabel.text = String("\(Int(value))")
 		} else if sliderView.currentValue == 30.0 {
 			timeView.timeLabel.text = String("\(Int(value))")
-		} else {
-			timeView.timeLabel.text = "0"
+		} else if sliderView.currentValue == 0.00 {
+			timeView.timeLabel.text = String(0)
 		}
 		
 		if value == 0 {

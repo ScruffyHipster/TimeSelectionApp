@@ -26,13 +26,14 @@ class MainPageCollectionViewController: UICollectionViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupCollectionView()
+		startReachability(at: host)
 		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationItem.title = "Main menu"
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		startReachability(at: host)
+		
 	}
 	
 	func setupCollectionView() {
@@ -125,13 +126,13 @@ extension MainPageCollectionViewController {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
 		switch indexPath.row {
 		case 0:
-			cell.backgroundColor = UIColor.red
+			cell.backgroundColor = UIColor.gray
 			cell.title.text = "Time to start"
 		case 1:
-			cell.backgroundColor = UIColor.blue
+			cell.backgroundColor = UIColor.gray
 			cell.title.text = "Fire Alarm"
 		case 2:
-			cell.backgroundColor = UIColor.green
+			cell.backgroundColor = UIColor.gray
 			cell.title.text = "Happy hour"
 		default:
 			cell.backgroundColor = .white
@@ -148,7 +149,7 @@ extension MainPageCollectionViewController {
 		case 1:
 			performSegue(withIdentifier: "emergencySegue", sender: self)
 		default:
-			let alert = UIAlertController(title: "ok", message: "Cannot find segue", preferredStyle: .alert)
+			let alert = UIAlertController(title: "Feature not currently available", message: "This feature is not currently built for your device", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
 			present(alert, animated: true)
 		}

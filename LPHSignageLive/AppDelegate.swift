@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
-//		let nav = self.window?.rootViewController as! UINavigationController
+		let nav = self.window?.rootViewController as! UINavigationController
+		nav.navigationBar.prefersLargeTitles = true
 //		let mainVc = nav.viewControllers[0] as! MainPageCollectionViewController
 		return true
 	}

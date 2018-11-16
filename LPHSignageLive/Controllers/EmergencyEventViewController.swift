@@ -19,6 +19,7 @@ class EmergencyEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		eventSwitch.addTarget(self, action: #selector(switchChanged), for: UISwitch.Event.valueChanged)
+		navigationItem.title = "Emergency trigger"
 		http = HTTPRequest.shared
 		selectButton.isEnabled = false
 		//sets value to the fire value
