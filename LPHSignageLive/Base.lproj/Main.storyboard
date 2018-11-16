@@ -60,7 +60,7 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hP9-XX-tNK">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" id="hP9-XX-tNK">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="10"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </collectionReusableView>
@@ -189,6 +189,25 @@
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flh-06-DO9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1G-Df-AQD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="B5k-dH-qpp">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <blurEffect style="light"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="S1G-Df-AQD" firstAttribute="leading" secondItem="flh-06-DO9" secondAttribute="leading" id="ENE-Tb-wEH"/>
+                                    <constraint firstAttribute="trailing" secondItem="S1G-Df-AQD" secondAttribute="trailing" id="ZvH-o0-aI6"/>
+                                    <constraint firstAttribute="bottom" secondItem="S1G-Df-AQD" secondAttribute="bottom" id="uu8-P4-3JA"/>
+                                    <constraint firstItem="S1G-Df-AQD" firstAttribute="top" secondItem="flh-06-DO9" secondAttribute="top" id="uvg-ZY-VAj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -196,11 +215,15 @@
                             <constraint firstItem="Jeo-p6-l6h" firstAttribute="trailing" secondItem="gtf-Om-fxo" secondAttribute="trailing" constant="166" id="0zb-j3-Aa1"/>
                             <constraint firstItem="Jeo-p6-l6h" firstAttribute="trailing" secondItem="alp-1o-2rj" secondAttribute="trailing" constant="68" id="EjT-uU-o2h"/>
                             <constraint firstItem="gtf-Om-fxo" firstAttribute="leading" secondItem="Jeo-p6-l6h" secondAttribute="leading" constant="165" id="HcU-hC-t3A"/>
+                            <constraint firstItem="flh-06-DO9" firstAttribute="leading" secondItem="Jeo-p6-l6h" secondAttribute="leading" id="JwQ-OZ-SjQ"/>
                             <constraint firstItem="Jeo-p6-l6h" firstAttribute="bottom" secondItem="gtf-Om-fxo" secondAttribute="bottom" constant="63" id="KPN-te-ls3"/>
                             <constraint firstItem="alp-1o-2rj" firstAttribute="top" secondItem="pN4-lV-OWO" secondAttribute="bottom" constant="53" id="L56-Mn-yP5"/>
                             <constraint firstItem="pN4-lV-OWO" firstAttribute="leading" secondItem="Jeo-p6-l6h" secondAttribute="leading" constant="102" id="LOg-7o-OYC"/>
                             <constraint firstItem="pN4-lV-OWO" firstAttribute="top" secondItem="Jeo-p6-l6h" secondAttribute="top" constant="19" id="LWB-5A-3J6"/>
+                            <constraint firstItem="flh-06-DO9" firstAttribute="top" secondItem="ZNW-4X-7GO" secondAttribute="top" id="TGI-p1-c4N"/>
+                            <constraint firstItem="flh-06-DO9" firstAttribute="trailing" secondItem="Jeo-p6-l6h" secondAttribute="trailing" id="WLz-g9-fjV"/>
                             <constraint firstItem="alp-1o-2rj" firstAttribute="leading" secondItem="Jeo-p6-l6h" secondAttribute="leading" constant="67" id="ike-tw-n46"/>
+                            <constraint firstItem="flh-06-DO9" firstAttribute="bottom" secondItem="Jeo-p6-l6h" secondAttribute="bottom" id="nc4-FS-8vd"/>
                             <constraint firstItem="Jeo-p6-l6h" firstAttribute="trailing" secondItem="pN4-lV-OWO" secondAttribute="trailing" constant="102" id="qvE-Ni-YDE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jeo-p6-l6h"/>
@@ -209,6 +232,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="blurView" destination="flh-06-DO9" id="jns-UI-F4q"/>
                         <outlet property="resetButton" destination="5oz-NZ-ZtT" id="6bN-kx-rXg"/>
                         <outlet property="selectTimeButton" destination="HSh-uX-xP3" id="MJP-vV-yCw"/>
                         <outlet property="sliderView" destination="alp-1o-2rj" id="afW-IC-agv"/>
@@ -219,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48Y-x3-JJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1892" y="-195"/>
+            <point key="canvasLocation" x="1892" y="-154.27286356821591"/>
         </scene>
         <!--No Internet View Controller-->
         <scene sceneID="LXP-uM-wKa">
@@ -277,7 +301,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="160" translatesAutoresizingMaskIntoConstraints="NO" id="bOB-Fy-Yxq">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="160" translatesAutoresizingMaskIntoConstraints="NO" id="mcF-wL-MCK">
                                 <rect key="frame" x="76" y="125" width="223.5" height="417"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6o-hU-y80">
@@ -301,16 +325,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Fdr-Tc-so2" firstAttribute="trailing" secondItem="bOB-Fy-Yxq" secondAttribute="trailing" constant="75.5" id="1S3-eb-Nku"/>
-                            <constraint firstItem="bOB-Fy-Yxq" firstAttribute="top" secondItem="Fdr-Tc-so2" secondAttribute="top" constant="61" id="3yr-CO-gjA"/>
-                            <constraint firstItem="Fdr-Tc-so2" firstAttribute="bottom" secondItem="bOB-Fy-Yxq" secondAttribute="bottom" constant="125" id="Htc-mH-6Hg"/>
-                            <constraint firstItem="bOB-Fy-Yxq" firstAttribute="leading" secondItem="Fdr-Tc-so2" secondAttribute="leading" constant="76" id="OkT-gx-RFL"/>
+                            <constraint firstItem="Fdr-Tc-so2" firstAttribute="trailing" secondItem="mcF-wL-MCK" secondAttribute="trailing" constant="75.5" id="9R9-Y6-HCj"/>
+                            <constraint firstItem="mcF-wL-MCK" firstAttribute="leading" secondItem="Fdr-Tc-so2" secondAttribute="leading" constant="76" id="N18-Hp-nJb"/>
+                            <constraint firstItem="mcF-wL-MCK" firstAttribute="top" secondItem="Fdr-Tc-so2" secondAttribute="top" constant="61" id="euo-Zu-uXF"/>
+                            <constraint firstItem="Fdr-Tc-so2" firstAttribute="bottom" secondItem="mcF-wL-MCK" secondAttribute="bottom" constant="125" id="k9p-TA-fTF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fdr-Tc-so2"/>
                     </view>
                     <connections>
                         <outlet property="eventSwitch" destination="5bc-J8-2Pv" id="T3u-7H-3IF"/>
+                        <outlet property="heading" destination="N6o-hU-y80" id="aae-DT-1ws"/>
                         <outlet property="selectButton" destination="14f-Cz-dgN" id="LZb-g7-0TX"/>
+                        <outlet property="stackViewLeadingConstraint" destination="N18-Hp-nJb" id="DhS-Q6-sTs"/>
+                        <outlet property="stackViewTrailingContstraint" destination="9R9-Y6-HCj" id="vzI-z1-6bg"/>
+                        <outlet property="vStack" destination="mcF-wL-MCK" id="ke2-81-9V9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="40s-rO-Qbd" userLabel="First Responder" sceneMemberID="firstResponder"/>

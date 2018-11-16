@@ -15,12 +15,10 @@ class HUDView: UIView {
 	
 	class func hud(inView view: UIView, animated: Bool) -> HUDView {
 		let hudView = HUDView(frame: view.bounds)
-		
 		hudView.show(animated: animated)
 		hudView.isOpaque = false
 		view.addSubview(hudView)
 		view.isUserInteractionEnabled = false
-		
 		return hudView
 	}
 	
@@ -28,7 +26,6 @@ class HUDView: UIView {
 		//create a box
 		let boxwidth: CGFloat = 140
 		let boxHeight: CGFloat = 140
-		
 		//set the corners of the box to be rounded
 		let boxRect = CGRect(x: round((bounds.size.width - boxwidth) / 2), y: round((bounds.size.height - boxHeight) / 2), width: boxwidth, height: boxHeight)
 		let roundRect = UIBezierPath(roundedRect: boxRect, cornerRadius: 10)
@@ -41,7 +38,22 @@ class HUDView: UIView {
 		let textSize = text.size(withAttributes: attribtues as [NSAttributedString.Key : Any])
 		let textPoint = CGPoint(x: center.x - round(textSize.width / 2), y: center.y - round(textSize.height / 2) + boxHeight / 4)
 		text.draw(at: textPoint, withAttributes: attribtues as [NSAttributedString.Key : Any])
-		
+	
+	}
+	
+	func addBlur(in view: UIView) {
+		let blur = UIBlurEffect(style: .light)
+		let blurView = UIVisualEffectView(effect: blur)
+		blurView.frame = view.frame
+		view.addSubview(blurView)
+	}
+	
+	func removeBlur(from view: UIView) {
+		for views in view.subviews {
+			if views == UIVisualEffectView() {
+				views.removeFromSuperview()
+			}
+		}
 	}
 	
 	func show(animated: Bool) {

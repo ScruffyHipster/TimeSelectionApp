@@ -10,8 +10,17 @@ import UIKit
 
 class EmergencyEventViewController: UIViewController {
 	
-	@IBOutlet weak var eventSwitch: UISwitch!
+	@IBOutlet weak var heading: UILabel!
+	@IBOutlet weak var eventSwitch: UISwitch! {
+		didSet {
+			eventSwitch.transform = CGAffineTransform(scaleX: 2, y: 2)
+		}
+	}
 	@IBOutlet weak var selectButton: UIButton!
+	@IBOutlet weak var vStack: UIStackView!
+	
+	@IBOutlet weak var stackViewLeadingConstraint: NSLayoutConstraint!
+	@IBOutlet weak var stackViewTrailingContstraint: NSLayoutConstraint!
 
 	var http: HTTPRequest?
 	var interrupt: HTTPRequest.Interrupt?
@@ -24,6 +33,22 @@ class EmergencyEventViewController: UIViewController {
 		selectButton.isEnabled = false
 		//sets value to the fire value
 		interrupt = HTTPRequest.Interrupt(rawValue: 100)
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		stackViewLeadingConstraint.constant += view.bounds.width
+	}
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		vStack.alpha = 0
+		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseInOut, animations: {
+			self.stackViewLeadingConstraint.constant -= self.view.bounds.width
+			self.vStack.alpha = 1
+			self.view.layoutIfNeeded()
+		},  completion: nil)
+		
 	}
 	
 	@objc func switchChanged(mySwitch: UISwitch) {

@@ -18,6 +18,11 @@ class TimeSelectorViewController: UIViewController {
 	@IBOutlet weak var theatreSelection: UISegmentedControl!
 	@IBOutlet weak var resetButton: UIButton!
 	@IBOutlet weak var selectTimeButton: UIButton!
+	@IBOutlet weak var blurView: UIView! {
+		didSet {
+			blurView.alpha = 0
+		}
+	}
 	@IBOutlet weak var timeLabel: UILabel! {
 		didSet {
 			timeLabel.text = String("\(Int(0))")
@@ -72,6 +77,10 @@ extension TimeSelectorViewController {
 	//MARK:- http methods
 	
 	func sendTime() {
+		UIView.animate(withDuration: 0.2) {
+			self.blurView.alpha = 1
+			self.view.layoutIfNeeded()
+		}
 		//hudView with spinning animator
 		let hudView = HUDView.hud(inView: (navigationController?.view)!, animated: true)
 		hudView.text = "Sending request"
@@ -85,10 +94,18 @@ extension TimeSelectorViewController {
 		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
 			if success == true {
 				print("yay")
-				hudView.hide()
+				UIView.animate(withDuration: 0.2, animations: {
+					hudView.hide()
+					self.blurView.alpha = 0
+					self.view.layoutIfNeeded()
+				})
 			} else {
 				print("boo")
-				hudView.hide()
+				UIView.animate(withDuration: 0.2, animations: {
+					hudView.hide()
+					self.blurView.alpha = 0
+					self.view.layoutIfNeeded()
+				})
 			}
 		})
 	}
