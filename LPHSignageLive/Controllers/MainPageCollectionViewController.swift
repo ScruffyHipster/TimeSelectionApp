@@ -42,6 +42,10 @@ class MainPageCollectionViewController: UICollectionViewController {
 		let height = view.frame.height / 3
 		let cv = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 		cv.itemSize = CGSize(width: width, height: height)
+		collectionView.backgroundColor = UIColor.lightGray
+		let blur = UIBlurEffect(style: .dark)
+		let blurLayer = UIVisualEffectView(effect: blur)
+		collectionView.addSubview(blurLayer)
 	}
 	
 	
@@ -137,6 +141,7 @@ extension MainPageCollectionViewController {
 		default:
 			cell.backgroundColor = .white
 		}
+		cell.image.image = UIImage(named: "cvcitem\(indexPath.row)")
 		cell.layer.cornerRadius = 10
 		return cell
 	}

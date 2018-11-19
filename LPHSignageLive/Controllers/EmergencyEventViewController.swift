@@ -43,8 +43,11 @@ class EmergencyEventViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		vStack.alpha = 0
+		view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+		
 		UIView.animate(withDuration: 0.2, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.7, options: UIView.AnimationOptions.curveEaseInOut, animations: {
 			self.stackViewLeadingConstraint.constant -= self.view.bounds.width
+			self.view.transform = CGAffineTransform.identity
 			self.vStack.alpha = 1
 			self.view.layoutIfNeeded()
 		},  completion: nil)
