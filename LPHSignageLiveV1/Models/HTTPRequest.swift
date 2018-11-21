@@ -63,31 +63,6 @@ class HTTPRequest {
 		
 	}
 	
-	//Creates a url request dependant on the theatre selected and the page selected from
-	func urlRequest(group: Group, interrupt: Interrupt) -> URLRequest {
-		//get screen group to send message too
-		let group = group.screenGroup
-		let interrupt = interrupt.interrupt
-		let time = getTime(time: interrupt)
-		//set headers
-		let header = [
-			"X-SIGNAGELIVE-WBI-APP-ID": "6538d918-fc17-47d6-9394-605d115a95ec",
-			"X-SIGNAGELIVE-WBI-APP-KEY": "2d7fe491-b147-4062-90e6-402d59438373",
-			"Content-Type": "application/json",
-			]
-		//parameters to send - interrupt is the screen to show, player is specific player, group is all players in specific group
-		let parameters = ["interrupt": interrupt, "players": [57599], "groups": [group], "additionalData": [["Key": "theatre", "value": String("\(group)")], ["Key": "time", "Value": time], ["Key": "action", "Value": "0"]]] as [String: AnyObject]
-		let urlString = "https://wbtapi.signagelive.com/networks/15479/messages/"
-		let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
-		var request = URLRequest(url: URL(string: urlString)!)
-		request.httpMethod = "POST"
-		request.allHTTPHeaderFields = header
-		request.httpBody = postData
-		print(parameters)
-		return request
-	}
-	
-	
 	//Helper function that will need changing!!!!
 	func getTime(time: Int) -> String {
 		switch time {
@@ -98,8 +73,36 @@ class HTTPRequest {
 		case 30:
 			return "30"
 		default:
-			return "1"
+			return "20"
 		}
+	}
+	
+	//Creates a url request dependant on the theatre selected and the page selected from
+	func urlRequest(group: Group, interrupt: Interrupt) -> URLRequest {
+		//get screen group to send message too
+		let group = group.screenGroup
+		let time = getTime(time: interrupt.rawValue)
+		let interrupt = interrupt.interrupt
+		//set headers
+		let header = [
+			"X-SIGNAGELIVE-WBI-APP-ID": "6538d918-fc17-47d6-9394-605d115a95ec",
+			"X-SIGNAGELIVE-WBI-APP-KEY": "2d7fe491-b147-4062-90e6-402d59438373",
+			"Content-Type": "application/json",
+			]
+		//parameters to send - interrupt is the screen to show, player is specific player, group is all players in specific group
+		//MARK:- TODO
+		/*
+		Player below is set to test player. This will need to change. getTime(:) function below will also need to be refactored
+		*/
+		let parameters = ["interrupt": interrupt, "players": [57599], "groups": [], "additionalData": [["Key": "theatre", "value": String("\(group)")], ["Key": "time", "Value": time], ["Key": "action", "Value": "0"]]] as [String: AnyObject]
+		let urlString = "https://wbtapi.signagelive.com/networks/15479/messages/"
+		let postData = try! JSONSerialization.data(withJSONObject: parameters, options: [])
+		var request = URLRequest(url: URL(string: urlString)!)
+		request.httpMethod = "POST"
+		request.allHTTPHeaderFields = header
+		request.httpBody = postData
+		print(parameters)
+		return request
 	}
 	
 	
@@ -123,3 +126,4 @@ class HTTPRequest {
 	
 	
 }
+
