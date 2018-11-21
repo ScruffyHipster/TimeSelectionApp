@@ -48,14 +48,14 @@
 		4A07B8DF219332B100E86E08 /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		4A1E4091219F13CF009AF743 /* RoundedButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtons.swift; sourceTree = "<group>"; };
 		4A1E6CF6219C209B00625F15 /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
-		4A44FA6C2189C02200AC735A /* LPHSignageLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPHSignageLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A44FA6C2189C02200AC735A /* LPHSignageLiveV1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPHSignageLiveV1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A44FA6F2189C02200AC735A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A44FA742189C02200AC735A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4A44FA772189C02200AC735A /* LPHSignageLive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LPHSignageLive.xcdatamodel; sourceTree = "<group>"; };
 		4A44FA792189C02300AC735A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A44FA7C2189C02300AC735A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A44FA7E2189C02300AC735A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4A44FA832189C02300AC735A /* LPHSignageLiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LPHSignageLiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A44FA832189C02300AC735A /* LPHSignageLiveV1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LPHSignageLiveV1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A44FA872189C02300AC735A /* LPHSignageLiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LPHSignageLiveTests.swift; sourceTree = "<group>"; };
 		4A44FA892189C02300AC735A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A44FA922189C4B300AC735A /* MainPageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageCollectionViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		4A44FA632189C02200AC735A = {
 			isa = PBXGroup;
 			children = (
-				4A44FA6E2189C02200AC735A /* LPHSignageLive */,
+				4A44FA6E2189C02200AC735A /* LPHSignageLiveV1 */,
 				4A44FA862189C02300AC735A /* LPHSignageLiveTests */,
 				4A44FA6D2189C02200AC735A /* Products */,
 				E82472840EE568849B50BA35 /* Pods */,
@@ -107,13 +107,13 @@
 		4A44FA6D2189C02200AC735A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A44FA6C2189C02200AC735A /* LPHSignageLive.app */,
-				4A44FA832189C02300AC735A /* LPHSignageLiveTests.xctest */,
+				4A44FA6C2189C02200AC735A /* LPHSignageLiveV1.app */,
+				4A44FA832189C02300AC735A /* LPHSignageLiveV1Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4A44FA6E2189C02200AC735A /* LPHSignageLive */ = {
+		4A44FA6E2189C02200AC735A /* LPHSignageLiveV1 */ = {
 			isa = PBXGroup;
 			children = (
 				4A44FA9C2189E09600AC735A /* Controllers */,
@@ -126,7 +126,7 @@
 				4A44FA7E2189C02300AC735A /* Info.plist */,
 				4A44FA762189C02200AC735A /* LPHSignageLive.xcdatamodeld */,
 			);
-			path = LPHSignageLive;
+			path = LPHSignageLiveV1;
 			sourceTree = "<group>";
 		};
 		4A44FA862189C02300AC735A /* LPHSignageLiveTests */ = {
@@ -212,9 +212,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4A44FA6B2189C02200AC735A /* LPHSignageLive */ = {
+		4A44FA6B2189C02200AC735A /* LPHSignageLiveV1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4A44FA8C2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLive" */;
+			buildConfigurationList = 4A44FA8C2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLiveV1" */;
 			buildPhases = (
 				2BA030E1EE374DC701A3DD20 /* [CP] Check Pods Manifest.lock */,
 				4A44FA682189C02200AC735A /* Sources */,
@@ -226,14 +226,14 @@
 			);
 			dependencies = (
 			);
-			name = LPHSignageLive;
+			name = LPHSignageLiveV1;
 			productName = LPHSignageLive;
-			productReference = 4A44FA6C2189C02200AC735A /* LPHSignageLive.app */;
+			productReference = 4A44FA6C2189C02200AC735A /* LPHSignageLiveV1.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4A44FA822189C02300AC735A /* LPHSignageLiveTests */ = {
+		4A44FA822189C02300AC735A /* LPHSignageLiveV1Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4A44FA8F2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLiveTests" */;
+			buildConfigurationList = 4A44FA8F2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLiveV1Tests" */;
 			buildPhases = (
 				1075837F3E381BDD7B774780 /* [CP] Check Pods Manifest.lock */,
 				4A44FA7F2189C02300AC735A /* Sources */,
@@ -245,9 +245,9 @@
 			dependencies = (
 				4A44FA852189C02300AC735A /* PBXTargetDependency */,
 			);
-			name = LPHSignageLiveTests;
+			name = LPHSignageLiveV1Tests;
 			productName = LPHSignageLiveTests;
-			productReference = 4A44FA832189C02300AC735A /* LPHSignageLiveTests.xctest */;
+			productReference = 4A44FA832189C02300AC735A /* LPHSignageLiveV1Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -269,7 +269,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4A44FA672189C02200AC735A /* Build configuration list for PBXProject "LPHSignageLive" */;
+			buildConfigurationList = 4A44FA672189C02200AC735A /* Build configuration list for PBXProject "LPHSignageLiveV1" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -282,8 +282,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4A44FA6B2189C02200AC735A /* LPHSignageLive */,
-				4A44FA822189C02300AC735A /* LPHSignageLiveTests */,
+				4A44FA6B2189C02200AC735A /* LPHSignageLiveV1 */,
+				4A44FA822189C02300AC735A /* LPHSignageLiveV1Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -402,7 +402,7 @@
 /* Begin PBXTargetDependency section */
 		4A44FA852189C02300AC735A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4A44FA6B2189C02200AC735A /* LPHSignageLive */;
+			target = 4A44FA6B2189C02200AC735A /* LPHSignageLiveV1 */;
 			targetProxy = 4A44FA842189C02300AC735A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -550,12 +550,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2392YT52CQ;
-				INFOPLIST_FILE = LPHSignageLive/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LPHSignageLiveV1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tommurray.LPHSignageLive;
+				PRODUCT_BUNDLE_IDENTIFIER = tommurray.LPHSignageLiveV1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -569,12 +569,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2392YT52CQ;
-				INFOPLIST_FILE = LPHSignageLive/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LPHSignageLiveV1/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = tommurray.LPHSignageLive;
+				PRODUCT_BUNDLE_IDENTIFIER = tommurray.LPHSignageLiveV1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -599,7 +599,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LPHSignageLive.app/LPHSignageLive";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LPHSignageLiveV1.app/LPHSignageLiveV1";
 			};
 			name = Debug;
 		};
@@ -621,14 +621,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LPHSignageLive.app/LPHSignageLive";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LPHSignageLiveV1.app/LPHSignageLiveV1";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4A44FA672189C02200AC735A /* Build configuration list for PBXProject "LPHSignageLive" */ = {
+		4A44FA672189C02200AC735A /* Build configuration list for PBXProject "LPHSignageLiveV1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A44FA8A2189C02300AC735A /* Debug */,
@@ -637,7 +637,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4A44FA8C2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLive" */ = {
+		4A44FA8C2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLiveV1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A44FA8D2189C02300AC735A /* Debug */,
@@ -646,7 +646,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4A44FA8F2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLiveTests" */ = {
+		4A44FA8F2189C02300AC735A /* Build configuration list for PBXNativeTarget "LPHSignageLiveV1Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A44FA902189C02300AC735A /* Debug */,
