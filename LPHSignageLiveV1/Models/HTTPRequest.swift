@@ -42,7 +42,7 @@ class HTTPRequest {
 		}
 	}
 	
-	enum Interrupt: Int {
+	enum Interrupt: Double {
 		case ten = 10
 		case twenty = 20
 		case thirty = 30
@@ -64,7 +64,7 @@ class HTTPRequest {
 	}
 	
 	//Helper function that will need changing!!!!
-	func getTime(time: Int) -> String {
+	func getTime(time: Double) -> String {
 		switch time {
 		case 10:
 			return "10"

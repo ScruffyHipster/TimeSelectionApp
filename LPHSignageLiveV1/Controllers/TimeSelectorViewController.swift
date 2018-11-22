@@ -13,10 +13,11 @@ import Reachability
 class TimeSelectorViewController: UIViewController {
 	
 	//MARK:- Outlets
-	@IBOutlet weak var timeView: TimeSelectorView!
-	@IBOutlet var sliderView: MSCircularSlider!
+	
+	@IBOutlet var sliderView: MSCircularSlider! 
 	@IBOutlet weak var theatreSelection: UISegmentedControl!
 	@IBOutlet weak var resetButton: UIButton!
+	@IBOutlet weak var handleView: UIView!
 	@IBOutlet weak var selectTimeButton: UIButton!
 	@IBOutlet weak var blurView: UIView! {
 		didSet {
@@ -34,6 +35,7 @@ class TimeSelectorViewController: UIViewController {
 		if sliderView.currentValue != 0 {
 			sliderView.currentValue = 0
 			theatreSelection.selectedSegmentIndex = 0
+			print("button tapped")
 		}
 	}
 	@IBAction func selectLabelTapped(_ sender: UIButton) {
@@ -42,9 +44,9 @@ class TimeSelectorViewController: UIViewController {
 	
 	
 	//MARK:- Properties
-	var timeToSend: Int {
+	var timeToSend: Double {
 		get {
-			return Int(sliderView!.currentValue)
+			return Double(sliderView!.currentValue)
 		}
 	}
 	var theatre: Int? {
@@ -55,14 +57,14 @@ class TimeSelectorViewController: UIViewController {
 	var httpRequest: HTTPRequest?
 	var interrupt: HTTPRequest.Interrupt?
 	var reachability = Reachability()
-	
+	weak var delegate: TimeSelectorViewControllerDelegate?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		sliderView.delegate = self
 		selectTimeButton.isEnabled = false
+		sliderView.delegate = self
 		httpRequest = HTTPRequest.shared
-		navigationItem.title = "Time selector"
+		print("time view loaded")
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +100,7 @@ extension TimeSelectorViewController {
 					hudView.hide()
 					self.blurView.alpha = 0
 					self.view.layoutIfNeeded()
+					self.delegate?.didSelectTime(self, timeSelected: self.timeToSend)
 				})
 			} else {
 				print("boo")
@@ -118,13 +121,13 @@ extension TimeSelectorViewController: MSCircularSliderDelegate {
 		
 		//TODO:- sort this out below!
 		if sliderView.currentValue == 10.0 {
-			timeView.timeLabel.text = String("\(Int(value))")
+			self.timeLabel.text = String("\(Int(value))")
 		} else if sliderView.currentValue == 20.0 {
-			timeView.timeLabel.text = String("\(Int(value))")
+			self.timeLabel.text = String("\(Int(value))")
 		} else if sliderView.currentValue == 30.0 {
-			timeView.timeLabel.text = String("\(Int(value))")
+			self.timeLabel.text = String("\(Int(value))")
 		} else if sliderView.currentValue == 0.00 {
-			timeView.timeLabel.text = String(0)
+			self.timeLabel.text = String(0)
 		}
 		
 		if value == 0 {

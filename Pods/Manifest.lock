@@ -1,6 +1,6 @@
 PODS:
-  - MSCircularSlider (1.2.1)
-  - ReachabilitySwift (4.1.0)
+  - MSCircularSlider (1.2.2)
+  - ReachabilitySwift (4.3.0)
 
 DEPENDENCIES:
   - MSCircularSlider
@@ -12,9 +12,9 @@ SPEC REPOS:
     - ReachabilitySwift
 
 SPEC CHECKSUMS:
-  MSCircularSlider: e0107e17c0c756c4e6a7d4d6c157a474ac08f7ca
-  ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  MSCircularSlider: 70759318a899279d7923aa0f454f3ba0fe448642
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
 
-PODFILE CHECKSUM: bca844699c063f48da49af31fe6a6abf372c0726
+PODFILE CHECKSUM: 6446c5c76bbdb535a6d725f339c8c0e124df053d
 
 COCOAPODS: 1.5.3

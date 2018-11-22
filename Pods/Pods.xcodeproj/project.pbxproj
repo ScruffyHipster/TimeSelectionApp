@@ -7,104 +7,112 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		024BB4DA3264BB47ADC0ABC45F51549C /* ReachabilitySwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E9AB3D0FF2292D96E573B8666700848 /* ReachabilitySwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		06572610FAC28896EE27C4D4E1B680EF /* MSDoubleHandleCircularSlider+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B031FD5B63BC861921A4B9D684A83F56 /* MSDoubleHandleCircularSlider+IB.swift */; };
+		2EB1A8F9C322EA6A2B4C53C195F5EA95 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C3A1F100D6DE00B711E31320AFB0EB /* Foundation.framework */; };
 		312997C965D2FC281EBA989CB4D61527 /* MSCircularSlider+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC484B8473A53CEE708722BDA9AD0518 /* MSCircularSlider+IB.swift */; };
-		334EA541BAFBA6430049BE520C2E634F /* Pods-LPHSignageLiveTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 351ECF65F5B00BED94BA83FA1D2A43D7 /* Pods-LPHSignageLiveTests-dummy.m */; };
-		5FB3D1C8687617F0A9B51D7FC2A956C4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C3A1F100D6DE00B711E31320AFB0EB /* Foundation.framework */; };
+		33CDA3150541C4C34EBA816A7E368788 /* ReachabilitySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0E3284151A3B712989DDA2FF75B09 /* ReachabilitySwift-dummy.m */; };
 		62711889A700AB7DD9CA9FF410C429A4 /* MSDoubleHandleCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E902702614B65539A0D41AE38388B /* MSDoubleHandleCircularSlider.swift */; };
-		6B2F3C5E4327AD65C0B2C0D4D38F514A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C3A1F100D6DE00B711E31320AFB0EB /* Foundation.framework */; };
 		7236EB85FB414B40B5050B486E27B7E6 /* MSCircularSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9367F4015C37FDA4D1FB1F11869AF22B /* MSCircularSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7DA61087BD652F89D9CAF5F643396821 /* ReachabilitySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DED3A47660573091E40371DD17CDB6 /* ReachabilitySwift-dummy.m */; };
-		90175B123FBF2EA46EA826AD603AFF99 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AA8FC57764E9577CA25AFE700170D3 /* SystemConfiguration.framework */; };
 		95984B6BC28B63A2289BA278B1B075C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C3A1F100D6DE00B711E31320AFB0EB /* Foundation.framework */; };
-		A2AA3D15E6D84A8602145F03B7324122 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CFF7D6F0BA3BE84B5E46C1E1CC1D02 /* Reachability.swift */; };
-		A556DFCCA49DFA6F0665DBD9D20CE3B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C3A1F100D6DE00B711E31320AFB0EB /* Foundation.framework */; };
-		B24DB31A329F3B8E8EE7A5265A91674C /* Pods-LPHSignageLiveTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B008A7094B0945EF5577CF712E805268 /* Pods-LPHSignageLiveTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A699E98F9990227AC4471893D15AFA36 /* ReachabilitySwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CAA5346E344989A1A97DE1A18B63C546 /* ReachabilitySwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B49CB95DCF5FEB8FE5EB7EB8B16E323A /* MSCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DA2A71DF0BC7A432E88D2823C3EC50 /* MSCircularSlider.swift */; };
 		B4B5F5071A0B30DEE7D8F43089AC7025 /* MSGradientCircularSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4232080135A397230DB901CB27DA79A3 /* MSGradientCircularSlider.swift */; };
-		D2B1DF5D2BD9D160DCDE10EE9903DF68 /* Pods-LPHSignageLive-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 082B860B546AFC0FE0AECF8587EB8E34 /* Pods-LPHSignageLive-dummy.m */; };
-		DD3953E4237CFF680789D28914745366 /* Pods-LPHSignageLive-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6185293C7659E5B5EE986A63C67CCA01 /* Pods-LPHSignageLive-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B690782A1C5718B4306A7952F2A11844 /* Pods-LPHSignageLiveV1Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D18A1975748D6E9841A27D60B5E4330 /* Pods-LPHSignageLiveV1Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA0ADBE57F5A0312A02A53AA8BFD5D0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C3A1F100D6DE00B711E31320AFB0EB /* Foundation.framework */; };
+		D24E533F0C478ED2DDA8E59B89825FC2 /* Pods-LPHSignageLiveV1-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B25D99E23022B78E60677EF385F4224A /* Pods-LPHSignageLiveV1-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D2D4C064A2E263874F0B49413FD702B9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AA8FC57764E9577CA25AFE700170D3 /* SystemConfiguration.framework */; };
+		D649AD8F931206D254A849A1D7FB5DB7 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42343CED272182E3201E36E33E260E4 /* Reachability.swift */; };
+		D9234771C57BE9D4ABF14E83041A5F01 /* Pods-LPHSignageLiveV1-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B4BC568FDC7C8DBAE9662A839628C934 /* Pods-LPHSignageLiveV1-dummy.m */; };
 		DDAAC87CAA3A5A03FC84960764C5509C /* MSGradientCircularSlider+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51EBE429C9321850222A12486023B50 /* MSGradientCircularSlider+IB.swift */; };
+		E1F6F33930261DDAF0D2CCEE0A471156 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C3A1F100D6DE00B711E31320AFB0EB /* Foundation.framework */; };
 		F643CDB2B4FF23B96FAD43DE30BDCD82 /* MSCircularSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E06718902BA979467A46E05244816E79 /* MSCircularSlider-dummy.m */; };
+		F68F2B0D316BC12BB0A1E92CE1EB405D /* Pods-LPHSignageLiveV1Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7AB302506032C45B23541AA2C3457D /* Pods-LPHSignageLiveV1Tests-dummy.m */; };
 		FB599F65EF85291739066B834996FDA3 /* MSCircularSliderHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2C8A54241893D8D2D3603AAACDD30 /* MSCircularSliderHandle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6851E4259F37634ED7FDB9F0E73633AB /* PBXContainerItemProxy */ = {
+		05B4E4F667230BAE612E6F2AE2707840 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2DFA76C1FD5A963B4F8F831BA3437D6;
+			remoteInfo = ReachabilitySwift;
+		};
+		364FE3FEE5E16129B29063DAE4F7C15B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = F92DB2A9C791B7C1A3A693C123747AF2;
 			remoteInfo = MSCircularSlider;
 		};
-		8CFA5977022D5EE4BA328E84759554EC /* PBXContainerItemProxy */ = {
+		E612E63FC3F6A4D482F5D71A753BA825 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = EF21AF6FCB4232B895C38C8E2A2A2258;
-			remoteInfo = ReachabilitySwift;
-		};
-		C2DEB104A40520FAD0C979E2D43A3C5A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 04CAA740D6159E237EF5E606FE67696E;
-			remoteInfo = "Pods-LPHSignageLive";
+			remoteGlobalIDString = 49B276AFD35F31BB564319B0CAB06641;
+			remoteInfo = "Pods-LPHSignageLiveV1";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0639510BE17C5EB7823CD166EA08AB7C /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		082B860B546AFC0FE0AECF8587EB8E34 /* Pods-LPHSignageLive-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LPHSignageLive-dummy.m"; sourceTree = "<group>"; };
-		0E83FC62437902BBB3C54366B76AF682 /* Pods-LPHSignageLiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPHSignageLiveTests.debug.xcconfig"; sourceTree = "<group>"; };
-		0E8FEC3A1D7D8A053786978FE3DE9F12 /* ReachabilitySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-prefix.pch"; sourceTree = "<group>"; };
-		10D4BE6B2EFBFD3250ABC9A9955C69A5 /* Pods-LPHSignageLive-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPHSignageLive-frameworks.sh"; sourceTree = "<group>"; };
+		0DE0C88313809BCA13DCF5780CC0AE4A /* Pods-LPHSignageLiveV1Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LPHSignageLiveV1Tests.modulemap"; sourceTree = "<group>"; };
 		1145466A04E424E91777CA29EC4D24BB /* MSCircularSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSCircularSlider.xcconfig; sourceTree = "<group>"; };
-		257CA149F2B826DBCB6F859F755EF8C6 /* Pods-LPHSignageLive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPHSignageLive.debug.xcconfig"; sourceTree = "<group>"; };
-		28A9D945785382BAEC9B3DA2F91F0A83 /* Pods-LPHSignageLiveTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPHSignageLiveTests-resources.sh"; sourceTree = "<group>"; };
-		311A7D11ED0EB867DA849667F4FEABC4 /* Pods-LPHSignageLive-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LPHSignageLive-acknowledgements.plist"; sourceTree = "<group>"; };
-		351ECF65F5B00BED94BA83FA1D2A43D7 /* Pods-LPHSignageLiveTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LPHSignageLiveTests-dummy.m"; sourceTree = "<group>"; };
-		35E38D9D51095BB627F4A87B3A6AA719 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AE637B4B6B4D7014DF1119A67EF2F24 /* Pods-LPHSignageLiveTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LPHSignageLiveTests.modulemap"; sourceTree = "<group>"; };
+		2788AAA33541CA3BFAC9B7FB570A80A3 /* Pods-LPHSignageLiveV1Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LPHSignageLiveV1Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3C4A1673291949E3715753F372F4919E /* Pods-LPHSignageLiveV1-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPHSignageLiveV1-frameworks.sh"; sourceTree = "<group>"; };
 		4232080135A397230DB901CB27DA79A3 /* MSGradientCircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSGradientCircularSlider.swift; path = MSCircularSlider/MSGradientCircularSlider.swift; sourceTree = "<group>"; };
 		46E2C8A54241893D8D2D3603AAACDD30 /* MSCircularSliderHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCircularSliderHandle.swift; path = MSCircularSlider/MSCircularSliderHandle.swift; sourceTree = "<group>"; };
-		4C2A8198995EFDE83AEB9783BDDA22F3 /* Pods_LPHSignageLive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		515F058E6DA9BC30F718364829C4E901 /* MSCircularSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MSCircularSlider.modulemap; sourceTree = "<group>"; };
-		51DED56BCC90842E23FBF22F3D62C9AC /* Pods-LPHSignageLiveTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPHSignageLiveTests-frameworks.sh"; sourceTree = "<group>"; };
-		5333E64E9C7C5FDD240F9C3AAE0ECA11 /* MSCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MSCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		56138C5F42840FE7097FFF710A3D48DD /* ReachabilitySwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ReachabilitySwift.modulemap; sourceTree = "<group>"; };
+		5578291F7BFC072DC44D9EEB5B825BE4 /* Pods_LPHSignageLiveV1Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLiveV1Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C215820811835E9AFF555C65995DD04 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D0DEF868FD7433DB908AA460EE3CAD2 /* Pods-LPHSignageLiveTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LPHSignageLiveTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6185293C7659E5B5EE986A63C67CCA01 /* Pods-LPHSignageLive-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LPHSignageLive-umbrella.h"; sourceTree = "<group>"; };
-		6264AC31195E949CE4F285C3A7266A72 /* Pods-LPHSignageLive-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LPHSignageLive-acknowledgements.markdown"; sourceTree = "<group>"; };
-		6E2996E290CCC3E24D189BD528113F8E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FAE02E93F5B52528D8A73A9B54689F3 /* Pods_LPHSignageLiveTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLiveTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60E41379FDBA8B1FA4DE1D1317A68A80 /* Pods-LPHSignageLiveV1Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPHSignageLiveV1Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		6962C5BDF89199EBF5E89EC23F1DD144 /* Pods_LPHSignageLiveV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLiveV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AE8C23D9B8258A7AC2F0988EA13AD50 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75CAF33FAB5FA118F80FA79B9EAB6958 /* ReachabilitySwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ReachabilitySwift.modulemap; sourceTree = "<group>"; };
 		77AA8FC57764E9577CA25AFE700170D3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		7831F5A3DD6B49D65C7CF1FE91D20A4B /* Pods-LPHSignageLiveV1-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LPHSignageLiveV1-acknowledgements.plist"; sourceTree = "<group>"; };
+		784627E367E7675B6914C697F1DEBA65 /* Pods-LPHSignageLiveV1.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LPHSignageLiveV1.modulemap"; sourceTree = "<group>"; };
+		79BBD738E097A09953E24C6920B4DAB5 /* Pods-LPHSignageLiveV1-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LPHSignageLiveV1-acknowledgements.markdown"; sourceTree = "<group>"; };
 		79DA2A71DF0BC7A432E88D2823C3EC50 /* MSCircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSCircularSlider.swift; path = MSCircularSlider/MSCircularSlider.swift; sourceTree = "<group>"; };
-		7E9AB3D0FF2292D96E573B8666700848 /* ReachabilitySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-umbrella.h"; sourceTree = "<group>"; };
-		90563F9BFEE8F2236FBCCE3FE346EFF3 /* Pods-LPHSignageLive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPHSignageLive.release.xcconfig"; sourceTree = "<group>"; };
+		7B7AB302506032C45B23541AA2C3457D /* Pods-LPHSignageLiveV1Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LPHSignageLiveV1Tests-dummy.m"; sourceTree = "<group>"; };
+		7CE0E3284151A3B712989DDA2FF75B09 /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
+		7D18A1975748D6E9841A27D60B5E4330 /* Pods-LPHSignageLiveV1Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LPHSignageLiveV1Tests-umbrella.h"; sourceTree = "<group>"; };
+		8D81DA71F29D5DF3D252429C8C47262E /* ReachabilitySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-prefix.pch"; sourceTree = "<group>"; };
+		9169B5A90490F944D1F555A796E7078F /* Pods-LPHSignageLiveV1Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPHSignageLiveV1Tests-resources.sh"; sourceTree = "<group>"; };
 		9367F4015C37FDA4D1FB1F11869AF22B /* MSCircularSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSCircularSlider-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9B0ED01D858CCE2DBE532ED8CF154CC3 /* Pods-LPHSignageLive.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-LPHSignageLive.modulemap"; sourceTree = "<group>"; };
-		A29B0BB9AC0B77AACC88EA41734EF345 /* Pods-LPHSignageLiveTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LPHSignageLiveTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		A396B8BA785BA1BD5FF810B3ED575EE9 /* Pods-LPHSignageLiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPHSignageLiveTests.release.xcconfig"; sourceTree = "<group>"; };
-		A52F6F9118B10D14D4D1DA84577129D6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B008A7094B0945EF5577CF712E805268 /* Pods-LPHSignageLiveTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LPHSignageLiveTests-umbrella.h"; sourceTree = "<group>"; };
+		980957E7E1038C5039F8470E2894EE60 /* Pods-LPHSignageLiveV1Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LPHSignageLiveV1Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		9A97BFDC497900456E0A7988690900AF /* ReachabilitySwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReachabilitySwift.xcconfig; sourceTree = "<group>"; };
+		A1C1A5C5907A279949CE167CD77FC8BF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B031FD5B63BC861921A4B9D684A83F56 /* MSDoubleHandleCircularSlider+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MSDoubleHandleCircularSlider+IB.swift"; path = "MSCircularSlider/MSDoubleHandleCircularSlider+IB.swift"; sourceTree = "<group>"; };
 		B1C3A1F100D6DE00B711E31320AFB0EB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B25D99E23022B78E60677EF385F4224A /* Pods-LPHSignageLiveV1-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LPHSignageLiveV1-umbrella.h"; sourceTree = "<group>"; };
 		B26E902702614B65539A0D41AE38388B /* MSDoubleHandleCircularSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSDoubleHandleCircularSlider.swift; path = MSCircularSlider/MSDoubleHandleCircularSlider.swift; sourceTree = "<group>"; };
-		B3293A0D3EA36FEDC1AD3BA00D5B84EA /* ReachabilitySwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReachabilitySwift.xcconfig; sourceTree = "<group>"; };
+		B42343CED272182E3201E36E33E260E4 /* Reachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Sources/Reachability.swift; sourceTree = "<group>"; };
+		B4BC568FDC7C8DBAE9662A839628C934 /* Pods-LPHSignageLiveV1-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LPHSignageLiveV1-dummy.m"; sourceTree = "<group>"; };
 		C09514B938253EDAE03A7BC5C9C37D7D /* MSCircularSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSCircularSlider-prefix.pch"; sourceTree = "<group>"; };
-		C2B99177E47C881CF299A43F62F62B03 /* Pods-LPHSignageLive-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPHSignageLive-resources.sh"; sourceTree = "<group>"; };
-		C9DED3A47660573091E40371DD17CDB6 /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
+		C0CCDEA3DF4AA49D8719E73B4200252A /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reachability.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6F8E0F653AB059FA6099B927322CA25 /* Pods-LPHSignageLiveV1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPHSignageLiveV1Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C8541617294DD7CB96772BAC98A0F7D6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C87475DB2C965C23629FFA56C4E70231 /* Pods-LPHSignageLiveV1-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPHSignageLiveV1-resources.sh"; sourceTree = "<group>"; };
+		CAA5346E344989A1A97DE1A18B63C546 /* ReachabilitySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-umbrella.h"; sourceTree = "<group>"; };
 		CC484B8473A53CEE708722BDA9AD0518 /* MSCircularSlider+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MSCircularSlider+IB.swift"; path = "MSCircularSlider/MSCircularSlider+IB.swift"; sourceTree = "<group>"; };
-		D1CFF7D6F0BA3BE84B5E46C1E1CC1D02 /* Reachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Reachability/Reachability.swift; sourceTree = "<group>"; };
+		D055723CBD9644155EBE7531F32A09C2 /* MSCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MSCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9F44CE90FCB39B9A83357C4AA28991B /* Pods-LPHSignageLiveV1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPHSignageLiveV1.debug.xcconfig"; sourceTree = "<group>"; };
 		E06718902BA979467A46E05244816E79 /* MSCircularSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSCircularSlider-dummy.m"; sourceTree = "<group>"; };
 		E51EBE429C9321850222A12486023B50 /* MSGradientCircularSlider+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MSGradientCircularSlider+IB.swift"; path = "MSCircularSlider/MSGradientCircularSlider+IB.swift"; sourceTree = "<group>"; };
+		F11D5217EFCCAF61D99F6C42CDE5B4E3 /* Pods-LPHSignageLiveV1Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LPHSignageLiveV1Tests-frameworks.sh"; sourceTree = "<group>"; };
+		F4887E00E0EBCC770B2BBAE5DF434A33 /* Pods-LPHSignageLiveV1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LPHSignageLiveV1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A23C60A01E31029497ADE9A1118FB1DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EB1A8F9C322EA6A2B4C53C195F5EA95 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A48D354E5DC8D7DA07E067825A11611B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -113,28 +121,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5F92278409D27AB95B1BA0E3B6A382C /* Frameworks */ = {
+		F1F582EC7850F93227FD0B3CD0BE617F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A556DFCCA49DFA6F0665DBD9D20CE3B4 /* Foundation.framework in Frameworks */,
-				90175B123FBF2EA46EA826AD603AFF99 /* SystemConfiguration.framework in Frameworks */,
+				E1F6F33930261DDAF0D2CCEE0A471156 /* Foundation.framework in Frameworks */,
+				D2D4C064A2E263874F0B49413FD702B9 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E0C6FFAB462F63BB2C6D934867C44447 /* Frameworks */ = {
+		F367E5FCE54C3584632ED0C944742129 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FB3D1C8687617F0A9B51D7FC2A956C4 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ECEBB2D5DB8ED23A740396521E48C768 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6B2F3C5E4327AD65C0B2C0D4D38F514A /* Foundation.framework in Frameworks */,
+				CA0ADBE57F5A0312A02A53AA8BFD5D0E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,29 +155,40 @@
 			path = "../Target Support Files/MSCircularSlider";
 			sourceTree = "<group>";
 		};
-		23ED0DF9BD4FA64EE46D590F3F0E2F34 /* Products */ = {
+		13A5190476FDFE204F07CA874452DB55 /* Pods-LPHSignageLiveV1Tests */ = {
 			isa = PBXGroup;
 			children = (
-				5333E64E9C7C5FDD240F9C3AAE0ECA11 /* MSCircularSlider.framework */,
-				4C2A8198995EFDE83AEB9783BDDA22F3 /* Pods_LPHSignageLive.framework */,
-				6FAE02E93F5B52528D8A73A9B54689F3 /* Pods_LPHSignageLiveTests.framework */,
-				0639510BE17C5EB7823CD166EA08AB7C /* Reachability.framework */,
+				A1C1A5C5907A279949CE167CD77FC8BF /* Info.plist */,
+				0DE0C88313809BCA13DCF5780CC0AE4A /* Pods-LPHSignageLiveV1Tests.modulemap */,
+				2788AAA33541CA3BFAC9B7FB570A80A3 /* Pods-LPHSignageLiveV1Tests-acknowledgements.markdown */,
+				980957E7E1038C5039F8470E2894EE60 /* Pods-LPHSignageLiveV1Tests-acknowledgements.plist */,
+				7B7AB302506032C45B23541AA2C3457D /* Pods-LPHSignageLiveV1Tests-dummy.m */,
+				F11D5217EFCCAF61D99F6C42CDE5B4E3 /* Pods-LPHSignageLiveV1Tests-frameworks.sh */,
+				9169B5A90490F944D1F555A796E7078F /* Pods-LPHSignageLiveV1Tests-resources.sh */,
+				7D18A1975748D6E9841A27D60B5E4330 /* Pods-LPHSignageLiveV1Tests-umbrella.h */,
+				60E41379FDBA8B1FA4DE1D1317A68A80 /* Pods-LPHSignageLiveV1Tests.debug.xcconfig */,
+				C6F8E0F653AB059FA6099B927322CA25 /* Pods-LPHSignageLiveV1Tests.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-LPHSignageLiveV1Tests";
+			path = "Target Support Files/Pods-LPHSignageLiveV1Tests";
 			sourceTree = "<group>";
 		};
-		271468C943A68BDBAB4BB189223E2311 /* Support Files */ = {
+		1883BAA57E84B38B7BCC5D6B7754EEB3 /* Pods-LPHSignageLiveV1 */ = {
 			isa = PBXGroup;
 			children = (
-				6E2996E290CCC3E24D189BD528113F8E /* Info.plist */,
-				56138C5F42840FE7097FFF710A3D48DD /* ReachabilitySwift.modulemap */,
-				B3293A0D3EA36FEDC1AD3BA00D5B84EA /* ReachabilitySwift.xcconfig */,
-				C9DED3A47660573091E40371DD17CDB6 /* ReachabilitySwift-dummy.m */,
-				0E8FEC3A1D7D8A053786978FE3DE9F12 /* ReachabilitySwift-prefix.pch */,
-				7E9AB3D0FF2292D96E573B8666700848 /* ReachabilitySwift-umbrella.h */,
+				C8541617294DD7CB96772BAC98A0F7D6 /* Info.plist */,
+				784627E367E7675B6914C697F1DEBA65 /* Pods-LPHSignageLiveV1.modulemap */,
+				79BBD738E097A09953E24C6920B4DAB5 /* Pods-LPHSignageLiveV1-acknowledgements.markdown */,
+				7831F5A3DD6B49D65C7CF1FE91D20A4B /* Pods-LPHSignageLiveV1-acknowledgements.plist */,
+				B4BC568FDC7C8DBAE9662A839628C934 /* Pods-LPHSignageLiveV1-dummy.m */,
+				3C4A1673291949E3715753F372F4919E /* Pods-LPHSignageLiveV1-frameworks.sh */,
+				C87475DB2C965C23629FFA56C4E70231 /* Pods-LPHSignageLiveV1-resources.sh */,
+				B25D99E23022B78E60677EF385F4224A /* Pods-LPHSignageLiveV1-umbrella.h */,
+				D9F44CE90FCB39B9A83357C4AA28991B /* Pods-LPHSignageLiveV1.debug.xcconfig */,
+				F4887E00E0EBCC770B2BBAE5DF434A33 /* Pods-LPHSignageLiveV1.release.xcconfig */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/ReachabilitySwift";
+			name = "Pods-LPHSignageLiveV1";
+			path = "Target Support Files/Pods-LPHSignageLiveV1";
 			sourceTree = "<group>";
 		};
 		27B754B14E7F5BDD025A603861F1DD97 /* iOS */ = {
@@ -201,9 +212,18 @@
 			isa = PBXGroup;
 			children = (
 				94DE455873EC44DEB001BD574B6E6BF4 /* MSCircularSlider */,
-				C76ABD165D44568CB9D3A0327ACA5703 /* ReachabilitySwift */,
+				A9F425E78683AE6CB80E7E8E8865B9DD /* ReachabilitySwift */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		558C3C5AFDA65053A3EEF79E963F90FE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1883BAA57E84B38B7BCC5D6B7754EEB3 /* Pods-LPHSignageLiveV1 */,
+				13A5190476FDFE204F07CA874452DB55 /* Pods-LPHSignageLiveV1Tests */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -212,8 +232,8 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
 				43E6FA9B6657FB5CCDE589F5FFC47874 /* Pods */,
-				23ED0DF9BD4FA64EE46D590F3F0E2F34 /* Products */,
-				B6519482B18623D39A8BB3E9F102D895 /* Targets Support Files */,
+				DB7E18E759F140837CE4C8ACEEF1A413 /* Products */,
+				558C3C5AFDA65053A3EEF79E963F90FE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -232,84 +252,56 @@
 			path = MSCircularSlider;
 			sourceTree = "<group>";
 		};
-		9EEE76C9E225C4B64C13341D0AD331D0 /* Pods-LPHSignageLiveTests */ = {
+		A70575AEC5A13AF75ADD40E6FAA70BF4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				A52F6F9118B10D14D4D1DA84577129D6 /* Info.plist */,
-				3AE637B4B6B4D7014DF1119A67EF2F24 /* Pods-LPHSignageLiveTests.modulemap */,
-				5D0DEF868FD7433DB908AA460EE3CAD2 /* Pods-LPHSignageLiveTests-acknowledgements.markdown */,
-				A29B0BB9AC0B77AACC88EA41734EF345 /* Pods-LPHSignageLiveTests-acknowledgements.plist */,
-				351ECF65F5B00BED94BA83FA1D2A43D7 /* Pods-LPHSignageLiveTests-dummy.m */,
-				51DED56BCC90842E23FBF22F3D62C9AC /* Pods-LPHSignageLiveTests-frameworks.sh */,
-				28A9D945785382BAEC9B3DA2F91F0A83 /* Pods-LPHSignageLiveTests-resources.sh */,
-				B008A7094B0945EF5577CF712E805268 /* Pods-LPHSignageLiveTests-umbrella.h */,
-				0E83FC62437902BBB3C54366B76AF682 /* Pods-LPHSignageLiveTests.debug.xcconfig */,
-				A396B8BA785BA1BD5FF810B3ED575EE9 /* Pods-LPHSignageLiveTests.release.xcconfig */,
+				6AE8C23D9B8258A7AC2F0988EA13AD50 /* Info.plist */,
+				75CAF33FAB5FA118F80FA79B9EAB6958 /* ReachabilitySwift.modulemap */,
+				9A97BFDC497900456E0A7988690900AF /* ReachabilitySwift.xcconfig */,
+				7CE0E3284151A3B712989DDA2FF75B09 /* ReachabilitySwift-dummy.m */,
+				8D81DA71F29D5DF3D252429C8C47262E /* ReachabilitySwift-prefix.pch */,
+				CAA5346E344989A1A97DE1A18B63C546 /* ReachabilitySwift-umbrella.h */,
 			);
-			name = "Pods-LPHSignageLiveTests";
-			path = "Target Support Files/Pods-LPHSignageLiveTests";
+			name = "Support Files";
+			path = "../Target Support Files/ReachabilitySwift";
 			sourceTree = "<group>";
 		};
-		B6519482B18623D39A8BB3E9F102D895 /* Targets Support Files */ = {
+		A9F425E78683AE6CB80E7E8E8865B9DD /* ReachabilitySwift */ = {
 			isa = PBXGroup;
 			children = (
-				E8E57597B77E6B88A01C1EFAD56B981F /* Pods-LPHSignageLive */,
-				9EEE76C9E225C4B64C13341D0AD331D0 /* Pods-LPHSignageLiveTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		C76ABD165D44568CB9D3A0327ACA5703 /* ReachabilitySwift */ = {
-			isa = PBXGroup;
-			children = (
-				D1CFF7D6F0BA3BE84B5E46C1E1CC1D02 /* Reachability.swift */,
-				271468C943A68BDBAB4BB189223E2311 /* Support Files */,
+				B42343CED272182E3201E36E33E260E4 /* Reachability.swift */,
+				A70575AEC5A13AF75ADD40E6FAA70BF4 /* Support Files */,
 			);
 			path = ReachabilitySwift;
 			sourceTree = "<group>";
 		};
-		E8E57597B77E6B88A01C1EFAD56B981F /* Pods-LPHSignageLive */ = {
+		DB7E18E759F140837CE4C8ACEEF1A413 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35E38D9D51095BB627F4A87B3A6AA719 /* Info.plist */,
-				9B0ED01D858CCE2DBE532ED8CF154CC3 /* Pods-LPHSignageLive.modulemap */,
-				6264AC31195E949CE4F285C3A7266A72 /* Pods-LPHSignageLive-acknowledgements.markdown */,
-				311A7D11ED0EB867DA849667F4FEABC4 /* Pods-LPHSignageLive-acknowledgements.plist */,
-				082B860B546AFC0FE0AECF8587EB8E34 /* Pods-LPHSignageLive-dummy.m */,
-				10D4BE6B2EFBFD3250ABC9A9955C69A5 /* Pods-LPHSignageLive-frameworks.sh */,
-				C2B99177E47C881CF299A43F62F62B03 /* Pods-LPHSignageLive-resources.sh */,
-				6185293C7659E5B5EE986A63C67CCA01 /* Pods-LPHSignageLive-umbrella.h */,
-				257CA149F2B826DBCB6F859F755EF8C6 /* Pods-LPHSignageLive.debug.xcconfig */,
-				90563F9BFEE8F2236FBCCE3FE346EFF3 /* Pods-LPHSignageLive.release.xcconfig */,
+				D055723CBD9644155EBE7531F32A09C2 /* MSCircularSlider.framework */,
+				6962C5BDF89199EBF5E89EC23F1DD144 /* Pods_LPHSignageLiveV1.framework */,
+				5578291F7BFC072DC44D9EEB5B825BE4 /* Pods_LPHSignageLiveV1Tests.framework */,
+				C0CCDEA3DF4AA49D8719E73B4200252A /* Reachability.framework */,
 			);
-			name = "Pods-LPHSignageLive";
-			path = "Target Support Files/Pods-LPHSignageLive";
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0F16DD4859ABD4A0BA5C9F4A84F5D050 /* Headers */ = {
+		65A87F91F328AEECBA64C19BDA9F62C2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B24DB31A329F3B8E8EE7A5265A91674C /* Pods-LPHSignageLiveTests-umbrella.h in Headers */,
+				B690782A1C5718B4306A7952F2A11844 /* Pods-LPHSignageLiveV1Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		17BFB523DED4B21DEB5CA77519A83839 /* Headers */ = {
+		92B6992A1331731F5AF01098E79FC93F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD3953E4237CFF680789D28914745366 /* Pods-LPHSignageLive-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A2EAF2983CE1E1DDD099C10653329FB7 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				024BB4DA3264BB47ADC0ABC45F51549C /* ReachabilitySwift-umbrella.h in Headers */,
+				D24E533F0C478ED2DDA8E59B89825FC2 /* Pods-LPHSignageLiveV1-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,53 +313,61 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB916CAA07404ABD89C64A2CDC2C60F7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A699E98F9990227AC4471893D15AFA36 /* ReachabilitySwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		04CAA740D6159E237EF5E606FE67696E /* Pods-LPHSignageLive */ = {
+		49B276AFD35F31BB564319B0CAB06641 /* Pods-LPHSignageLiveV1 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E6741720B368A4E3F3AF0889001245F7 /* Build configuration list for PBXNativeTarget "Pods-LPHSignageLive" */;
+			buildConfigurationList = 828BD1DF00110ED016F2953AC13FE5E6 /* Build configuration list for PBXNativeTarget "Pods-LPHSignageLiveV1" */;
 			buildPhases = (
-				3AE730154BD56802F168A36AD0FAEE2D /* Sources */,
-				E0C6FFAB462F63BB2C6D934867C44447 /* Frameworks */,
-				17BFB523DED4B21DEB5CA77519A83839 /* Headers */,
+				1FABE4166C55218C49C8C7A676DA21E0 /* Sources */,
+				A23C60A01E31029497ADE9A1118FB1DF /* Frameworks */,
+				92B6992A1331731F5AF01098E79FC93F /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1B6B44DC5AC89E5BB2A84CAA32FD4059 /* PBXTargetDependency */,
-				7BC6DAD6A4D193DCA230E829572A7BB4 /* PBXTargetDependency */,
+				ACB75995504793E3048E44FCA4BAD8D6 /* PBXTargetDependency */,
+				0F69852368076D4D6F8A553ED8B12FCA /* PBXTargetDependency */,
 			);
-			name = "Pods-LPHSignageLive";
-			productName = "Pods-LPHSignageLive";
-			productReference = 4C2A8198995EFDE83AEB9783BDDA22F3 /* Pods_LPHSignageLive.framework */;
+			name = "Pods-LPHSignageLiveV1";
+			productName = "Pods-LPHSignageLiveV1";
+			productReference = 6962C5BDF89199EBF5E89EC23F1DD144 /* Pods_LPHSignageLiveV1.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		CD14CB6EF4FD2E7FB6DE38521C109542 /* Pods-LPHSignageLiveTests */ = {
+		61D3CFEE69EAE89254F1F75815F9CDBA /* Pods-LPHSignageLiveV1Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DF7173EB7E6EBEBEF2297E3889397816 /* Build configuration list for PBXNativeTarget "Pods-LPHSignageLiveTests" */;
+			buildConfigurationList = 3E161A04601A98E321B344B05FD4DB25 /* Build configuration list for PBXNativeTarget "Pods-LPHSignageLiveV1Tests" */;
 			buildPhases = (
-				D2877B40D28E2C7667DC19C861D72E24 /* Sources */,
-				ECEBB2D5DB8ED23A740396521E48C768 /* Frameworks */,
-				0F16DD4859ABD4A0BA5C9F4A84F5D050 /* Headers */,
+				6B22CE9466B8769E81A581646A0F86CC /* Sources */,
+				F367E5FCE54C3584632ED0C944742129 /* Frameworks */,
+				65A87F91F328AEECBA64C19BDA9F62C2 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				088C59A6FB93065AE23EDF0E423EE5D6 /* PBXTargetDependency */,
+				75795A798AF5CE15121B686F76A0AAD0 /* PBXTargetDependency */,
 			);
-			name = "Pods-LPHSignageLiveTests";
-			productName = "Pods-LPHSignageLiveTests";
-			productReference = 6FAE02E93F5B52528D8A73A9B54689F3 /* Pods_LPHSignageLiveTests.framework */;
+			name = "Pods-LPHSignageLiveV1Tests";
+			productName = "Pods-LPHSignageLiveV1Tests";
+			productReference = 5578291F7BFC072DC44D9EEB5B825BE4 /* Pods_LPHSignageLiveV1Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EF21AF6FCB4232B895C38C8E2A2A2258 /* ReachabilitySwift */ = {
+		F2DFA76C1FD5A963B4F8F831BA3437D6 /* ReachabilitySwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0966EC451DB1B0BCF13F8605E6557CBD /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */;
+			buildConfigurationList = 3A07AD1BB57060AA9E75E41C362CA186 /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */;
 			buildPhases = (
-				E30510A3E6F61D9EF13816D19DC3FD9E /* Sources */,
-				A5F92278409D27AB95B1BA0E3B6A382C /* Frameworks */,
-				A2EAF2983CE1E1DDD099C10653329FB7 /* Headers */,
+				7E38729466C8B6D5F5E65FDC16AF5FE0 /* Sources */,
+				F1F582EC7850F93227FD0B3CD0BE617F /* Frameworks */,
+				EB916CAA07404ABD89C64A2CDC2C60F7 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -375,7 +375,7 @@
 			);
 			name = ReachabilitySwift;
 			productName = ReachabilitySwift;
-			productReference = 0639510BE17C5EB7823CD166EA08AB7C /* Reachability.framework */;
+			productReference = C0CCDEA3DF4AA49D8719E73B4200252A /* Reachability.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		F92DB2A9C791B7C1A3A693C123747AF2 /* MSCircularSlider */ = {
@@ -392,7 +392,7 @@
 			);
 			name = MSCircularSlider;
 			productName = MSCircularSlider;
-			productReference = 5333E64E9C7C5FDD240F9C3AAE0ECA11 /* MSCircularSlider.framework */;
+			productReference = D055723CBD9644155EBE7531F32A09C2 /* MSCircularSlider.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -412,14 +412,14 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 23ED0DF9BD4FA64EE46D590F3F0E2F34 /* Products */;
+			productRefGroup = DB7E18E759F140837CE4C8ACEEF1A413 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F92DB2A9C791B7C1A3A693C123747AF2 /* MSCircularSlider */,
-				04CAA740D6159E237EF5E606FE67696E /* Pods-LPHSignageLive */,
-				CD14CB6EF4FD2E7FB6DE38521C109542 /* Pods-LPHSignageLiveTests */,
-				EF21AF6FCB4232B895C38C8E2A2A2258 /* ReachabilitySwift */,
+				49B276AFD35F31BB564319B0CAB06641 /* Pods-LPHSignageLiveV1 */,
+				61D3CFEE69EAE89254F1F75815F9CDBA /* Pods-LPHSignageLiveV1Tests */,
+				F2DFA76C1FD5A963B4F8F831BA3437D6 /* ReachabilitySwift */,
 			);
 		};
 /* End PBXProject section */
@@ -440,51 +440,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3AE730154BD56802F168A36AD0FAEE2D /* Sources */ = {
+		1FABE4166C55218C49C8C7A676DA21E0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B1DF5D2BD9D160DCDE10EE9903DF68 /* Pods-LPHSignageLive-dummy.m in Sources */,
+				D9234771C57BE9D4ABF14E83041A5F01 /* Pods-LPHSignageLiveV1-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D2877B40D28E2C7667DC19C861D72E24 /* Sources */ = {
+		6B22CE9466B8769E81A581646A0F86CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				334EA541BAFBA6430049BE520C2E634F /* Pods-LPHSignageLiveTests-dummy.m in Sources */,
+				F68F2B0D316BC12BB0A1E92CE1EB405D /* Pods-LPHSignageLiveV1Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E30510A3E6F61D9EF13816D19DC3FD9E /* Sources */ = {
+		7E38729466C8B6D5F5E65FDC16AF5FE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2AA3D15E6D84A8602145F03B7324122 /* Reachability.swift in Sources */,
-				7DA61087BD652F89D9CAF5F643396821 /* ReachabilitySwift-dummy.m in Sources */,
+				D649AD8F931206D254A849A1D7FB5DB7 /* Reachability.swift in Sources */,
+				33CDA3150541C4C34EBA816A7E368788 /* ReachabilitySwift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		088C59A6FB93065AE23EDF0E423EE5D6 /* PBXTargetDependency */ = {
+		0F69852368076D4D6F8A553ED8B12FCA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-LPHSignageLive";
-			target = 04CAA740D6159E237EF5E606FE67696E /* Pods-LPHSignageLive */;
-			targetProxy = C2DEB104A40520FAD0C979E2D43A3C5A /* PBXContainerItemProxy */;
+			name = ReachabilitySwift;
+			target = F2DFA76C1FD5A963B4F8F831BA3437D6 /* ReachabilitySwift */;
+			targetProxy = 05B4E4F667230BAE612E6F2AE2707840 /* PBXContainerItemProxy */;
 		};
-		1B6B44DC5AC89E5BB2A84CAA32FD4059 /* PBXTargetDependency */ = {
+		75795A798AF5CE15121B686F76A0AAD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-LPHSignageLiveV1";
+			target = 49B276AFD35F31BB564319B0CAB06641 /* Pods-LPHSignageLiveV1 */;
+			targetProxy = E612E63FC3F6A4D482F5D71A753BA825 /* PBXContainerItemProxy */;
+		};
+		ACB75995504793E3048E44FCA4BAD8D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MSCircularSlider;
 			target = F92DB2A9C791B7C1A3A693C123747AF2 /* MSCircularSlider */;
-			targetProxy = 6851E4259F37634ED7FDB9F0E73633AB /* PBXContainerItemProxy */;
-		};
-		7BC6DAD6A4D193DCA230E829572A7BB4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ReachabilitySwift;
-			target = EF21AF6FCB4232B895C38C8E2A2A2258 /* ReachabilitySwift */;
-			targetProxy = 8CFA5977022D5EE4BA328E84759554EC /* PBXContainerItemProxy */;
+			targetProxy = 364FE3FEE5E16129B29063DAE4F7C15B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -584,42 +584,9 @@
 			};
 			name = Debug;
 		};
-		3BE2DFCD6869E9CA20E2F991A1FEC1DE /* Release */ = {
+		0E90D6E0146E399B10F1325F33718A37 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3293A0D3EA36FEDC1AD3BA00D5B84EA /* ReachabilitySwift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
-				PRODUCT_MODULE_NAME = Reachability;
-				PRODUCT_NAME = Reachability;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		73AAE1F8C307746B02F73EC4A6DA8AEC /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A396B8BA785BA1BD5FF810B3ED575EE9 /* Pods-LPHSignageLiveTests.release.xcconfig */;
+			baseConfigurationReference = 60E41379FDBA8B1FA4DE1D1317A68A80 /* Pods-LPHSignageLiveV1Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -632,12 +599,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-LPHSignageLiveTests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-LPHSignageLiveV1Tests/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-LPHSignageLiveTests/Pods-LPHSignageLiveTests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-LPHSignageLiveV1Tests/Pods-LPHSignageLiveV1Tests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -646,15 +613,14 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		78D485324AA7D366A849B4F4DF76871D /* Debug */ = {
+		1FF9760D998C20772AE3BAF723192C9D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 257CA149F2B826DBCB6F859F755EF8C6 /* Pods-LPHSignageLive.debug.xcconfig */;
+			baseConfigurationReference = D9F44CE90FCB39B9A83357C4AA28991B /* Pods-LPHSignageLiveV1.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -667,12 +633,12 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-LPHSignageLive/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-LPHSignageLiveV1/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-LPHSignageLive/Pods-LPHSignageLive.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-LPHSignageLiveV1/Pods-LPHSignageLiveV1.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -688,9 +654,80 @@
 			};
 			name = Debug;
 		};
-		8256C5FADB0F443B6A27DD5B79CCEAF5 /* Debug */ = {
+		68CCFC9C1162E3A3D1F41C0F5590B8DD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3293A0D3EA36FEDC1AD3BA00D5B84EA /* ReachabilitySwift.xcconfig */;
+			baseConfigurationReference = C6F8E0F653AB059FA6099B927322CA25 /* Pods-LPHSignageLiveV1Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-LPHSignageLiveV1Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LPHSignageLiveV1Tests/Pods-LPHSignageLiveV1Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8B932636B3E6EB28A7F390638E8232BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4887E00E0EBCC770B2BBAE5DF434A33 /* Pods-LPHSignageLiveV1.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-LPHSignageLiveV1/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-LPHSignageLiveV1/Pods-LPHSignageLiveV1.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A248FDACFD1AA729A19806EE9CEEE30E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A97BFDC497900456E0A7988690900AF /* ReachabilitySwift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -719,42 +756,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		9EC11A26C8F270586BD826616B3FC47A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90563F9BFEE8F2236FBCCE3FE346EFF3 /* Pods-LPHSignageLive.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-LPHSignageLive/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-LPHSignageLive/Pods-LPHSignageLive.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		CD8324D57CD462761E218EEA4EA91EC7 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -815,12 +816,10 @@
 			};
 			name = Release;
 		};
-		E563593516B456C33D717B87B1345CB1 /* Debug */ = {
+		D3F26AD319D3AFCF56E948F2BC9FEC94 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E83FC62437902BBB3C54366B76AF682 /* Pods-LPHSignageLiveTests.debug.xcconfig */;
+			baseConfigurationReference = 9A97BFDC497900456E0A7988690900AF /* ReachabilitySwift.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -830,24 +829,25 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-LPHSignageLiveTests/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-LPHSignageLiveTests/Pods-LPHSignageLiveTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				PRODUCT_MODULE_NAME = Reachability;
+				PRODUCT_NAME = Reachability;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		F51D23B9ED377879B3996DB6F79F8EB8 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -885,20 +885,29 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0966EC451DB1B0BCF13F8605E6557CBD /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8256C5FADB0F443B6A27DD5B79CCEAF5 /* Debug */,
-				3BE2DFCD6869E9CA20E2F991A1FEC1DE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0E12B7268EF0862DFEEB8B6B0BD7C9F4 /* Debug */,
 				CD8324D57CD462761E218EEA4EA91EC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3A07AD1BB57060AA9E75E41C362CA186 /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A248FDACFD1AA729A19806EE9CEEE30E /* Debug */,
+				D3F26AD319D3AFCF56E948F2BC9FEC94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3E161A04601A98E321B344B05FD4DB25 /* Build configuration list for PBXNativeTarget "Pods-LPHSignageLiveV1Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E90D6E0146E399B10F1325F33718A37 /* Debug */,
+				68CCFC9C1162E3A3D1F41C0F5590B8DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -912,20 +921,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DF7173EB7E6EBEBEF2297E3889397816 /* Build configuration list for PBXNativeTarget "Pods-LPHSignageLiveTests" */ = {
+		828BD1DF00110ED016F2953AC13FE5E6 /* Build configuration list for PBXNativeTarget "Pods-LPHSignageLiveV1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E563593516B456C33D717B87B1345CB1 /* Debug */,
-				73AAE1F8C307746B02F73EC4A6DA8AEC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E6741720B368A4E3F3AF0889001245F7 /* Build configuration list for PBXNativeTarget "Pods-LPHSignageLive" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				78D485324AA7D366A849B4F4DF76871D /* Debug */,
-				9EC11A26C8F270586BD826616B3FC47A /* Release */,
+				1FF9760D998C20772AE3BAF723192C9D /* Debug */,
+				8B932636B3E6EB28A7F390638E8232BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

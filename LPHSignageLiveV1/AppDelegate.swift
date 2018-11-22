@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let nav = self.window?.rootViewController as! UINavigationController
 		nav.navigationBar.prefersLargeTitles = true
 //		let mainVc = nav.viewControllers[0] as! MainPageCollectionViewController
+		
 		return true
 	}
 
