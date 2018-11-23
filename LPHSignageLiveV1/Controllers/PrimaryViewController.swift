@@ -11,20 +11,63 @@ import UIKit
 class PrimaryViewController: UIViewController {
 	
 	//MARK:- Outlets
-	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var timeLabel: UILabel!
-	@IBOutlet weak var cancelButton: UIButton!
+	@IBOutlet weak var titleLabel: UILabel! {
+		didSet {
+			titleLabel.text = ""
+		}
+	}
+	@IBOutlet weak var minutesLabel: UILabel! {
+		didSet {
+			minutesLabel.text = "00"
+		}
+	}
+	@IBOutlet weak var secondsLabel: UILabel! {
+		didSet {
+			secondsLabel.text = "00"
+		}
+	}
+	@IBOutlet weak var cancelButton: UIButton! {
+		didSet {
+			if !timerIsRunning {
+				cancelButton.isEnabled = false
+			}
+		}
+	}
+	@IBOutlet weak var fadeView: UIView!
+	@IBOutlet weak var timeStack: UIStackView!
 	
 	//MARL:- Properties
 	var menusVisible = false
 	var menuState: TimeSelectionViewState {
 		return menusVisible ? .compressed : .fullHeight
 	}
-	var menuHeight: CGFloat = 620
+	var menuHeight: CGFloat = 650
 	var compressedHeight: CGFloat = 70
 	var timeSelectionView: TimeSelectorViewController?
 	var runningAnimations = [UIViewPropertyAnimator]()
 	var animationProgressWhenInteruppted: CGFloat = 0
+	var timer: Timer?
+	var timerIsRunning = false
+	var timeToSet: Int?
+	
+	
+	@IBAction func resetCountdown(_ sender: UIButton) {
+		if timerIsRunning {
+			timer?.invalidate()
+			UIView.transition(with: timeStack, duration: 0.7, options: .transitionFlipFromBottom, animations: {
+				self.minutesLabel.text = "00"
+				self.secondsLabel.text = "00"
+				self.view.layoutIfNeeded()
+			}, completion: {_ in
+				self.timerIsRunning = false
+				self.cancelButton.isEnabled = false
+			})
+			//MARK:- TODO //need to change the below request to be updated with the group from the selected theatre/ interupt
+//			HTTPRequest.shared.setTime(for: HTTPRequest.Group(rawValue: 0)!, with: HTTPRequest.Interrupt(rawValue: 4717)!) { (_) in
+//				//DO something to show request was successful or not
+//			}
+		}
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -43,7 +86,8 @@ class PrimaryViewController: UIViewController {
 		vc.handleView.layer.cornerRadius = 8.0
 		vc.view.layer.cornerRadius = 8.0
 		vc.handleView.clipsToBounds = true
-		vc.handleView.layer.shadowOpacity = 0.8
+		vc.view.layer.shadowOpacity = 0.2
+		vc.handleView.layer.shadowOffset = CGSize(width: vc.handleView.frame.width, height: -2.00)
 		
 		if self.children[0] == vc {
 			vc.delegate = self
@@ -114,6 +158,19 @@ extension PrimaryViewController {
 			frameAnimator.startAnimation()
 			runningAnimations.append(frameAnimator)
 		}
+		
+		let fadeBackground = UIViewPropertyAnimator(duration: 0.8, dampingRatio: 0.7) {
+			switch state {
+			case .compressed:
+				self.fadeView.alpha = 0
+				break
+			case .fullHeight:
+				self.fadeView.alpha = 1
+				break
+			}
+		}
+		fadeBackground.startAnimation()
+		runningAnimations.append(fadeBackground)
 	}
 	
 	func updateInteractiveTransition(fractionCompleted: CGFloat) {
@@ -130,10 +187,41 @@ extension PrimaryViewController {
 }
 
 extension PrimaryViewController: TimeSelectorViewControllerDelegate {
+	//MARK:- TimeSelectorViewControllerDelegate
+	
+	func requestWasSent(_ controller: TimeSelectorViewController, requestSuccess succes: Bool) {
+		switch succes {
+		case true:
+			animateTranistion(fromState: menuState, withDuration: 0.8)
+		case false:
+			break
+		//MARK:- TODO add if returns false function
+		default:
+			break
+		}
+	}
+	
 	
 	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double) {
-		let timer = Timer(timeInterval: <#T##TimeInterval#>, target: <#T##Any#>, selector: <#T##Selector#>, userInfo: <#T##Any?#>, repeats: <#T##Bool#>)
-		timeLabel.text = String("\(time)")
+		timeToSet = 0
+		timeToSet = Int(time)
+		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+		timerIsRunning = true
+		cancelButton.isEnabled = true
+	}
+	
+	@objc func updateCountdown() {
+		timeToSet! -= 1
+		if timeToSet! > 0 {
+			let minutes = timeToSet! / 60 % 60
+			let seconds = timeToSet! % 60
+			minutesLabel.text = String(format: "%02i", minutes)
+			secondsLabel.text = String(format: "%02i", seconds)
+			print("there are \(minutes) minutes set")
+			print("there are \(seconds) seconds set")
+		} else {
+			timer?.invalidate()
+		}
 	}
 	
 	

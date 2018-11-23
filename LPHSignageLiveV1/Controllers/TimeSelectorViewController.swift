@@ -32,11 +32,7 @@ class TimeSelectorViewController: UIViewController {
 	
 	//MARK:- Actions
 	@IBAction func resetTimer(_ sender: Any) {
-		if sliderView.currentValue != 0 {
-			sliderView.currentValue = 0
-			theatreSelection.selectedSegmentIndex = 0
-			print("button tapped")
-		}
+		reset()
 	}
 	@IBAction func selectLabelTapped(_ sender: UIButton) {
 		sendTime()
@@ -71,6 +67,25 @@ class TimeSelectorViewController: UIViewController {
 		super.viewWillAppear(animated)
 	}
 	
+	func reset() {
+		if sliderView.currentValue != 0 {
+			sliderView.currentValue = 0
+			theatreSelection.selectedSegmentIndex = 0
+		}
+	}
+	
+	func countDownTime(_ time: Double) -> Double {
+		switch time {
+		case 10:
+			return 600
+		case 20:
+			return 1200
+		case 30:
+			return 1800
+		default:
+			return 2400
+		}
+	}
 	
 	
 }
@@ -96,12 +111,18 @@ extension TimeSelectorViewController {
 		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
 			if success == true {
 				print("yay")
+
 				UIView.animate(withDuration: 0.2, animations: {
 					hudView.hide()
 					self.blurView.alpha = 0
 					self.view.layoutIfNeeded()
-					self.delegate?.didSelectTime(self, timeSelected: self.timeToSend)
+				}, completion: { _ in
+					self.reset()
+					self.delegate?.requestWasSent(self, requestSuccess: success)
 				})
+			
+				let countDown = self.countDownTime(self.timeToSend)
+				self.delegate?.didSelectTime(self, timeSelected: countDown)
 			} else {
 				print("boo")
 				UIView.animate(withDuration: 0.2, animations: {
@@ -111,6 +132,7 @@ extension TimeSelectorViewController {
 				})
 			}
 		})
+		
 	}
 }
 

@@ -12,5 +12,7 @@ import UIKit
 protocol TimeSelectorViewControllerDelegate: class {
 	
 	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double)
-
+	
+	//MARK:- use function to dismiss the child view controller on successful sent request
+	func requestWasSent(_ controller: TimeSelectorViewController, requestSuccess succes: Bool)
 }

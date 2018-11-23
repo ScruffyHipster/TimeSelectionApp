@@ -67,13 +67,13 @@ class HTTPRequest {
 	func getTime(time: Double) -> String {
 		switch time {
 		case 10:
-			return "10"
+			return "600"
 		case 20:
-			return "20"
+			return "1200"
 		case 30:
-			return "30"
+			return "1800"
 		default:
-			return "20"
+			return "2400"
 		}
 	}
 	
