@@ -8,7 +8,12 @@
 
 import UIKit
 
-class PrimaryViewController: UIViewController {
+protocol PrimaryViewControllerDelegate: class {
+	//Send the time data back to the previous vc if set
+	func didSetCountdownRunning(_ controller: PrimaryTimerViewController, timerSet: Bool, timeRunning time: Double)
+}
+
+class PrimaryTimerViewController: UIViewController {
 	
 	//MARK:- Outlets
 	@IBOutlet weak var titleLabel: UILabel! {
@@ -35,8 +40,9 @@ class PrimaryViewController: UIViewController {
 	}
 	@IBOutlet weak var fadeView: UIView!
 	@IBOutlet weak var timeStack: UIStackView!
+	@IBOutlet weak var theatreSelection: UILabel!
 	
-	//MARL:- Properties
+	//MARK:- Properties
 	var menusVisible = false
 	var menuState: TimeSelectionViewState {
 		return menusVisible ? .compressed : .fullHeight
@@ -47,34 +53,86 @@ class PrimaryViewController: UIViewController {
 	var runningAnimations = [UIViewPropertyAnimator]()
 	var animationProgressWhenInteruppted: CGFloat = 0
 	var timer: Timer?
+	lazy var currentTime: Date = {
+		var date = Date()
+		return date
+	}()
+	var timers: [Double]?
 	var timerIsRunning = false
 	var timeToSet: Int?
+	var httprequest: HTTPRequest?
+	var defaults: UserDefaults?
+	var theatreName: String?  {
+		didSet {
+			theatreSelection.text = theatreName
+		}
+	}
+	weak var delegate: PrimaryViewControllerDelegate?
 	
-	
+	//MARK:- Actions
 	@IBAction func resetCountdown(_ sender: UIButton) {
 		if timerIsRunning {
+			print("Cancelled")
 			timer?.invalidate()
-			UIView.transition(with: timeStack, duration: 0.7, options: .transitionFlipFromBottom, animations: {
-				self.minutesLabel.text = "00"
-				self.secondsLabel.text = "00"
-				self.view.layoutIfNeeded()
-			}, completion: {_ in
-				self.timerIsRunning = false
-				self.cancelButton.isEnabled = false
-			})
+			timerIsRunning = false
+			minutesLabel.text = String("00")
+			secondsLabel.text = String("00")
+			cancelButton.isEnabled = false
+			theatreName = "Theatre"
 			//MARK:- TODO //need to change the below request to be updated with the group from the selected theatre/ interupt
-//			HTTPRequest.shared.setTime(for: HTTPRequest.Group(rawValue: 0)!, with: HTTPRequest.Interrupt(rawValue: 4717)!) { (_) in
-//				//DO something to show request was successful or not
-//			}
 		}
 	}
 	
+	//MARK:- ViewDidLoad
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationItem.title = "Select Time"
+		httprequest = HTTPRequest.shared
 		setUpCardView()
 	}
 	
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		let theatre = defaults?.object(forKey: "theatreName") as? String ?? "Theatre"
+		let savedCountdownTime = defaults?.object(forKey: "countdownTime") as? Int ?? 0
+		let isTimerRunning = defaults?.object(forKey: "timerIsRunning") as? Bool ?? false
+		guard let oldTime = defaults?.object(forKey: "oldTime") as? Date else {return}
+		let timeDifference = Date().timeIntervalSince(oldTime)
+		
+		theatreName = theatre
+		timeToSet = savedCountdownTime
+		timerIsRunning = isTimerRunning
+		
+		if isTimerRunning {
+			if timeDifference.isLess(than: Double(savedCountdownTime)) {
+				timeToSet = Int(Double(savedCountdownTime) - timeDifference)
+				print("Time is less than the saved countdown time \(savedCountdownTime)")
+				setUpTimer()
+			}
+		}
+	}
+	
+	func setUpTimer() {
+		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+		cancelButton.isEnabled = true
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		//Save info when exiting
+		defaults?.set(currentTime, forKey: "oldTime")
+		defaults?.set(timerIsRunning, forKey: "timerIsRunning")
+		defaults?.set(theatreName, forKey: "theatreName")
+		timer?.invalidate()
+	}
+	
+	deinit {
+		print("deallocated")
+	}
+	
+	//MARK:- Functions
 	func setUpCardView() {
 		let storyBoard = UIStoryboard(name: "Main", bundle: nil)
 		let vc = storyBoard.instantiateViewController(withIdentifier: "timeSelectorViewController") as! TimeSelectorViewController
@@ -91,6 +149,7 @@ class PrimaryViewController: UIViewController {
 		
 		if self.children[0] == vc {
 			vc.delegate = self
+			vc.defaults = defaults
 		}
 		
 		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizer(recognizer:)))
@@ -103,7 +162,7 @@ class PrimaryViewController: UIViewController {
 
 
 
-extension PrimaryViewController {
+extension PrimaryTimerViewController {
 	//MARK:- Gesture recognizers
 	@objc func panGestureRecognizer(recognizer: UIPanGestureRecognizer) {
 		switch recognizer.state {
@@ -186,26 +245,42 @@ extension PrimaryViewController {
 	}
 }
 
-extension PrimaryViewController: TimeSelectorViewControllerDelegate {
+extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
+	
 	//MARK:- TimeSelectorViewControllerDelegate
 	
 	func requestWasSent(_ controller: TimeSelectorViewController, requestSuccess succes: Bool) {
 		switch succes {
 		case true:
-			animateTranistion(fromState: menuState, withDuration: 0.8)
+			animateTranistion(fromState: menuState, withDuration: 1)
 		case false:
 			break
-		//MARK:- TODO add if returns false function
-		default:
-			break
+			//MARK:- TODO add if returns false function
 		}
 	}
 	
 	
-	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double) {
+	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double, theatreSelected theatreSelection: Int) {
+		switch theatreSelection {
+		case 0:
+			theatreName = "Quarry"
+			break
+		case 1:
+			theatreName = "Theatre 2"
+			break
+		case 2:
+			theatreName = "Theatre 3"
+			break
+		default:
+			break
+		}
+		if timerIsRunning {
+			timer?.invalidate()
+		}
 		timeToSet = 0
 		timeToSet = Int(time)
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+		//Saves the timer countdown
 		timerIsRunning = true
 		cancelButton.isEnabled = true
 	}
@@ -217,9 +292,13 @@ extension PrimaryViewController: TimeSelectorViewControllerDelegate {
 			let seconds = timeToSet! % 60
 			minutesLabel.text = String(format: "%02i", minutes)
 			secondsLabel.text = String(format: "%02i", seconds)
+			//Saves the values for references
+			defaults?.set(timeToSet, forKey: "countdownTime")
 			print("there are \(minutes) minutes set")
 			print("there are \(seconds) seconds set")
 		} else {
+			//sets the saved time to nil
+			defaults?.set(nil, forKey: "time")
 			timer?.invalidate()
 		}
 	}

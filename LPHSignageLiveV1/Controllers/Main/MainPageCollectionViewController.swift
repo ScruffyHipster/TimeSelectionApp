@@ -13,7 +13,10 @@ private let reuseIdentifier = "Cell"
 
 class MainPageCollectionViewController: UICollectionViewController {
 	
-	private let dataSource = DataSource()
+	private lazy var dataSource: DataSource = {
+		let data = DataSource()
+		return data
+	}()
 	private var reachability: Reachability?
 	private var connection: Bool?
 	private lazy var notification: NotificationCenter = {
@@ -21,6 +24,7 @@ class MainPageCollectionViewController: UICollectionViewController {
 		return notification
 	}()
 	private let hostNames = [nil, "google.com", "invalid host"]
+	private let defaults = UserDefaults.standard
 	let host = 1
 	
 	override func viewDidLoad() {
@@ -53,6 +57,10 @@ class MainPageCollectionViewController: UICollectionViewController {
 		if segue.identifier == "noInternet" {
 			let vc = segue.destination as! NoInternetViewController
 			vc.reachability = reachability
+		}
+		if segue.identifier == "TimeSegue" {
+			let vc = segue.destination as! PrimaryTimerViewController
+			vc.defaults = defaults
 		}
 	}
 	
@@ -157,6 +165,8 @@ extension MainPageCollectionViewController {
 			let alert = UIAlertController(title: "Feature not currently available", message: "This feature is not currently built for your device", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
 			present(alert, animated: true)
+			let domain = Bundle.main.bundleIdentifier!
+			UserDefaults.standard.removePersistentDomain(forName: domain)
 		}
 	}
 }

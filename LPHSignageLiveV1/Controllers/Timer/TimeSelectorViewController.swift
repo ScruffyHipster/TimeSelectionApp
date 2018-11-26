@@ -54,6 +54,7 @@ class TimeSelectorViewController: UIViewController {
 	var interrupt: HTTPRequest.Interrupt?
 	var reachability = Reachability()
 	weak var delegate: TimeSelectorViewControllerDelegate?
+	var defaults: UserDefaults?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,7 +123,7 @@ extension TimeSelectorViewController {
 				})
 			
 				let countDown = self.countDownTime(self.timeToSend)
-				self.delegate?.didSelectTime(self, timeSelected: countDown)
+				self.delegate?.didSelectTime(self, timeSelected: countDown, theatreSelected: theatre)
 			} else {
 				print("boo")
 				UIView.animate(withDuration: 0.2, animations: {

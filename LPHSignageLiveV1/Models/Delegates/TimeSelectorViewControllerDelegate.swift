@@ -11,7 +11,8 @@ import UIKit
 
 protocol TimeSelectorViewControllerDelegate: class {
 	
-	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double)
+	//MARK:- functions to set the time and theatre selected
+	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double, theatreSelected: Int)
 	
 	//MARK:- use function to dismiss the child view controller on successful sent request
 	func requestWasSent(_ controller: TimeSelectorViewController, requestSuccess succes: Bool)
