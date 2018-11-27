@@ -79,7 +79,8 @@ class PrimaryTimerViewController: UIViewController {
 			secondsLabel.text = String("00")
 			cancelButton.isEnabled = false
 			theatreName = "Theatre"
-			//MARK:- TODO //need to change the below request to be updated with the group from the selected theatre/ interupt
+			delegate?.didSetCountdownRunning(self, timerSet: false, timeRunning: 0)
+			//MARK:- TODO need to change the below request to be updated with the group from the selected theatre/ interupt
 		}
 	}
 	
@@ -263,7 +264,7 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double, theatreSelected theatreSelection: Int) {
 		switch theatreSelection {
 		case 0:
-			theatreName = "Quarry"
+			theatreName = "Quarry Theatre"
 			break
 		case 1:
 			theatreName = "Theatre 2"
@@ -277,10 +278,11 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 		if timerIsRunning {
 			timer?.invalidate()
 		}
+		//Delegate
+		delegate?.didSetCountdownRunning(self, timerSet: true, timeRunning: time)
 		timeToSet = 0
 		timeToSet = Int(time)
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
-		//Saves the timer countdown
 		timerIsRunning = true
 		cancelButton.isEnabled = true
 	}
@@ -298,7 +300,7 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 			print("there are \(seconds) seconds set")
 		} else {
 			//sets the saved time to nil
-			defaults?.set(nil, forKey: "time")
+			defaults?.set(nil, forKey: "countdownTime")
 			timer?.invalidate()
 		}
 	}

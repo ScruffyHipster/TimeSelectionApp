@@ -13,24 +13,30 @@ private let reuseIdentifier = "Cell"
 
 class MainPageCollectionViewController: UICollectionViewController {
 	
-	private lazy var dataSource: DataSource = {
-		let data = DataSource()
-		return data
-	}()
+	//MARK:- Properties
 	private var reachability: Reachability?
 	private var connection: Bool?
 	private lazy var notification: NotificationCenter = {
 		var notification = NotificationCenter()
 		return notification
 	}()
+	private var emergencyStatus = false
+	private var timeStatus: Int?
 	private let hostNames = [nil, "google.com", "invalid host"]
 	private let defaults = UserDefaults.standard
-	let host = 1
+	private let host = 1
+	private var features = [Features]()
+	private var timer: Timer?
+	private var timeToSet: Int?
+	private var timeStringStatus = ""
+	private var timeSelectionCell: MainCollectionViewCell?
 	
+	//MARK:- View did load
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupCollectionView()
 		startReachability(at: host)
+		setUpFeatures()
 		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationItem.title = "Main menu"
 	}
@@ -38,6 +44,16 @@ class MainPageCollectionViewController: UICollectionViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
+	}
+	
+	//MARK:- custom funcs
+	func setUpFeatures() {
+		let timer = Features(title: "Time to Start", image: "cvcitem", category: "utility")
+		let emergency = Features(title: "Emergency Alert", image: "cvcitem", category: "utility")
+		let deals = Features(title: "Deals", image: "cvcitem", category: "utility")
+		features.append(timer)
+		features.append(emergency)
+		features.append(deals)
 	}
 	
 	func setupCollectionView() {
@@ -61,6 +77,8 @@ class MainPageCollectionViewController: UICollectionViewController {
 		if segue.identifier == "TimeSegue" {
 			let vc = segue.destination as! PrimaryTimerViewController
 			vc.defaults = defaults
+			vc.delegate = self
+			
 		}
 	}
 	
@@ -131,26 +149,26 @@ extension MainPageCollectionViewController {
 	
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 3
+		return features.count
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
-		switch indexPath.row {
-		case 0:
-			cell.backgroundColor = UIColor.gray
-			cell.title.text = "Time to start"
-		case 1:
-			cell.backgroundColor = UIColor.gray
-			cell.title.text = "Fire Alarm"
-		case 2:
-			cell.backgroundColor = UIColor.gray
-			cell.title.text = "Happy hour"
-		default:
-			cell.backgroundColor = .white
-		}
+		cell.title.text = features[indexPath.row].title
 		cell.image.image = UIImage(named: "cvcitem\(indexPath.row)")
 		cell.layer.cornerRadius = 10
+		cell.backgroundColor = UIColor.gray
+		
+		switch indexPath.row {
+		case 0:
+			cell.status.text = "Timer not set"
+		case 1:
+			cell.status.text = "off"
+		case 2:
+			cell.status.text = "off"
+		default:
+			cell.status.text = "Status"
+		}
 		return cell
 	}
 	
@@ -171,3 +189,45 @@ extension MainPageCollectionViewController {
 	}
 }
 
+extension MainPageCollectionViewController: PrimaryViewControllerDelegate {
+	//MARK:- PrimaryViewcontroller delegate
+	func didSetCountdownRunning(_ controller: PrimaryTimerViewController, timerSet: Bool, timeRunning time: Double) {
+		let startIndex = features.startIndex
+		let indexPath = IndexPath(item: startIndex, section: 0)
+		let timeCell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
+		
+		//sets the cell for use
+		timeSelectionCell = timeCell
+		guard let timeSelectionCell = timeSelectionCell else {return}
+		
+		if timerSet {
+			timeToSet = Int(time)
+			timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+			print("status timer is set")
+		} else {
+			timer?.invalidate()
+			timeSelectionCell.status.text = "Timer is not set"
+			print("status timer is not set")
+		}
+	}
+	
+	@objc func updateCountdown() {
+		timeToSet! -= 1
+		if timeToSet! > 0 {
+			let minutes = timeToSet! / 60 % 60
+			let seconds = timeToSet! % 60
+			defaults.set(timeToSet, forKey: "widgetCountDowntime")
+			//Formats the time into a string
+			timeStringStatus = String(format: "%02i:%02i", minutes, seconds)
+			timeSelectionCell?.status.text = timeStringStatus
+			print("time string shows \(timeStringStatus)")
+		} else {
+			timer?.invalidate()
+			timeStringStatus = ""
+			timeSelectionCell?.status.text = timeStringStatus
+			defaults.set(nil, forKey: "widgetCountDowntime")
+		}
+	}
+	
+	
+}
