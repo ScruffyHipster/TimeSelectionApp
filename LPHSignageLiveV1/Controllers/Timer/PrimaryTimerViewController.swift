@@ -47,7 +47,7 @@ class PrimaryTimerViewController: UIViewController {
 	var menuState: TimeSelectionViewState {
 		return menusVisible ? .compressed : .fullHeight
 	}
-	var menuHeight: CGFloat = 650
+	var menuHeight: CGFloat = 720
 	var compressedHeight: CGFloat = 70
 	var timeSelectionView: TimeSelectorViewController?
 	var runningAnimations = [UIViewPropertyAnimator]()
@@ -141,7 +141,9 @@ class PrimaryTimerViewController: UIViewController {
 		self.addChild(vc)
 		vc.didMove(toParent: self)
 		self.view.addSubview(vc.view)
+		
 		vc.view.frame = CGRect(x: 0, y: self.view.frame.height - compressedHeight, width: self.view.frame.width, height: self.view.frame.height)
+
 		vc.handleView.layer.cornerRadius = 8.0
 		vc.view.layer.cornerRadius = 8.0
 		vc.handleView.clipsToBounds = true

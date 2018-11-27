@@ -62,7 +62,7 @@ class MainPageCollectionViewController: UICollectionViewController {
 		let height = view.frame.height / 3
 		let cv = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 		cv.itemSize = CGSize(width: width, height: height)
-		collectionView.backgroundColor = UIColor.lightGray
+		collectionView.backgroundColor = UIColor.black
 		let blur = UIBlurEffect(style: .dark)
 		let blurLayer = UIVisualEffectView(effect: blur)
 		collectionView.addSubview(blurLayer)
@@ -79,6 +79,10 @@ class MainPageCollectionViewController: UICollectionViewController {
 			vc.defaults = defaults
 			vc.delegate = self
 			
+		}
+		if segue.identifier == "emergencySegue" {
+			let vc = segue.destination as! EmergencyEventViewController
+			vc.delegate = self
 		}
 	}
 	
@@ -157,7 +161,7 @@ extension MainPageCollectionViewController {
 		cell.title.text = features[indexPath.row].title
 		cell.image.image = UIImage(named: "cvcitem\(indexPath.row)")
 		cell.layer.cornerRadius = 10
-		cell.backgroundColor = UIColor.gray
+		cell.backgroundColor = UIColor.lightGray
 		
 		switch indexPath.row {
 		case 0:
@@ -228,6 +232,20 @@ extension MainPageCollectionViewController: PrimaryViewControllerDelegate {
 			defaults.set(nil, forKey: "widgetCountDowntime")
 		}
 	}
-	
-	
+}
+
+
+extension MainPageCollectionViewController: EmergencyEventViewControllerProtocol {
+	func didSetEmergencyEvent(_ controller: EmergencyEventViewController, didSetEvent: Bool) {
+		let startIndex = features.startIndex
+		let indexPath = IndexPath(item: startIndex + 1, section: 0)
+		let emergencyCell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
+		switch didSetEvent {
+		case true:
+			emergencyCell.status.text = "Emergency in progress"
+		case false:
+			emergencyCell.status.text = "All is fine"
+			//
+		}
+	}
 }
