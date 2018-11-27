@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_LPHSignageLiveTestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_LPHSignageLiveTestsVersionString[];
+FOUNDATION_EXPORT double Pods_LPHSignageLiveV1VersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_LPHSignageLiveV1VersionString[];
 

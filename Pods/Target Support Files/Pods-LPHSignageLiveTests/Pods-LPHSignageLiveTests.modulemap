@@ -1,6 +1,0 @@
-framework module Pods_LPHSignageLiveTests {
-  umbrella header "Pods-LPHSignageLiveTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

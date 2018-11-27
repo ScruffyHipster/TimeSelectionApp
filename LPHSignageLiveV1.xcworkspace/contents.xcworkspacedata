@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/tom.murray/Documents/iOS Apps/Projects/WorkProjects/LPHSignageLive (version1)/LPHSignageLiveV1.xcodeproj">
+      location = "group:LPHSignageLiveV1.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
