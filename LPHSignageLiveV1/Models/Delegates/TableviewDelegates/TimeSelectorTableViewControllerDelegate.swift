@@ -19,20 +19,11 @@ class TimeSelectorTableViewDatasource: NSObject, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell") as! TimeSelectorTableViewCell
-		switch shows[indexPath.row].theatre {
-		case 0:
-			cell.theatreLabel.text = "Quarry"
-		case 1:
-			cell.theatreLabel.text = "Theatre 2"
-		case 2:
-			cell.theatreLabel.text = "Theatre 3"
-		default:
-			break
-		}
-		
-		cell.timeLabel.text = String("\(shows[indexPath.row].timeToGo)")
+		let show = shows[indexPath.row]
+		cell.configureCell(cell, withShow: show)
 		return cell
 	}
+	
 }
 
 extension TimeSelectorTableViewDatasource: UITableViewDelegate {

@@ -10,6 +10,15 @@ import UIKit
 import MSCircularSlider
 import Reachability
 
+protocol TimeSelectorViewControllerDelegate: class {
+	
+	//MARK:- functions to set the time and theatre selected
+	func didSelectTime(_ controller: TimeSelectorViewController, didAddShow show: Show)
+	
+	//MARK:- use function to dismiss the child view controller on successful sent request
+	func requestWasSent(_ controller: TimeSelectorViewController, requestSuccess succes: Bool)
+}
+
 class TimeSelectorViewController: UIViewController {
 	
 	//MARK:- Outlets

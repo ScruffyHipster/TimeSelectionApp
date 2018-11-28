@@ -13,7 +13,6 @@
 		4A1E6CF7219C209B00625F15 /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1E6CF6219C209B00625F15 /* NoInternetViewController.swift */; };
 		4A41020021A5AEF500F6B491 /* PrimaryTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4101FF21A5AEF500F6B491 /* PrimaryTimerViewController.swift */; };
 		4A41020221A5AFDF00F6B491 /* TimeSelectionViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A41020121A5AFDF00F6B491 /* TimeSelectionViewState.swift */; };
-		4A41020621A5C7D800F6B491 /* TimeSelectorViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A41020521A5C7D800F6B491 /* TimeSelectorViewControllerDelegate.swift */; };
 		4A44FA702189C02200AC735A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA6F2189C02200AC735A /* AppDelegate.swift */; };
 		4A44FA752189C02200AC735A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A44FA732189C02200AC735A /* Main.storyboard */; };
 		4A44FA782189C02200AC735A /* LPHSignageLive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA762189C02200AC735A /* LPHSignageLive.xcdatamodeld */; };
@@ -53,7 +52,6 @@
 		4A1E6CF6219C209B00625F15 /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
 		4A4101FF21A5AEF500F6B491 /* PrimaryTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTimerViewController.swift; sourceTree = "<group>"; };
 		4A41020121A5AFDF00F6B491 /* TimeSelectionViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionViewState.swift; sourceTree = "<group>"; };
-		4A41020521A5C7D800F6B491 /* TimeSelectorViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorViewControllerDelegate.swift; sourceTree = "<group>"; };
 		4A44FA6C2189C02200AC735A /* LPHSignageLiveV1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LPHSignageLiveV1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A44FA6F2189C02200AC735A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A44FA742189C02200AC735A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 		4A41020421A5C7C300F6B491 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				4A41020521A5C7D800F6B491 /* TimeSelectorViewControllerDelegate.swift */,
 				4A8AD45221ADB0AA00B106DC /* TableviewDelegates */,
 			);
 			path = Delegates;
@@ -464,7 +461,6 @@
 				4A8AD45621ADB4C100B106DC /* Show.swift in Sources */,
 				4A44FA992189CCA100AC735A /* DataSource.swift in Sources */,
 				4A44FA702189C02200AC735A /* AppDelegate.swift in Sources */,
-				4A41020621A5C7D800F6B491 /* TimeSelectorViewControllerDelegate.swift in Sources */,
 				4A8AD45121ADB09800B106DC /* TimeSelectorTableViewControllerDelegate.swift in Sources */,
 				4A1E4092219F13CF009AF743 /* RoundedButtons.swift in Sources */,
 				4A44FA932189C4B300AC735A /* MainPageCollectionViewController.swift in Sources */,

@@ -197,14 +197,13 @@ extension MainPageCollectionViewController {
 extension MainPageCollectionViewController: PrimaryViewControllerDelegate {
 	//MARK:- PrimaryViewcontroller delegate
 	func didSetCountdownRunning(_ controller: PrimaryTimerViewController, timerSet: Bool, timeRunning time: Double) {
+		//find start index which is the timer colelction view cell
 		let startIndex = features.startIndex
 		let indexPath = IndexPath(item: startIndex, section: 0)
 		let timeCell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
-		
-		//sets the cell for use
+		//sets the collection view cell for use
 		timeSelectionCell = timeCell
 		guard let timeSelectionCell = timeSelectionCell else {return}
-		
 		if timerSet {
 			timeToSet = Int(time)
 			timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
@@ -225,7 +224,6 @@ extension MainPageCollectionViewController: PrimaryViewControllerDelegate {
 			//Formats the time into a string
 			timeStringStatus = String(format: "%02i:%02i", minutes, seconds)
 			timeSelectionCell?.status.text = timeStringStatus
-			print("time string shows \(timeStringStatus)")
 		} else {
 			timer?.invalidate()
 			timeStringStatus = ""

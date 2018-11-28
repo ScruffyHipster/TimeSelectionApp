@@ -491,25 +491,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="107" translatesAutoresizingMaskIntoConstraints="NO" id="yuq-j8-apZ">
-                                                    <rect key="frame" x="23.5" y="7" width="367.5" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="107" translatesAutoresizingMaskIntoConstraints="NO" id="yuq-j8-apZ">
+                                                    <rect key="frame" x="94" y="11.5" width="226" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theatre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gT-RB-XCZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="59.5" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="59.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnA-UX-HZ6">
-                                                            <rect key="frame" x="166.5" y="0.0" width="46" height="30"/>
+                                                            <rect key="frame" x="166.5" y="0.0" width="59.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ly3-1s-97T">
-                                                            <rect key="frame" x="319.5" y="0.0" width="48" height="30"/>
-                                                            <state key="normal" title="Cancel"/>
-                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -519,7 +515,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cancelButton" destination="Ly3-1s-97T" id="JyM-bU-yKY"/>
                                             <outlet property="theatreLabel" destination="5gT-RB-XCZ" id="iTY-0d-hM3"/>
                                             <outlet property="timeLabel" destination="ZnA-UX-HZ6" id="Bgq-4z-GGZ"/>
                                         </connections>

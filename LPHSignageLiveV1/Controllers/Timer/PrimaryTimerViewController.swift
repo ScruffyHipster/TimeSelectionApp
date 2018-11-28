@@ -110,12 +110,15 @@ class PrimaryTimerViewController: UIViewController {
 		//create new index dependant on the number of items in the shows array and add them to the tablerow
 		let newIndex = timeTableViewDataSource.shows.count
 		timeTableViewDataSource.shows.append(show)
+		//doesnt add another time if the array already has three (i.e number of supported theatres)
 		if newIndex <= 4 {
 			let indexPaths = IndexPath(item: newIndex, section: 0)
 			let indexPath = [indexPaths]
 			tableView.insertRows(at: indexPath, with: .automatic)
 			tableView.reloadData()
 			tempShowTime.removeAll()
+			addAnotherTimeButton.isEnabled = false
+			//make view pop back up for adding another time
 		}
 	}
 	
