@@ -26,6 +26,9 @@
 		4A44FA992189CCA100AC735A /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA982189CCA100AC735A /* DataSource.swift */; };
 		4A44FA9E2189E3DC00AC735A /* TimeSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A44FA9D2189E3DC00AC735A /* TimeSelectorViewController.swift */; };
 		4A44FAA22189E72200AC735A /* MSCircularSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A44FAA12189E72200AC735A /* MSCircularSlider.framework */; };
+		4A8AD45121ADB09800B106DC /* TimeSelectorTableViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AD45021ADB09800B106DC /* TimeSelectorTableViewControllerDelegate.swift */; };
+		4A8AD45621ADB4C100B106DC /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AD45521ADB4C100B106DC /* Show.swift */; };
+		4A8AD45821ADB58700B106DC /* TimeSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AD45721ADB58700B106DC /* TimeSelectorTableViewCell.swift */; };
 		4AAFE7A72190AFE700F9C081 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */; };
 		4AF6694321A2D71700A23018 /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF6694221A2D71700A23018 /* SelectButton.swift */; };
 		5EFC49D4FD24B6FFF2E4959A /* Pods_LPHSignageLiveV1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A308017F9F4DFBE44E6FD /* Pods_LPHSignageLiveV1Tests.framework */; };
@@ -67,6 +70,9 @@
 		4A44FA982189CCA100AC735A /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		4A44FA9D2189E3DC00AC735A /* TimeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorViewController.swift; sourceTree = "<group>"; };
 		4A44FAA12189E72200AC735A /* MSCircularSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MSCircularSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A8AD45021ADB09800B106DC /* TimeSelectorTableViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorTableViewControllerDelegate.swift; sourceTree = "<group>"; };
+		4A8AD45521ADB4C100B106DC /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
+		4A8AD45721ADB58700B106DC /* TimeSelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectorTableViewCell.swift; sourceTree = "<group>"; };
 		4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		4AF6694221A2D71700A23018 /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
 		57AF8EAA29EAF7811FA06D56 /* Pods_LPHSignageLiveV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLiveV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +106,7 @@
 		4A41020321A5C7BB00F6B491 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				4A41020121A5AFDF00F6B491 /* TimeSelectionViewState.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				4A41020521A5C7D800F6B491 /* TimeSelectorViewControllerDelegate.swift */,
+				4A8AD45221ADB0AA00B106DC /* TableviewDelegates */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -160,13 +168,12 @@
 		4A44FA9A2189CCBD00AC735A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4A8AD45A21ADB5D000B106DC /* HTTP */,
 				4A41020421A5C7C300F6B491 /* Delegates */,
 				4A41020321A5C7BB00F6B491 /* Enums */,
-				4A41020121A5AFDF00F6B491 /* TimeSelectionViewState.swift */,
+				4A8AD45521ADB4C100B106DC /* Show.swift */,
 				4A44FA942189CA1C00AC735A /* Features.swift */,
 				4A44FA982189CCA100AC735A /* DataSource.swift */,
-				4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */,
-				4A1E4091219F13CF009AF743 /* RoundedButtons.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,9 +181,10 @@
 		4A44FA9B2189CCCE00AC735A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4AF6694521A2D79A00A23018 /* Views */,
+				4A1E4091219F13CF009AF743 /* RoundedButtons.swift */,
+				4A8AD45921ADB59500B106DC /* HUDView */,
+				4AF6694521A2D79A00A23018 /* Cells */,
 				4AF6694421A2D71F00A23018 /* buttons */,
-				4A07B8DF219332B100E86E08 /* HUDView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,6 +198,30 @@
 				4AD18D3421ABFBEB0045493B /* Timer */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4A8AD45221ADB0AA00B106DC /* TableviewDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				4A8AD45021ADB09800B106DC /* TimeSelectorTableViewControllerDelegate.swift */,
+			);
+			path = TableviewDelegates;
+			sourceTree = "<group>";
+		};
+		4A8AD45921ADB59500B106DC /* HUDView */ = {
+			isa = PBXGroup;
+			children = (
+				4A07B8DF219332B100E86E08 /* HUDView.swift */,
+			);
+			path = HUDView;
+			sourceTree = "<group>";
+		};
+		4A8AD45A21ADB5D000B106DC /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */,
+			);
+			path = HTTP;
 			sourceTree = "<group>";
 		};
 		4AD18D3421ABFBEB0045493B /* Timer */ = {
@@ -234,12 +266,13 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		4AF6694521A2D79A00A23018 /* Views */ = {
+		4AF6694521A2D79A00A23018 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				4A44FA962189CA5900AC735A /* MainCollectionViewCell.swift */,
+				4A8AD45721ADB58700B106DC /* TimeSelectorTableViewCell.swift */,
 			);
-			path = Views;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		7CD93F26048335D9E71B9491 /* Frameworks */ = {
@@ -427,9 +460,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AAFE7A72190AFE700F9C081 /* HTTPRequest.swift in Sources */,
+				4A8AD45821ADB58700B106DC /* TimeSelectorTableViewCell.swift in Sources */,
+				4A8AD45621ADB4C100B106DC /* Show.swift in Sources */,
 				4A44FA992189CCA100AC735A /* DataSource.swift in Sources */,
 				4A44FA702189C02200AC735A /* AppDelegate.swift in Sources */,
 				4A41020621A5C7D800F6B491 /* TimeSelectorViewControllerDelegate.swift in Sources */,
+				4A8AD45121ADB09800B106DC /* TimeSelectorTableViewControllerDelegate.swift in Sources */,
 				4A1E4092219F13CF009AF743 /* RoundedButtons.swift in Sources */,
 				4A44FA932189C4B300AC735A /* MainPageCollectionViewController.swift in Sources */,
 				4AF6694321A2D71700A23018 /* SelectButton.swift in Sources */,

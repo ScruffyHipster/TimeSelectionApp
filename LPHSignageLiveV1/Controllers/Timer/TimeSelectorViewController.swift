@@ -61,7 +61,6 @@ class TimeSelectorViewController: UIViewController {
 		selectTimeButton.isEnabled = false
 		sliderView.delegate = self
 		httpRequest = HTTPRequest.shared
-		print("time view loaded")
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -106,13 +105,11 @@ extension TimeSelectorViewController {
 		guard let theatre = theatre else {return}
 		//gets the time to send from the slider view
 		guard let interrupt = HTTPRequest.Interrupt(rawValue: timeToSend) else {return}
-		//gets the group from the segmented selection using the unwraped var above
+		//gets the group from the segmented selection using the unwrapped var above
 		guard let group = HTTPRequest.Group(rawValue: theatre) else {return}
-		print("got a group")
 		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
 			if success == true {
 				print("yay")
-
 				UIView.animate(withDuration: 0.2, animations: {
 					hudView.hide()
 					self.blurView.alpha = 0
@@ -121,9 +118,8 @@ extension TimeSelectorViewController {
 					self.reset()
 					self.delegate?.requestWasSent(self, requestSuccess: success)
 				})
-			
-				let countDown = self.countDownTime(self.timeToSend)
-				self.delegate?.didSelectTime(self, timeSelected: countDown, theatreSelected: theatre)
+				let show = Show(timeToGo: Int(self.countDownTime(self.timeToSend)), theatre: theatre)
+				self.delegate?.didSelectTime(self, didAddShow: show)
 			} else {
 				print("boo")
 				UIView.animate(withDuration: 0.2, animations: {
@@ -133,7 +129,6 @@ extension TimeSelectorViewController {
 				})
 			}
 		})
-		
 	}
 }
 
@@ -159,7 +154,6 @@ extension TimeSelectorViewController: MSCircularSliderDelegate {
 		{
 			selectTimeButton.isEnabled = true
 		}
-		print(value)
 	}
 	
 	func circularSlider(_ slider: MSCircularSlider, startedTrackingWith value: Double) {

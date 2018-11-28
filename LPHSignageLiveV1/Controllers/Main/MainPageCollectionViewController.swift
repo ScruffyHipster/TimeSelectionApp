@@ -76,9 +76,10 @@ class MainPageCollectionViewController: UICollectionViewController {
 		}
 		if segue.identifier == "TimeSegue" {
 			let vc = segue.destination as! PrimaryTimerViewController
+			//Set the saved defaults
 			vc.defaults = defaults
+			//Set main page to be the delegate for the PrimaryTimeVC
 			vc.delegate = self
-			
 		}
 		if segue.identifier == "emergencySegue" {
 			let vc = segue.destination as! EmergencyEventViewController

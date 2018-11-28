@@ -38,11 +38,21 @@ class PrimaryTimerViewController: UIViewController {
 			}
 		}
 	}
+	@IBOutlet weak var addAnotherTimeButton: UIButton! {
+		didSet {
+			if !timerIsRunning {
+				addAnotherTimeButton.isEnabled = false
+			}
+		}
+	}
 	@IBOutlet weak var fadeView: UIView!
 	@IBOutlet weak var timeStack: UIStackView!
 	@IBOutlet weak var theatreSelection: UILabel!
+	@IBOutlet weak var tableView: UITableView!
 	
 	//MARK:- Properties
+	
+	//For the slider animation
 	var menusVisible = false
 	var menuState: TimeSelectionViewState {
 		return menusVisible ? .compressed : .fullHeight
@@ -52,6 +62,8 @@ class PrimaryTimerViewController: UIViewController {
 	var timeSelectionView: TimeSelectorViewController?
 	var runningAnimations = [UIViewPropertyAnimator]()
 	var animationProgressWhenInteruppted: CGFloat = 0
+	
+	// Timer and Theatre properties
 	var timer: Timer?
 	lazy var currentTime: Date = {
 		var date = Date()
@@ -60,27 +72,50 @@ class PrimaryTimerViewController: UIViewController {
 	var timers: [Double]?
 	var timerIsRunning = false
 	var timeToSet: Int?
-	var httprequest: HTTPRequest?
-	var defaults: UserDefaults?
 	var theatreName: String?  {
 		didSet {
 			theatreSelection.text = theatreName
 		}
 	}
+	//references
+	var httprequest: HTTPRequest?
+	var defaults: UserDefaults?
+	//delegate
 	weak var delegate: PrimaryViewControllerDelegate?
+	//tableviewdatasource
+	private lazy var timeTableViewDataSource: TimeSelectorTableViewDatasource = {
+		let dataSource = TimeSelectorTableViewDatasource()
+		return dataSource
+	}()
+	var tempShowTime = [Show]()
 	
 	//MARK:- Actions
 	@IBAction func resetCountdown(_ sender: UIButton) {
 		if timerIsRunning {
-			print("Cancelled")
 			timer?.invalidate()
 			timerIsRunning = false
 			minutesLabel.text = String("00")
 			secondsLabel.text = String("00")
 			cancelButton.isEnabled = false
 			theatreName = "Theatre"
+			
 			delegate?.didSetCountdownRunning(self, timerSet: false, timeRunning: 0)
-			//MARK:- TODO need to change the below request to be updated with the group from the selected theatre/ interupt
+			//MARK:- TODO add request to cancel time off the SL server
+		}
+	}
+	
+	@IBAction func didTapAddTimerButton(_ sender: UIButton) {
+		//add the temp timer to the tableview and remove it from the temp array if it exists.
+		guard let show = tempShowTime.first else {return}
+		//create new index dependant on the number of items in the shows array and add them to the tablerow
+		let newIndex = timeTableViewDataSource.shows.count
+		timeTableViewDataSource.shows.append(show)
+		if newIndex <= 4 {
+			let indexPaths = IndexPath(item: newIndex, section: 0)
+			let indexPath = [indexPaths]
+			tableView.insertRows(at: indexPath, with: .automatic)
+			tableView.reloadData()
+			tempShowTime.removeAll()
 		}
 	}
 	
@@ -90,12 +125,14 @@ class PrimaryTimerViewController: UIViewController {
 		navigationItem.title = "Select Time"
 		httprequest = HTTPRequest.shared
 		setUpCardView()
+		tableViewSetup()
 	}
 	
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		//load any saved timers
 		let theatre = defaults?.object(forKey: "theatreName") as? String ?? "Theatre"
 		let savedCountdownTime = defaults?.object(forKey: "countdownTime") as? Int ?? 0
 		let isTimerRunning = defaults?.object(forKey: "timerIsRunning") as? Bool ?? false
@@ -109,10 +146,15 @@ class PrimaryTimerViewController: UIViewController {
 		if isTimerRunning {
 			if timeDifference.isLess(than: Double(savedCountdownTime)) {
 				timeToSet = Int(Double(savedCountdownTime) - timeDifference)
-				print("Time is less than the saved countdown time \(savedCountdownTime)")
+				//set up timer view if timer is already running
 				setUpTimer()
 			}
 		}
+	}
+	
+	func tableViewSetup() {
+		tableView.delegate = timeTableViewDataSource
+		tableView.dataSource = timeTableViewDataSource
 	}
 	
 	func setUpTimer() {
@@ -130,7 +172,6 @@ class PrimaryTimerViewController: UIViewController {
 	}
 	
 	deinit {
-		print("deallocated")
 	}
 	
 	//MARK:- Functions
@@ -143,13 +184,14 @@ class PrimaryTimerViewController: UIViewController {
 		self.view.addSubview(vc.view)
 		
 		vc.view.frame = CGRect(x: 0, y: self.view.frame.height - compressedHeight, width: self.view.frame.width, height: self.view.frame.height)
-
+		
 		vc.handleView.layer.cornerRadius = 8.0
 		vc.view.layer.cornerRadius = 8.0
 		vc.handleView.clipsToBounds = true
 		vc.view.layer.shadowOpacity = 0.2
 		vc.handleView.layer.shadowOffset = CGSize(width: vc.handleView.frame.width, height: -2.00)
 		
+		//Inject below vars if subview has loaded 
 		if self.children[0] == vc {
 			vc.delegate = self
 			vc.defaults = defaults
@@ -250,21 +292,8 @@ extension PrimaryTimerViewController {
 
 extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 	
-	//MARK:- TimeSelectorViewControllerDelegate
-	
-	func requestWasSent(_ controller: TimeSelectorViewController, requestSuccess succes: Bool) {
-		switch succes {
-		case true:
-			animateTranistion(fromState: menuState, withDuration: 1)
-		case false:
-			break
-			//MARK:- TODO add if returns false function
-		}
-	}
-	
-	
-	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double, theatreSelected theatreSelection: Int) {
-		switch theatreSelection {
+	func didSelectTime(_ controller: TimeSelectorViewController, didAddShow show: Show) {
+		switch show.theatre {
 		case 0:
 			theatreName = "Quarry Theatre"
 			break
@@ -281,12 +310,33 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 			timer?.invalidate()
 		}
 		//Delegate
-		delegate?.didSetCountdownRunning(self, timerSet: true, timeRunning: time)
+		delegate?.didSetCountdownRunning(self, timerSet: true, timeRunning: Double(show.timeToGo))
+		//Adds show to the temp array. from here it can then be added to the tableview
+		tempShowTime.append(show)
 		timeToSet = 0
-		timeToSet = Int(time)
+		timeToSet = show.timeToGo
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
 		timerIsRunning = true
 		cancelButton.isEnabled = true
+		addAnotherTimeButton.isEnabled = true
+	}
+	
+	
+	//MARK:- TimeSelectorViewControllerDelegate
+	
+	func requestWasSent(_ controller: TimeSelectorViewController, requestSuccess succes: Bool) {
+		switch succes {
+		case true:
+			animateTranistion(fromState: menuState, withDuration: 1)
+		case false:
+			break
+			//MARK:- TODO add if returns false function
+		}
+	}
+	
+	
+	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double, theatreSelected theatreSelection: Int) {
+		//
 	}
 	
 	@objc func updateCountdown() {
@@ -298,8 +348,6 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 			secondsLabel.text = String(format: "%02i", seconds)
 			//Saves the values for references
 			defaults?.set(timeToSet, forKey: "countdownTime")
-			print("there are \(minutes) minutes set")
-			print("there are \(seconds) seconds set")
 		} else {
 			//sets the saved time to nil
 			defaults?.set(nil, forKey: "countdownTime")
