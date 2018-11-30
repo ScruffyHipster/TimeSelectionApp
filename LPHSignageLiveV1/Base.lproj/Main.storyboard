@@ -130,65 +130,8 @@
                                     <constraint firstItem="0at-TZ-4Rd" firstAttribute="top" secondItem="ycu-5T-6SX" secondAttribute="top" constant="17" id="pBq-eM-Iai"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="100" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tTa-IU-w0N">
-                                <rect key="frame" x="0.0" y="78" width="414" height="244.5"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pN4-lV-OWO" userLabel="Theatre Stack">
-                                        <rect key="frame" x="96.5" y="0.0" width="221" height="148"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time to show" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NC-Ag-6fM">
-                                                <rect key="frame" x="25" y="0.0" width="171.5" height="36"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Theatre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rj5-Io-gq5">
-                                                <rect key="frame" x="54.5" y="56" width="112" height="36"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleAspectFit" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Ono-Qd-iea">
-                                                <rect key="frame" x="0.0" y="112" width="221" height="37"/>
-                                                <segments>
-                                                    <segment title="Quarry"/>
-                                                    <segment title="Theatre 2"/>
-                                                    <segment title="Theatre 3"/>
-                                                </segments>
-                                            </segmentedControl>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gtf-Om-fxo" userLabel="Buttons Stack">
-                                        <rect key="frame" x="96.5" y="214.5" width="221" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSh-uX-xP3" customClass="RoundedButtons" customModule="LPHSignageLiveV1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="110.5" height="30"/>
-                                                <state key="normal" title="Select">
-                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="selectLabelTapped:" destination="b9d-Yt-opf" eventType="touchUpInside" id="BqJ-BE-kw1"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oz-NZ-ZtT" customClass="RoundedButtons" customModule="LPHSignageLiveV1" customModuleProvider="target">
-                                                <rect key="frame" x="110.5" y="0.0" width="110.5" height="30"/>
-                                                <state key="normal" title="Reset">
-                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="resetTimer:" destination="b9d-Yt-opf" eventType="touchUpInside" id="igy-iz-TKl"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="Peo-MZ-baP"/>
-                                    <constraint firstItem="gtf-Om-fxo" firstAttribute="width" secondItem="pN4-lV-OWO" secondAttribute="width" id="bhM-6m-z2G"/>
-                                </constraints>
-                            </stackView>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="alp-1o-2rj" customClass="MSCircularSlider">
-                                <rect key="frame" x="57" y="372" width="300" height="300"/>
+                                <rect key="frame" x="57" y="355.5" width="300" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sk6-R6-L9b">
                                         <rect key="frame" x="119.5" y="134.5" width="61.5" height="31.5"/>
@@ -223,7 +166,7 @@
                                         <integer key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="_handleHighlightable" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="_snapToLabels" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="_snapToLabels" value="NO"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="_markerCount">
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
@@ -232,10 +175,10 @@
                                         <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="_lineWidth">
-                                        <integer key="value" value="8"/>
+                                        <integer key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="_handleEnlargementPoints">
-                                        <integer key="value" value="18"/>
+                                        <integer key="value" value="12"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="_currentValue">
                                         <real key="value" value="0.0"/>
@@ -245,6 +188,64 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" spacing="50" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tTa-IU-w0N">
+                                <rect key="frame" x="0.0" y="78" width="414" height="228"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pN4-lV-OWO" userLabel="Theatre Stack">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="148"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time to show" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NC-Ag-6fM">
+                                                <rect key="frame" x="121.5" y="0.0" width="171.5" height="36"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Theatre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rj5-Io-gq5">
+                                                <rect key="frame" x="151" y="56" width="112" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N9d-Qy-hHH">
+                                                <rect key="frame" x="116" y="112" width="182" height="37"/>
+                                                <segments>
+                                                    <segment title="First"/>
+                                                    <segment title="Second"/>
+                                                    <segment title="Third"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gtf-Om-fxo" userLabel="Buttons Stack">
+                                        <rect key="frame" x="0.0" y="198" width="414" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSh-uX-xP3" customClass="RoundedButtons" customModule="LPHSignageLiveV1" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
+                                                <state key="normal" title="Select">
+                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectLabelTapped:" destination="b9d-Yt-opf" eventType="touchUpInside" id="BqJ-BE-kw1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oz-NZ-ZtT" customClass="RoundedButtons" customModule="LPHSignageLiveV1" customModuleProvider="target">
+                                                <rect key="frame" x="207" y="0.0" width="207" height="30"/>
+                                                <state key="normal" title="Reset">
+                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="resetTimer:" destination="b9d-Yt-opf" eventType="touchUpInside" id="igy-iz-TKl"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="Peo-MZ-baP"/>
+                                    <constraint firstItem="pN4-lV-OWO" firstAttribute="width" secondItem="tTa-IU-w0N" secondAttribute="width" id="afi-cF-Dvi"/>
+                                    <constraint firstItem="gtf-Om-fxo" firstAttribute="width" secondItem="pN4-lV-OWO" secondAttribute="width" id="bhM-6m-z2G"/>
+                                </constraints>
+                            </stackView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJi-RN-zHd">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="740"/>
                                 <subviews>
@@ -291,7 +292,7 @@
                         <outlet property="resetButton" destination="5oz-NZ-ZtT" id="6bN-kx-rXg"/>
                         <outlet property="selectTimeButton" destination="HSh-uX-xP3" id="MJP-vV-yCw"/>
                         <outlet property="sliderView" destination="alp-1o-2rj" id="sRH-Kb-rUj"/>
-                        <outlet property="theatreSelection" destination="Ono-Qd-iea" id="qiG-DC-MHP"/>
+                        <outlet property="theatreSelection" destination="N9d-Qy-hHH" id="s4p-Im-AL8"/>
                         <outlet property="timeLabel" destination="sk6-R6-L9b" id="ugn-JW-ayf"/>
                     </connections>
                 </viewController>
@@ -460,17 +461,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="uJA-T8-9i7" userLabel="ActionButtonStackView">
-                                        <rect key="frame" x="122" y="384" width="170" height="30"/>
+                                        <rect key="frame" x="183" y="384" width="48" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1M-Pf-aZZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="62" height="30"/>
-                                                <state key="normal" title="Add time"/>
-                                                <connections>
-                                                    <action selector="didTapAddTimerButton:" destination="aKx-GP-fMH" eventType="touchUpInside" id="uHa-65-5sm"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhb-Sn-xhD">
-                                                <rect key="frame" x="122" y="0.0" width="48" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="30"/>
                                                 <state key="normal" title="Cancel"/>
                                                 <connections>
                                                     <action selector="resetCountdown:" destination="aKx-GP-fMH" eventType="touchUpInside" id="nRV-SA-4aU"/>
@@ -491,17 +485,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="107" translatesAutoresizingMaskIntoConstraints="NO" id="yuq-j8-apZ">
-                                                    <rect key="frame" x="94" y="11.5" width="226" height="20.5"/>
+                                                <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="107" translatesAutoresizingMaskIntoConstraints="NO" id="yuq-j8-apZ">
+                                                    <rect key="frame" x="10" y="11.5" width="394" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theatre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gT-RB-XCZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="59.5" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="143.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnA-UX-HZ6">
-                                                            <rect key="frame" x="166.5" y="0.0" width="59.5" height="20.5"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZnA-UX-HZ6">
+                                                            <rect key="frame" x="250.5" y="0.0" width="143.5" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -512,6 +506,8 @@
                                             <constraints>
                                                 <constraint firstItem="yuq-j8-apZ" firstAttribute="centerY" secondItem="1Mb-BI-JHt" secondAttribute="centerY" id="3i2-Iz-sgu"/>
                                                 <constraint firstItem="yuq-j8-apZ" firstAttribute="centerX" secondItem="1Mb-BI-JHt" secondAttribute="centerX" id="MF7-JA-Kzh"/>
+                                                <constraint firstItem="yuq-j8-apZ" firstAttribute="leading" secondItem="1Mb-BI-JHt" secondAttribute="leading" constant="10" id="jcp-yG-gxj"/>
+                                                <constraint firstAttribute="trailing" secondItem="yuq-j8-apZ" secondAttribute="trailing" constant="10" id="nzs-A6-Nmn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -545,7 +541,6 @@
                         <viewLayoutGuide key="safeArea" id="8M2-f0-on4"/>
                     </view>
                     <connections>
-                        <outlet property="addAnotherTimeButton" destination="T1M-Pf-aZZ" id="Sl2-9I-ng9"/>
                         <outlet property="cancelButton" destination="Xhb-Sn-xhD" id="yN9-Fx-glb"/>
                         <outlet property="fadeView" destination="bDA-at-hSE" id="kL1-4p-PJA"/>
                         <outlet property="minutesLabel" destination="YNf-FG-dc8" id="f6k-tM-aGG"/>

@@ -11,15 +11,22 @@ import UIKit
 class TimeSelectorTableViewCell: UITableViewCell {
 	@IBOutlet weak var timeLabel: UILabel!
 	@IBOutlet weak var theatreLabel: UILabel!
-
+	
 	var timer: Timer?
-	var timeToSet: Int?
+	var timeToSet: Int = 0
+	var interval: TimeInterval?
+	var startTime = Date().timeIntervalSinceNow
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		timer?.invalidate()
+	}
 	
 	//Configures the cell
 	func configureCell(_ cell: TimeSelectorTableViewCell, withShow show: Show) {
-		timeToSet = 0
 		timeToSet = show.timeToGo
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCountdown), userInfo: nil, repeats: true)
+		
 		switch show.theatre {
 		case 0:
 			self.theatreLabel.text = "Quarry"
@@ -32,17 +39,27 @@ class TimeSelectorTableViewCell: UITableViewCell {
 		}
 	}
 	
+	deinit {
+		timer?.invalidate()
+	}
+	
 	@objc func updateCountdown() {
-		print("here")
-		timeToSet! -= 1
-		if timeToSet! > 0 {
-			let minutes = timeToSet! / 60 % 60
-			let seconds = timeToSet! % 60
+		
+		
+		guard let timer = timer else {return}
+		
+		//MARK:-TODO add functionailty to allow for multiple independant times to be ran
+		
+		timeToSet -= 1
+		
+		if timeToSet > 0 {
+			let minutes = timeToSet / 60 % 60
+			let seconds = timeToSet % 60
 			//Formats the time into a string
 			timeLabel.text = String(format: "%02i:%02i", minutes, seconds)
 		} else {
-			timer?.invalidate()
-			timeLabel.text = ""
+			timer.invalidate()
+			timeLabel.text = "00:00"
 		}
 	}
 	

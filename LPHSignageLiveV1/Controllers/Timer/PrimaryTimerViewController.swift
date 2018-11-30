@@ -38,13 +38,6 @@ class PrimaryTimerViewController: UIViewController {
 			}
 		}
 	}
-	@IBOutlet weak var addAnotherTimeButton: UIButton! {
-		didSet {
-			if !timerIsRunning {
-				addAnotherTimeButton.isEnabled = false
-			}
-		}
-	}
 	@IBOutlet weak var fadeView: UIView!
 	@IBOutlet weak var timeStack: UIStackView!
 	@IBOutlet weak var theatreSelection: UILabel!
@@ -105,21 +98,21 @@ class PrimaryTimerViewController: UIViewController {
 	}
 	
 	@IBAction func didTapAddTimerButton(_ sender: UIButton) {
-		//add the temp timer to the tableview and remove it from the temp array if it exists.
-		guard let show = tempShowTime.first else {return}
-		//create new index dependant on the number of items in the shows array and add them to the tablerow
-		let newIndex = timeTableViewDataSource.shows.count
-		timeTableViewDataSource.shows.append(show)
-		//doesnt add another time if the array already has three (i.e number of supported theatres)
-		if newIndex <= 4 {
-			let indexPaths = IndexPath(item: newIndex, section: 0)
-			let indexPath = [indexPaths]
-			tableView.insertRows(at: indexPath, with: .automatic)
-			tableView.reloadData()
-			tempShowTime.removeAll()
-			addAnotherTimeButton.isEnabled = false
-			//make view pop back up for adding another time
-		}
+//		//add the temp timer to the tableview and remove it from the temp array if it exists.
+//		guard let show = tempShowTime.first else {return}
+//		//create new index dependant on the number of items in the shows array and add them to the tablerow
+//		let newIndex = timeTableViewDataSource.shows.count
+//		timeTableViewDataSource.shows.append(show)
+//		//doesnt add another time if the array already has three (i.e number of supported theatres)
+//		if newIndex <= 4 {
+//			let indexPaths = IndexPath(item: newIndex, section: 0)
+//			let indexPath = [indexPaths]
+//			tableView.insertRows(at: indexPath, with: .automatic)
+//			tableView.reloadData()
+//			tempShowTime.removeAll()
+//			addAnotherTimeButton.isEnabled = false
+//			//make view pop back up for adding another time
+//		}
 	}
 	
 	//MARK:- ViewDidLoad
@@ -294,7 +287,9 @@ extension PrimaryTimerViewController {
 }
 
 extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
+	//MARK:- TimeSelectorViewControllerDelegate
 	
+	//called when time has been selected
 	func didSelectTime(_ controller: TimeSelectorViewController, didAddShow show: Show) {
 		switch show.theatre {
 		case 0:
@@ -316,17 +311,33 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 		delegate?.didSetCountdownRunning(self, timerSet: true, timeRunning: Double(show.timeToGo))
 		//Adds show to the temp array. from here it can then be added to the tableview
 		tempShowTime.append(show)
+		//create timer to show on this view
 		timeToSet = 0
 		timeToSet = show.timeToGo
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
 		timerIsRunning = true
 		cancelButton.isEnabled = true
-		addAnotherTimeButton.isEnabled = true
+		
+		//add the temp timer to the tableview and remove it from the temp array if it exists.
+		guard let show = tempShowTime.first else {return}
+		//create new index dependant on the number of items in the shows array and add them to the tablerow
+		let newIndex = timeTableViewDataSource.shows.count
+		timeTableViewDataSource.shows.append(show)
+		//doesnt add another time if the array already has three (i.e number of supported theatres)
+		if newIndex <= 4 {
+			let indexPaths = IndexPath(item: newIndex, section: 0)
+			let indexPath = [indexPaths]
+			tableView.insertRows(at: indexPath, with: .automatic)
+			print("temp show time count is \(tempShowTime.count)")
+			tempShowTime.removeAll()
+			
+			//make view pop back up for adding another time
+		}
+		tableView.reloadData()
+		print("temp show time count is now \(tempShowTime.count)")
 	}
 	
-	
-	//MARK:- TimeSelectorViewControllerDelegate
-	
+	//called when request is sent to Signagelive api
 	func requestWasSent(_ controller: TimeSelectorViewController, requestSuccess succes: Bool) {
 		switch succes {
 		case true:
@@ -337,11 +348,7 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 		}
 	}
 	
-	
-	func didSelectTime(_ controller: TimeSelectorViewController, timeSelected time: Double, theatreSelected theatreSelection: Int) {
-		//
-	}
-	
+	//Countdown call function
 	@objc func updateCountdown() {
 		timeToSet! -= 1
 		if timeToSet! > 0 {
