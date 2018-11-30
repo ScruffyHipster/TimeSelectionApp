@@ -191,6 +191,7 @@ class PrimaryTimerViewController: UIViewController {
 		if self.children[0] == vc {
 			vc.delegate = self
 			vc.defaults = defaults
+			vc.timeSelectorTableViewDataSource = timeTableViewDataSource
 		}
 		
 		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizer(recognizer:)))

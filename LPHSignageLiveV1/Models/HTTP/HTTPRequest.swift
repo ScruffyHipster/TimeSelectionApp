@@ -6,7 +6,7 @@
 //  Copyright © 2018 Tom Murray. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 typealias sendData = (Bool) -> Void
 
@@ -108,6 +108,7 @@ class HTTPRequest {
 	
 	func setTime(for group: Group, with interrupt: Interrupt, completion: @escaping sendData) {
 		let url = urlRequest(group: group, interrupt: interrupt)
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
 		URLSession.shared.dataTask(with: url) { (data, response, error) in
 			guard let response = response as? HTTPURLResponse, let data = data else {return}
 			print("response is \(response)")
@@ -115,13 +116,16 @@ class HTTPRequest {
 			if response.statusCode == 201 {
 				print("ok")
 				self.success = true
+			} else if response.statusCode == 400 {
+				print("error")
 			} else {
 				print("Issue making connection")
 			}
 			DispatchQueue.main.async {
 				completion(self.success ?? false)
+				UIApplication.shared.isNetworkActivityIndicatorVisible = false
 			}
-			} .resume()
+	    } .resume()
 	}
 	
 	
