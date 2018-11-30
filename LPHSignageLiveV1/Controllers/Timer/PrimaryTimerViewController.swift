@@ -81,6 +81,8 @@ class PrimaryTimerViewController: UIViewController {
 		return dataSource
 	}()
 	var tempShowTime = [Show]()
+	//placeholder to save show times in tableview
+	var showTimeArray: Data?
 	
 	//MARK:- Actions
 	@IBAction func resetCountdown(_ sender: UIButton) {
@@ -127,25 +129,7 @@ class PrimaryTimerViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
-		//load any saved timers
-		let theatre = defaults?.object(forKey: "theatreName") as? String ?? "Theatre"
-		let savedCountdownTime = defaults?.object(forKey: "countdownTime") as? Int ?? 0
-		let isTimerRunning = defaults?.object(forKey: "timerIsRunning") as? Bool ?? false
-		guard let oldTime = defaults?.object(forKey: "oldTime") as? Date else {return}
-		let timeDifference = Date().timeIntervalSince(oldTime)
-		
-		theatreName = theatre
-		timeToSet = savedCountdownTime
-		timerIsRunning = isTimerRunning
-		
-		if isTimerRunning {
-			if timeDifference.isLess(than: Double(savedCountdownTime)) {
-				timeToSet = Int(Double(savedCountdownTime) - timeDifference)
-				//set up timer view if timer is already running
-				setUpTimer()
-			}
-		}
+		loadData()
 	}
 	
 	func tableViewSetup() {
@@ -160,14 +144,8 @@ class PrimaryTimerViewController: UIViewController {
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		//Save info when exiting
-		defaults?.set(currentTime, forKey: "oldTime")
-		defaults?.set(timerIsRunning, forKey: "timerIsRunning")
-		defaults?.set(theatreName, forKey: "theatreName")
+		saveData()
 		timer?.invalidate()
-	}
-	
-	deinit {
 	}
 	
 	//MARK:- Functions
@@ -200,6 +178,51 @@ class PrimaryTimerViewController: UIViewController {
 		vc.handleView.addGestureRecognizer(tapGesture)
 	}
 	
+	func loadData() {
+		//load any saved timers
+		let theatre = defaults?.object(forKey: "theatreName") as? String ?? "Theatre"
+		let savedCountdownTime = defaults?.object(forKey: "countdownTime") as? Int ?? 0
+		let isTimerRunning = defaults?.object(forKey: "timerIsRunning") as? Bool ?? false
+		guard let oldTime = defaults?.object(forKey: "oldTime") as? Date else {return}
+		let timeDifference = Date().timeIntervalSince(oldTime)
+		
+		
+		theatreName = theatre
+		timeToSet = savedCountdownTime
+		timerIsRunning = isTimerRunning
+		
+		if isTimerRunning {
+			if timeDifference.isLess(than: Double(savedCountdownTime)) {
+				timeToSet = Int(Double(savedCountdownTime) - timeDifference)
+				//set up timer view if timer is already running
+				setUpTimer()
+			}
+		}
+		
+		showTimeArray = defaults?.data(forKey: "showTimeArray")
+		if showTimeArray != nil {
+			do {
+				timeTableViewDataSource.shows = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(showTimeArray!) as! [Show]
+				print("show time array is not empty")
+			} catch {
+				print(error)
+			}
+		}
+		tableView.reloadData() 
+	}
+	
+	func saveData() {
+		//Save info when exiting
+		defaults?.set(currentTime, forKey: "oldTime")
+		defaults?.set(timerIsRunning, forKey: "timerIsRunning")
+		defaults?.set(theatreName, forKey: "theatreName")
+		do {
+			showTimeArray = try NSKeyedArchiver.archivedData(withRootObject: timeTableViewDataSource.shows, requiringSecureCoding: false)
+		} catch {
+			print(error)
+		}
+		defaults?.set(showTimeArray, forKey: "showTimeArray")
+	}
 }
 
 
@@ -318,21 +341,18 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
 		timerIsRunning = true
 		cancelButton.isEnabled = true
-		
 		//add the temp timer to the tableview and remove it from the temp array if it exists.
 		guard let show = tempShowTime.first else {return}
 		//create new index dependant on the number of items in the shows array and add them to the tablerow
 		let newIndex = timeTableViewDataSource.shows.count
 		timeTableViewDataSource.shows.append(show)
 		//doesnt add another time if the array already has three (i.e number of supported theatres)
-		if newIndex <= 4 {
+		if newIndex < 3 {
 			let indexPaths = IndexPath(item: newIndex, section: 0)
 			let indexPath = [indexPaths]
 			tableView.insertRows(at: indexPath, with: .automatic)
 			print("temp show time count is \(tempShowTime.count)")
 			tempShowTime.removeAll()
-			
-			//make view pop back up for adding another time
 		}
 		tableView.reloadData()
 		print("temp show time count is now \(tempShowTime.count)")
