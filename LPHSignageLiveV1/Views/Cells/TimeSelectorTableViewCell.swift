@@ -53,10 +53,7 @@ class TimeSelectorTableViewCell: UITableViewCell {
 		timeToSet -= 1
 		
 		if timeToSet > 0 {
-			let minutes = timeToSet / 60 % 60
-			let seconds = timeToSet % 60
-			//Formats the time into a string
-			timeLabel.text = String(format: "%02i:%02i", minutes, seconds)
+			configureTimeLabel(with: timeToSet, for: timeLabel)
 		} else {
 			timer.invalidate()
 			timeLabel.text = "00:00"

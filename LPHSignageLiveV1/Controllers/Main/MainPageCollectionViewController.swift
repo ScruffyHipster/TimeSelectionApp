@@ -218,11 +218,9 @@ extension MainPageCollectionViewController: PrimaryViewControllerDelegate {
 	@objc func updateCountdown() {
 		timeToSet! -= 1
 		if timeToSet! > 0 {
-			let minutes = timeToSet! / 60 % 60
-			let seconds = timeToSet! % 60
+			configureTimeLabel(with: timeToSet!, for: timeStringStatus)
 			defaults.set(timeToSet, forKey: "widgetCountDowntime")
 			//Formats the time into a string
-			timeStringStatus = String(format: "%02i:%02i", minutes, seconds)
 			timeSelectionCell?.status.text = timeStringStatus
 		} else {
 			timer?.invalidate()
