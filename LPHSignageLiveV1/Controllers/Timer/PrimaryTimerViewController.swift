@@ -32,7 +32,7 @@ class PrimaryTimerViewController: UIViewController {
 	}
 	@IBOutlet weak var cancelButton: UIButton! {
 		didSet {
-			if !timerIsRunning {
+			if shows.count == 0 {
 				cancelButton.isEnabled = false
 			}
 		}
@@ -90,7 +90,9 @@ class PrimaryTimerViewController: UIViewController {
 			timer?.invalidate()
 			timerIsRunning = false
 			timeLabel.text = "00:00"
-			cancelButton.isEnabled = false
+			if shows.count == 0 {
+				cancelButton.isEnabled = false
+			}
 			delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 			//MARK:- TODO add request to cancel time off the SL server
 			//remove from the table view
@@ -218,102 +220,11 @@ class PrimaryTimerViewController: UIViewController {
 }
 
 
-
-extension PrimaryTimerViewController {
-	//MARK:- Gesture recognizers
-	@objc func panGestureRecognizer(recognizer: UIPanGestureRecognizer) {
-		if shows.count < 3 {
-			switch recognizer.state {
-			case .ended:
-				continueInteractiveTransition()
-				break
-			case .changed:
-				let translation = recognizer.translation(in: timeSelectionView?.handleView)
-				var fractionComplete = translation.y / menuHeight
-				fractionComplete = menusVisible ? fractionComplete : -fractionComplete
-				updateInteractiveTransition(fractionCompleted: fractionComplete)
-				break
-			case .began:
-				startInteractiveTransition(state: menuState, duration: 0.7)
-				break
-			default:
-				break
-			}
-		} else {
-			present(noMoreTimerAlert, animated: true)
-		}
-	}
-	
-	@objc func tapGestureRecognizer(recognizer: UITapGestureRecognizer) {
-		if shows.count < 3 {
-			if recognizer.state == .ended {
-				animateTranistion(fromState: menuState, withDuration: 0.7)
-			} else {
-				present(noMoreTimerAlert, animated: true)
-			}
-		}
-	}
-	
-	func startInteractiveTransition(state: TimeSelectionViewState, duration: Double) {
-		if runningAnimations.isEmpty {
-			animateTranistion(fromState: state, withDuration: duration)
-		}
-		for animator in runningAnimations {
-			animator.pauseAnimation()
-			animationProgressWhenInteruppted = animator.fractionComplete
-		}
-	}
-	
-	func animateTranistion(fromState state: TimeSelectionViewState, withDuration duration: Double) {
-		guard let timeSelectionView = timeSelectionView else {return}
-		if runningAnimations.isEmpty {
-			let frameAnimator = UIViewPropertyAnimator(duration: 0.8, dampingRatio: 0.7) {
-				switch state {
-				case .compressed:
-					timeSelectionView.view.frame.origin.y = self.view.frame.height - self.compressedHeight
-				case .fullHeight:
-					timeSelectionView.view.frame.origin.y = self.view.frame.height - self.menuHeight
-				}
-			}
-			frameAnimator.addCompletion { _ in
-				self.menusVisible = !self.menusVisible
-				self.runningAnimations.removeAll()
-			}
-			frameAnimator.startAnimation()
-			runningAnimations.append(frameAnimator)
-		}
-		
-		let fadeBackground = UIViewPropertyAnimator(duration: 0.8, dampingRatio: 0.7) {
-			switch state {
-			case .compressed:
-				self.fadeView.alpha = 0
-				break
-			case .fullHeight:
-				self.fadeView.alpha = 1
-				break
-			}
-		}
-		fadeBackground.startAnimation()
-		runningAnimations.append(fadeBackground)
-	}
-	
-	func updateInteractiveTransition(fractionCompleted: CGFloat) {
-		for animator in runningAnimations {
-			animator.fractionComplete = fractionCompleted + animationProgressWhenInteruppted
-		}
-	}
-	
-	func continueInteractiveTransition() {
-		for animator in runningAnimations {
-			animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-		}
-	}
-}
-
 extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 	//MARK:- TimeSelectorViewControllerDelegate
 	
 	//called when time has been selected
+	
 	func didSelectTime(_ controller: TimeSelectorViewController, didAddShow show: Show) {
 		theatreName = TheatreSelectionName(rawValue: show.theatreName.rawValue)
 		
@@ -409,3 +320,94 @@ extension PrimaryTimerViewController: UITableViewDelegate, UITableViewDataSource
 	}
 }
 
+
+extension PrimaryTimerViewController {
+	//MARK:- Gesture recognizers
+	@objc func panGestureRecognizer(recognizer: UIPanGestureRecognizer) {
+		if shows.count < 3 {
+			switch recognizer.state {
+			case .ended:
+				continueInteractiveTransition()
+				break
+			case .changed:
+				let translation = recognizer.translation(in: timeSelectionView?.handleView)
+				var fractionComplete = translation.y / menuHeight
+				fractionComplete = menusVisible ? fractionComplete : -fractionComplete
+				updateInteractiveTransition(fractionCompleted: fractionComplete)
+				break
+			case .began:
+				startInteractiveTransition(state: menuState, duration: 0.7)
+				break
+			default:
+				break
+			}
+		} else {
+			present(noMoreTimerAlert, animated: true)
+		}
+	}
+	
+	@objc func tapGestureRecognizer(recognizer: UITapGestureRecognizer) {
+		if shows.count < 3 {
+			if recognizer.state == .ended {
+				animateTranistion(fromState: menuState, withDuration: 0.7)
+			} else {
+				present(noMoreTimerAlert, animated: true)
+			}
+		}
+	}
+	
+	func startInteractiveTransition(state: TimeSelectionViewState, duration: Double) {
+		if runningAnimations.isEmpty {
+			animateTranistion(fromState: state, withDuration: duration)
+		}
+		for animator in runningAnimations {
+			animator.pauseAnimation()
+			animationProgressWhenInteruppted = animator.fractionComplete
+		}
+	}
+	
+	func animateTranistion(fromState state: TimeSelectionViewState, withDuration duration: Double) {
+		guard let timeSelectionView = timeSelectionView else {return}
+		if runningAnimations.isEmpty {
+			let frameAnimator = UIViewPropertyAnimator(duration: 0.8, dampingRatio: 0.7) {
+				switch state {
+				case .compressed:
+					timeSelectionView.view.frame.origin.y = self.view.frame.height - self.compressedHeight
+				case .fullHeight:
+					timeSelectionView.view.frame.origin.y = self.view.frame.height - self.menuHeight
+				}
+			}
+			frameAnimator.addCompletion { _ in
+				self.menusVisible = !self.menusVisible
+				self.runningAnimations.removeAll()
+			}
+			frameAnimator.startAnimation()
+			runningAnimations.append(frameAnimator)
+		}
+		
+		let fadeBackground = UIViewPropertyAnimator(duration: 0.8, dampingRatio: 0.7) {
+			switch state {
+			case .compressed:
+				self.fadeView.alpha = 0
+				break
+			case .fullHeight:
+				self.fadeView.alpha = 1
+				break
+			}
+		}
+		fadeBackground.startAnimation()
+		runningAnimations.append(fadeBackground)
+	}
+	
+	func updateInteractiveTransition(fractionCompleted: CGFloat) {
+		for animator in runningAnimations {
+			animator.fractionComplete = fractionCompleted + animationProgressWhenInteruppted
+		}
+	}
+	
+	func continueInteractiveTransition() {
+		for animator in runningAnimations {
+			animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+		}
+	}
+}

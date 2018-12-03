@@ -166,7 +166,7 @@ extension MainPageCollectionViewController {
 		
 		switch indexPath.row {
 		case 0:
-			cell.status.text = "0 timers set"
+			cell.status.text = "No timer set"
 		case 1:
 			cell.status.text = "off"
 		case 2:

@@ -9,8 +9,21 @@
 import Foundation
 
 
-struct Show {
+class Show {
 	var timeToGo: Int
 	var theatreName: TheatreSelectionName
 	var theatre: Int
+	var timer: Timer?
+	
+	
+	init(timeToGo: Int, theatreName: TheatreSelectionName, theatre: Int) {
+		self.timeToGo = timeToGo
+		self.theatre = theatre
+		self.theatreName = theatreName
+	}
+	
+	
+	
+	
+	
 }
