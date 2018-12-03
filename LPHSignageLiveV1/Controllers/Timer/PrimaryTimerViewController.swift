@@ -9,9 +9,13 @@
 import UIKit
 
 protocol PrimaryViewControllerDelegate: class {
-	//Send the time data back to the previous vc if set
-	func didSetCountdownRunning(_ controller: PrimaryTimerViewController, timerSet: Bool, timeRunning time: Double)
+	func numberOfTimersRunning(_ controller: PrimaryTimerViewController, numberOf shows: Int)
 }
+
+
+
+
+
 
 class PrimaryTimerViewController: UIViewController {
 	
@@ -21,14 +25,9 @@ class PrimaryTimerViewController: UIViewController {
 			titleLabel.text = ""
 		}
 	}
-	@IBOutlet weak var minutesLabel: UILabel! {
+	@IBOutlet weak var timeLabel: UILabel! {
 		didSet {
-			minutesLabel.text = "00"
-		}
-	}
-	@IBOutlet weak var secondsLabel: UILabel! {
-		didSet {
-			secondsLabel.text = "00"
+			timeLabel.text = "00:00"
 		}
 	}
 	@IBOutlet weak var cancelButton: UIButton! {
@@ -44,6 +43,8 @@ class PrimaryTimerViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	
 	//MARK:- Properties
+	
+	var shows = [Show]()
 	
 	//For the slider animation
 	var menusVisible = false
@@ -65,9 +66,9 @@ class PrimaryTimerViewController: UIViewController {
 	var timers: [Double]?
 	var timerIsRunning = false
 	var timeToSet: Int?
-	var theatreName: String?  {
+	var theatreName: TheatreSelectionName?  {
 		didSet {
-			theatreSelection.text = theatreName
+			theatreSelection.text = theatreName?.rawValue
 		}
 	}
 	//references
@@ -75,52 +76,43 @@ class PrimaryTimerViewController: UIViewController {
 	var defaults: UserDefaults?
 	//delegate
 	weak var delegate: PrimaryViewControllerDelegate?
-	//tableviewdatasource
-	private lazy var timeTableViewDataSource: TimeSelectorTableViewDatasource = {
-		let dataSource = TimeSelectorTableViewDatasource()
-		return dataSource
-	}()
-	var tempShowTime = [Show]()
 	//placeholder to save show times in tableview
 	var showTimeArray: Data?
+	lazy var noMoreTimerAlert: UIAlertController = {
+		let alert = UIAlertController(title: "Failed", message: "The maximum number of timers that can be set have been.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+		return alert
+	}()
 	
 	//MARK:- Actions
 	@IBAction func resetCountdown(_ sender: UIButton) {
 		if timerIsRunning {
 			timer?.invalidate()
 			timerIsRunning = false
-			minutesLabel.text = String("00")
-			secondsLabel.text = String("00")
+			timeLabel.text = "00:00"
 			cancelButton.isEnabled = false
-			theatreName = "Theatre"
-			
-			delegate?.didSetCountdownRunning(self, timerSet: false, timeRunning: 0)
+			delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 			//MARK:- TODO add request to cancel time off the SL server
+			//remove from the table view
+			//gets the string
+			//compares the string against the theatre name selected
+			if let theatreName = theatreName?.rawValue {
+				if let index = shows.firstIndex(where: {$0.theatreName.rawValue == theatreName}) {
+					shows.remove(at: index)
+				}
+				print("removed at index of \(theatreName)")
+			}
+			tableView.reloadData()
+			delegate?.numberOfTimersRunning(self, numberOf: shows.count)
+			theatreName = TheatreSelectionName.noTheatre
 		}
-	}
-	
-	@IBAction func didTapAddTimerButton(_ sender: UIButton) {
-//		//add the temp timer to the tableview and remove it from the temp array if it exists.
-//		guard let show = tempShowTime.first else {return}
-//		//create new index dependant on the number of items in the shows array and add them to the tablerow
-//		let newIndex = timeTableViewDataSource.shows.count
-//		timeTableViewDataSource.shows.append(show)
-//		//doesnt add another time if the array already has three (i.e number of supported theatres)
-//		if newIndex <= 4 {
-//			let indexPaths = IndexPath(item: newIndex, section: 0)
-//			let indexPath = [indexPaths]
-//			tableView.insertRows(at: indexPath, with: .automatic)
-//			tableView.reloadData()
-//			tempShowTime.removeAll()
-//			addAnotherTimeButton.isEnabled = false
-//			//make view pop back up for adding another time
-//		}
 	}
 	
 	//MARK:- ViewDidLoad
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationItem.title = "Select Time"
+		theatreName = TheatreSelectionName.noTheatre
 		httprequest = HTTPRequest.shared
 		setUpCardView()
 		tableViewSetup()
@@ -130,11 +122,12 @@ class PrimaryTimerViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		loadData()
+		delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 	}
 	
 	func tableViewSetup() {
-		tableView.delegate = timeTableViewDataSource
-		tableView.dataSource = timeTableViewDataSource
+		tableView.delegate = self
+		tableView.dataSource = self
 	}
 	
 	func setUpTimer() {
@@ -165,11 +158,10 @@ class PrimaryTimerViewController: UIViewController {
 		vc.view.layer.shadowOpacity = 0.2
 		vc.handleView.layer.shadowOffset = CGSize(width: vc.handleView.frame.width, height: -2.00)
 		
-		//Inject below vars if subview has loaded 
+		//Inject below vars if subview has loaded
 		if self.children[0] == vc {
 			vc.delegate = self
 			vc.defaults = defaults
-			vc.timeSelectorTableViewDataSource = timeTableViewDataSource
 		}
 		
 		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizer(recognizer:)))
@@ -180,14 +172,14 @@ class PrimaryTimerViewController: UIViewController {
 	
 	func loadData() {
 		//load any saved timers
-		let theatre = defaults?.object(forKey: "theatreName") as? String ?? "Theatre"
+		let theatre = defaults?.object(forKey: "theatreName") as? String ?? "Select Theatre"
 		let savedCountdownTime = defaults?.object(forKey: "countdownTime") as? Int ?? 0
 		let isTimerRunning = defaults?.object(forKey: "timerIsRunning") as? Bool ?? false
 		guard let oldTime = defaults?.object(forKey: "oldTime") as? Date else {return}
 		let timeDifference = Date().timeIntervalSince(oldTime)
 		
-		
-		theatreName = theatre
+		//set to the correct properties
+		theatreName = TheatreSelectionName(rawValue: theatre)
 		timeToSet = savedCountdownTime
 		timerIsRunning = isTimerRunning
 		
@@ -202,22 +194,22 @@ class PrimaryTimerViewController: UIViewController {
 		showTimeArray = defaults?.data(forKey: "showTimeArray")
 		if showTimeArray != nil {
 			do {
-				timeTableViewDataSource.shows = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(showTimeArray!) as! [Show]
-				print("show time array is not empty")
+				shows = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(showTimeArray!) as! [Show]
+				print("show time array is not empty. It has \(shows.count)")
 			} catch {
 				print(error)
 			}
 		}
-		tableView.reloadData() 
+		tableView.reloadData()
 	}
 	
 	func saveData() {
 		//Save info when exiting
 		defaults?.set(currentTime, forKey: "oldTime")
 		defaults?.set(timerIsRunning, forKey: "timerIsRunning")
-		defaults?.set(theatreName, forKey: "theatreName")
+		defaults?.set(theatreName?.rawValue, forKey: "theatreName")
 		do {
-			showTimeArray = try NSKeyedArchiver.archivedData(withRootObject: timeTableViewDataSource.shows, requiringSecureCoding: false)
+			showTimeArray = try NSKeyedArchiver.archivedData(withRootObject: shows, requiringSecureCoding: false)
 		} catch {
 			print(error)
 		}
@@ -230,27 +222,35 @@ class PrimaryTimerViewController: UIViewController {
 extension PrimaryTimerViewController {
 	//MARK:- Gesture recognizers
 	@objc func panGestureRecognizer(recognizer: UIPanGestureRecognizer) {
-		switch recognizer.state {
-		case .ended:
-			continueInteractiveTransition()
-			break
-		case .changed:
-			let translation = recognizer.translation(in: timeSelectionView?.handleView)
-			var fractionComplete = translation.y / menuHeight
-			fractionComplete = menusVisible ? fractionComplete : -fractionComplete
-			updateInteractiveTransition(fractionCompleted: fractionComplete)
-			break
-		case .began:
-			startInteractiveTransition(state: menuState, duration: 0.7)
-			break
-		default:
-			break
+		if shows.count < 3 {
+			switch recognizer.state {
+			case .ended:
+				continueInteractiveTransition()
+				break
+			case .changed:
+				let translation = recognizer.translation(in: timeSelectionView?.handleView)
+				var fractionComplete = translation.y / menuHeight
+				fractionComplete = menusVisible ? fractionComplete : -fractionComplete
+				updateInteractiveTransition(fractionCompleted: fractionComplete)
+				break
+			case .began:
+				startInteractiveTransition(state: menuState, duration: 0.7)
+				break
+			default:
+				break
+			}
+		} else {
+			present(noMoreTimerAlert, animated: true)
 		}
 	}
 	
 	@objc func tapGestureRecognizer(recognizer: UITapGestureRecognizer) {
-		if recognizer.state == .ended {
-			animateTranistion(fromState: menuState, withDuration: 0.7)
+		if shows.count < 3 {
+			if recognizer.state == .ended {
+				animateTranistion(fromState: menuState, withDuration: 0.7)
+			} else {
+				present(noMoreTimerAlert, animated: true)
+			}
 		}
 	}
 	
@@ -315,47 +315,32 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 	
 	//called when time has been selected
 	func didSelectTime(_ controller: TimeSelectorViewController, didAddShow show: Show) {
-		switch show.theatre {
-		case 0:
-			theatreName = "Quarry Theatre"
-			break
-		case 1:
-			theatreName = "Theatre 2"
-			break
-		case 2:
-			theatreName = "Theatre 3"
-			break
-		default:
-			break
-		}
+		theatreName = TheatreSelectionName(rawValue: show.theatreName.rawValue)
+		
 		if timerIsRunning {
 			timer?.invalidate()
 		}
+		
+		//create new index dependant on the number of items in the shows array and add them to the tablerow
+		let newIndex = shows.count
+		shows.append(show)
+		
 		//Delegate
-		delegate?.didSetCountdownRunning(self, timerSet: true, timeRunning: Double(show.timeToGo))
-		//Adds show to the temp array. from here it can then be added to the tableview
-		tempShowTime.append(show)
+		delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 		//create timer to show on this view
 		timeToSet = 0
 		timeToSet = show.timeToGo
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
 		timerIsRunning = true
 		cancelButton.isEnabled = true
-		//add the temp timer to the tableview and remove it from the temp array if it exists.
-		guard let show = tempShowTime.first else {return}
-		//create new index dependant on the number of items in the shows array and add them to the tablerow
-		let newIndex = timeTableViewDataSource.shows.count
-		timeTableViewDataSource.shows.append(show)
+		
 		//doesnt add another time if the array already has three (i.e number of supported theatres)
 		if newIndex < 3 {
 			let indexPaths = IndexPath(item: newIndex, section: 0)
 			let indexPath = [indexPaths]
 			tableView.insertRows(at: indexPath, with: .automatic)
-			print("temp show time count is \(tempShowTime.count)")
-			tempShowTime.removeAll()
 		}
 		tableView.reloadData()
-		print("temp show time count is now \(tempShowTime.count)")
 	}
 	
 	//called when request is sent to Signagelive api
@@ -373,10 +358,7 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 	@objc func updateCountdown() {
 		timeToSet! -= 1
 		if timeToSet! > 0 {
-			let minutes = timeToSet! / 60 % 60
-			let seconds = timeToSet! % 60
-			minutesLabel.text = String(format: "%02i", minutes)
-			secondsLabel.text = String(format: "%02i", seconds)
+			configureTimeLabel(with: timeToSet!, for: timeLabel)
 			//Saves the values for references
 			defaults?.set(timeToSet, forKey: "countdownTime")
 		} else {
@@ -389,4 +371,41 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 	
 }
 
+
+
+
+extension PrimaryTimerViewController: UITableViewDelegate, UITableViewDataSource {
+	//MARK:- Tableview datasource
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return shows.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell") as! TimeSelectorTableViewCell
+		let show = shows[indexPath.row]
+		cell.configureCell(cell, withShow: show)
+		return cell
+	}
+	
+	//MARK:- tableview delegate
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return tableView.frame.height / 3
+	}
+	
+	func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return tableView.frame.height / 3
+	}
+	
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		//TODO: add way of removing the timers
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
+		
+		theatreName = shows[indexPath.row].theatreName
+		configureTimeLabel(with: shows[indexPath.row].timeToGo, for: timeLabel)
+	}
+}
 

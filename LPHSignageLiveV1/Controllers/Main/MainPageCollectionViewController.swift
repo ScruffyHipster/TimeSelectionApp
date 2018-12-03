@@ -166,7 +166,7 @@ extension MainPageCollectionViewController {
 		
 		switch indexPath.row {
 		case 0:
-			cell.status.text = "Timer not set"
+			cell.status.text = "0 timers set"
 		case 1:
 			cell.status.text = "off"
 		case 2:
@@ -196,29 +196,27 @@ extension MainPageCollectionViewController {
 
 extension MainPageCollectionViewController: PrimaryViewControllerDelegate {
 	//MARK:- PrimaryViewcontroller delegate
-	func didSetCountdownRunning(_ controller: PrimaryTimerViewController, timerSet: Bool, timeRunning time: Double) {
-		//find start index which is the timer colelction view cell
+	func numberOfTimersRunning(_ controller: PrimaryTimerViewController, numberOf shows: Int) {
+		print("there are \(shows) in shows")
 		let startIndex = features.startIndex
 		let indexPath = IndexPath(item: startIndex, section: 0)
 		let timeCell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
 		//sets the collection view cell for use
 		timeSelectionCell = timeCell
-		guard let timeSelectionCell = timeSelectionCell else {return}
-		if timerSet {
-			timeToSet = Int(time)
-			timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
-			print("status timer is set")
+		//safely unwrap it for use
+	    guard let timeSelectionCell = timeSelectionCell else {return}
+		if shows > 0 {
+			timeSelectionCell.status.text = String("\(shows) timers set")
 		} else {
-			timer?.invalidate()
-			timeSelectionCell.status.text = "Timer is not set"
-			print("status timer is not set")
+			timeSelectionCell.status.text = "No timers set"
 		}
 	}
+
 	
 	@objc func updateCountdown() {
 		timeToSet! -= 1
 		if timeToSet! > 0 {
-			configureTimeLabel(with: timeToSet!, for: timeStringStatus)
+			configureTimeLabel(with: timeToSet!, for: timeSelectionCell!.status)
 			defaults.set(timeToSet, forKey: "widgetCountDowntime")
 			//Formats the time into a string
 			timeSelectionCell?.status.text = timeStringStatus

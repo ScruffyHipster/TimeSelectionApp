@@ -13,3 +13,10 @@ enum TimeSelectionViewState {
 	case fullHeight
 	case compressed
 }
+
+enum TheatreSelectionName: String {
+	case quarryTheatre = "Quarry Theatre"
+	case theatre2 = "Theatre two"
+	case theatre3 = "Theatre three"
+	case noTheatre = "Select Theatre"
+}

@@ -59,18 +59,13 @@ class TimeSelectorViewController: UIViewController {
 			return theatreSelection.selectedSegmentIndex
 		}
 	}
+	var theatreName: TheatreSelectionName?
 	var httpRequest: HTTPRequest?
 	var interrupt: HTTPRequest.Interrupt?
 	var reachability = Reachability()
 	weak var delegate: TimeSelectorViewControllerDelegate?
 	var defaults: UserDefaults?
-	var timeSelectorTableViewDataSource: TimeSelectorTableViewDatasource?
-	
-	lazy var noMoreTimerAlert: UIAlertController = {
-		let alert = UIAlertController(title: "Failed", message: "The maximum number of timers that can be set have been.", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-		return alert
-	}()
+	var shows = [Show]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -110,46 +105,55 @@ extension TimeSelectorViewController {
 	//MARK:- http methods
 	
 	func sendTime() {
-		guard let timeDataSource = timeSelectorTableViewDataSource else {return}
-		if timeDataSource.shows.count < 3 {
-			UIView.animate(withDuration: 0.2) {
-				self.blurView.alpha = 1
-				self.view.layoutIfNeeded()
-			}
-			//hudView with spinning animator
-			let hudView = HUDView.hud(inView: (navigationController?.view)!, animated: true)
-			hudView.text = "Sending request"
-			//unwraps options theatre screens first
-			guard let theatre = theatre else {return}
-			//gets the time to send from the slider view
-			guard let interrupt = HTTPRequest.Interrupt(rawValue: timeToSend) else {return}
-			//gets the group from the segmented selection using the unwrapped var above
-			guard let group = HTTPRequest.Group(rawValue: theatre) else {return}
-			httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
-				if success == true {
-					print("yay")
-					UIView.animate(withDuration: 0.2, animations: {
-						hudView.hide()
-						self.blurView.alpha = 0
-						self.view.layoutIfNeeded()
-					}, completion: { _ in
-						self.reset()
-						self.delegate?.requestWasSent(self, requestSuccess: success)
-					})
-					let show = Show(timeToGo: Int(self.countDownTime(self.timeToSend)), theatre: theatre)
-					self.delegate?.didSelectTime(self, didAddShow: show)
-				} else {
-					print("boo")
-					UIView.animate(withDuration: 0.2, animations: {
-						hudView.hide()
-						self.blurView.alpha = 0
-						self.view.layoutIfNeeded()
-					})
-				}
-			})
-		} else {
-			present(noMoreTimerAlert, animated: true)
+		UIView.animate(withDuration: 0.2) {
+			self.blurView.alpha = 1
+			self.view.layoutIfNeeded()
 		}
+		//hudView with spinning animator
+		let hudView = HUDView.hud(inView: (navigationController?.view)!, animated: true)
+		hudView.text = "Sending request"
+		//unwraps options theatre screens first
+		guard let theatre = theatre else {return}
+		//gets the time to send from the slider view
+		guard let interrupt = HTTPRequest.Interrupt(rawValue: timeToSend) else {return}
+		//gets the group from the segmented selection using the unwrapped var above
+		guard let group = HTTPRequest.Group(rawValue: theatre) else {return}
+		
+		switch theatre {
+		case 0:
+			theatreName = TheatreSelectionName.quarryTheatre
+		case 1:
+			theatreName = TheatreSelectionName.theatre2
+		case 2:
+			theatreName = TheatreSelectionName.theatre3
+		default:
+			break
+		}
+		guard let theatreName = theatreName else {return}
+		
+		
+		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
+			if success == true {
+				print("yay")
+				UIView.animate(withDuration: 0.2, animations: {
+					hudView.hide()
+					self.blurView.alpha = 0
+					self.view.layoutIfNeeded()
+				}, completion: { _ in
+					self.reset()
+					self.delegate?.requestWasSent(self, requestSuccess: success)
+				})
+				let show = Show(timeToGo: Int(self.countDownTime(self.timeToSend)), theatreName: theatreName, theatre: theatre)
+				self.delegate?.didSelectTime(self, didAddShow: show)
+			} else {
+				print("boo")
+				UIView.animate(withDuration: 0.2, animations: {
+					hudView.hide()
+					self.blurView.alpha = 0
+					self.view.layoutIfNeeded()
+				})
+			}
+		})
 	}
 }
 

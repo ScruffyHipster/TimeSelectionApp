@@ -438,22 +438,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="sp3-cz-osh" userLabel="Time label Stack">
-                                        <rect key="frame" x="75.5" y="204.5" width="263" height="119.5"/>
+                                        <rect key="frame" x="82" y="204.5" width="250.5" height="119.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-FG-dc8">
-                                                <rect key="frame" x="0.0" y="0.0" width="111.5" height="119.5"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="100"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2E5-zk-Xqa">
-                                                <rect key="frame" x="117.5" y="0.0" width="28" height="119.5"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="100"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFd-ze-br7">
-                                                <rect key="frame" x="151.5" y="0.0" width="111.5" height="119.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-FG-dc8">
+                                                <rect key="frame" x="0.0" y="0.0" width="250.5" height="119.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="100"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -543,10 +531,9 @@
                     <connections>
                         <outlet property="cancelButton" destination="Xhb-Sn-xhD" id="yN9-Fx-glb"/>
                         <outlet property="fadeView" destination="bDA-at-hSE" id="kL1-4p-PJA"/>
-                        <outlet property="minutesLabel" destination="YNf-FG-dc8" id="f6k-tM-aGG"/>
-                        <outlet property="secondsLabel" destination="zFd-ze-br7" id="kd4-gI-9cm"/>
                         <outlet property="tableView" destination="13b-yg-ktv" id="8pg-0w-qLA"/>
                         <outlet property="theatreSelection" destination="LQd-Xt-ATR" id="0VS-9s-rde"/>
+                        <outlet property="timeLabel" destination="YNf-FG-dc8" id="6O5-a7-NH1"/>
                         <outlet property="timeStack" destination="sp3-cz-osh" id="o3f-xp-K2t"/>
                         <outlet property="titleLabel" destination="i1c-Zo-TSS" id="LVW-83-uuI"/>
                     </connections>

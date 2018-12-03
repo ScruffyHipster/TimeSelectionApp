@@ -11,5 +11,6 @@ import Foundation
 
 struct Show {
 	var timeToGo: Int
+	var theatreName: TheatreSelectionName
 	var theatre: Int
 }

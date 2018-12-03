@@ -27,14 +27,14 @@ class TimeSelectorTableViewCell: UITableViewCell {
 		timeToSet = show.timeToGo
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCountdown), userInfo: nil, repeats: true)
 		
-		switch show.theatre {
-		case 0:
+		switch show.theatreName {
+		case .quarryTheatre:
 			self.theatreLabel.text = "Quarry"
-		case 1:
+		case .theatre2:
 			self.theatreLabel.text = "Theatre 2"
-		case 2:
+		case .theatre3:
 			self.theatreLabel.text = "Theatre 3"
-		default:
+		case .noTheatre:
 			break
 		}
 	}
