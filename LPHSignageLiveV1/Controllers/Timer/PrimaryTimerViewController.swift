@@ -12,6 +12,9 @@ protocol PrimaryViewControllerDelegate: class {
 	func numberOfTimersRunning(_ controller: PrimaryTimerViewController, numberOf shows: Int)
 }
 
+protocol PrimaryViewControllerTimerDelegate: class {
+	func updateTimer(_ time: Int)
+}
 
 
 
@@ -133,9 +136,21 @@ class PrimaryTimerViewController: UIViewController {
 	}
 	
 	func setUpTimer() {
-		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+		//creates a timer
+		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
+			self.timeToSet! -= 1
+			if self.timeToSet! > 0 {
+				configureTimeLabel(with: self.timeToSet!, for: self.timeLabel)
+				
+				self.defaults?.set(self.timeToSet, forKey: "countdownTime")
+			}
+			self.timer?.invalidate()
+			self.defaults?.set(nil, forKey: "countdownTime")
+		})
 		cancelButton.isEnabled = true
 	}
+	
+
 	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
@@ -227,21 +242,28 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 	
 	func didSelectTime(_ controller: TimeSelectorViewController, didAddShow show: Show) {
 		theatreName = TheatreSelectionName(rawValue: show.theatreName.rawValue)
-		
 		if timerIsRunning {
 			timer?.invalidate()
 		}
-		
 		//create new index dependant on the number of items in the shows array and add them to the tablerow
 		let newIndex = shows.count
 		shows.append(show)
-		
 		//Delegate
 		delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 		//create timer to show on this view
 		timeToSet = 0
 		timeToSet = show.timeToGo
-		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCountdown), userInfo: nil, repeats: true)
+		show.startTimer()
+		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
+			if show.timeToGo > 0 {
+				configureTimeLabel(with: show.timeToGo, for: self.timeLabel)
+				self.defaults?.set(self.timeToSet, forKey: "countdownTime")
+			} else {
+				self.timer?.invalidate()
+				self.defaults?.set(nil, forKey: "countdownTime")
+			}
+		})
+		
 		timerIsRunning = true
 		cancelButton.isEnabled = true
 		
@@ -265,23 +287,7 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 		}
 	}
 	
-	//Countdown call function
-	@objc func updateCountdown() {
-		timeToSet! -= 1
-		if timeToSet! > 0 {
-			configureTimeLabel(with: timeToSet!, for: timeLabel)
-			//Saves the values for references
-			defaults?.set(timeToSet, forKey: "countdownTime")
-		} else {
-			//sets the saved time to nil
-			defaults?.set(nil, forKey: "countdownTime")
-			timer?.invalidate()
-		}
-	}
-	
-	
 }
-
 
 
 
@@ -294,7 +300,10 @@ extension PrimaryTimerViewController: UITableViewDelegate, UITableViewDataSource
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell") as! TimeSelectorTableViewCell
 		let show = shows[indexPath.row]
-		cell.configureCell(cell, withShow: show)
+		Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
+			cell.configureCell(cell, withShow: show)
+		}
+		//self.timerDelegate = cell
 		return cell
 	}
 	
@@ -411,3 +420,23 @@ extension PrimaryTimerViewController {
 		}
 	}
 }
+
+
+
+
+
+
+
+//	//Countdown call function
+//	@objc func updateCountdown() {
+//		timeToSet! -= 1
+//		if timeToSet! > 0 {
+//			configureTimeLabel(with: timeToSet!, for: timeLabel)
+//			//Saves the values for references
+//			defaults?.set(timeToSet, forKey: "countdownTime")
+//		} else {
+//			//sets the saved time to nil
+//			defaults?.set(nil, forKey: "countdownTime")
+//			timer?.invalidate()
+//		}
+//	}

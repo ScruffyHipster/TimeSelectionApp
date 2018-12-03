@@ -12,21 +12,15 @@ class TimeSelectorTableViewCell: UITableViewCell {
 	@IBOutlet weak var timeLabel: UILabel!
 	@IBOutlet weak var theatreLabel: UILabel!
 	
-	var timer: Timer?
-	var timeToSet: Int = 0
-	var interval: TimeInterval?
-	var startTime = Date().timeIntervalSinceNow
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
-		timer?.invalidate()
+	
 	}
 	
 	//Configures the cell
 	func configureCell(_ cell: TimeSelectorTableViewCell, withShow show: Show) {
-		timeToSet = show.timeToGo
-		timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateCountdown), userInfo: nil, repeats: true)
-		
+		//gets the name of the theatre for the label
 		switch show.theatreName {
 		case .quarryTheatre:
 			self.theatreLabel.text = "Quarry"
@@ -37,27 +31,9 @@ class TimeSelectorTableViewCell: UITableViewCell {
 		case .noTheatre:
 			break
 		}
+		configureTimeLabel(with: show.timeToGo, for: timeLabel)
 	}
 	
-	deinit {
-		timer?.invalidate()
-	}
 	
-	@objc func updateCountdown() {
-		
-		
-		guard let timer = timer else {return}
-		
-		//MARK:-TODO add functionailty to allow for multiple independant times to be ran
-		
-		timeToSet -= 1
-		
-		if timeToSet > 0 {
-			configureTimeLabel(with: timeToSet, for: timeLabel)
-		} else {
-			timer.invalidate()
-			timeLabel.text = "00:00"
-		}
-	}
-	
+
 }
