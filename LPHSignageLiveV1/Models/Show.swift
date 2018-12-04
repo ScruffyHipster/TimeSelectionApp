@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Show {
+class Show: NSObject, NSCoding {
 	
 	var timeToGo: Int
 	var theatreName: TheatreSelectionName
@@ -24,6 +24,21 @@ class Show {
 		self.theatre = theatre
 		self.theatreName = theatreName
 	}
+	
+	
+	required convenience init?(coder aDecoder: NSCoder) {
+		let timeToGo = aDecoder.decodeInteger(forKey: "timeToGo")
+		let theatre = aDecoder.decodeInteger(forKey: "theatre")
+		let theatreName = aDecoder.decodeObject(forKey: "theatreName") as! TheatreSelectionName
+		self.init(timeToGo: timeToGo, theatreName: theatreName, theatre: theatre)
+	}
+	
+	
+	func encode(with aCoder: NSCoder) {
+		aCoder.encode(timeToGo, forKey: "timeToGo")
+		aCoder.encode(theatre, forKey: "theatre")
+		aCoder.encode(theatreName, forKey: "theatreName")
+	}
 
 	func startTimer() {
 		print("timer started on \(theatreName)")
@@ -32,8 +47,13 @@ class Show {
 			if self.timeToGo > 0 {
 				self.timeLabelTime = self.timeToGo
 				print("time to go is \(self.timeToGo) for \(self.theatreName)")
-			} else if self.timeToGo <= 0 {
+			} else if self.timeToGo == 0 {
 				self.timer!.invalidate()
 			}})
 	}
+	
+	deinit {
+		print("\(theatreName.rawValue) has now been deallocated")
+	}
+	
 }

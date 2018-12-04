@@ -15,7 +15,6 @@ class TimeSelectorTableViewCell: UITableViewCell {
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
-	
 	}
 	
 	//Configures the cell
@@ -34,6 +33,9 @@ class TimeSelectorTableViewCell: UITableViewCell {
 		configureTimeLabel(with: show.timeToGo, for: timeLabel)
 	}
 	
+	deinit {
+		print("\(timeLabel.text) has been removed")
+	}
 	
 
 }

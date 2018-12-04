@@ -9,6 +9,7 @@
 import UIKit
 
 public func configureTimeLabel(with time: Int, for label: UILabel) {
+	
 	let minutes = time / 60 % 60
 	let seconds = time % 60
 	

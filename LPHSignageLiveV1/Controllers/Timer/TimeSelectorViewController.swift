@@ -65,7 +65,7 @@ class TimeSelectorViewController: UIViewController {
 	var reachability = Reachability()
 	weak var delegate: TimeSelectorViewControllerDelegate?
 	var defaults: UserDefaults?
-	var shows = [Show]()
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
