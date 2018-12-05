@@ -137,6 +137,17 @@ extension TimeSelectorViewController {
 		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
 			if success == true {
 				print("yay")
+//				let show = Show(timeToGo: Int(self.countDownTime(self.timeToSend)), theatreName: theatreName, theatre: theatre)
+				//create a managed object to then save to coreData
+				let show = Show(context: self.managedObjectContext)
+				show.timeToGo = Int32(self.countDownTime(self.timeToSend))
+				show.theatreName = theatreName.rawValue
+				show.theatre = Int32(theatre)
+				do {
+					try self.managedObjectContext.save()
+				} catch {
+					print(error)
+				}
 				UIView.animate(withDuration: 0.2, animations: {
 					hudView.hide()
 					self.blurView.alpha = 0
@@ -145,10 +156,6 @@ extension TimeSelectorViewController {
 					self.reset()
 					self.delegate?.requestWasSent(self, requestSuccess: success)
 				})
-//				let show = Show(timeToGo: Int(self.countDownTime(self.timeToSend)), theatreName: theatreName, theatre: theatre)
-				
-				let show = Show(context: managedObjectContext)
-				
 				self.delegate?.didSelectTime(self, didAddShow: show)
 			} else {
 				print("boo")

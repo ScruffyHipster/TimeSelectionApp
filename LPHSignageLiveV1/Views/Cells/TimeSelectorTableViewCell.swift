@@ -30,7 +30,7 @@ class TimeSelectorTableViewCell: UITableViewCell {
 		case .noTheatre:
 			break
 		}
-		configureTimeLabel(with: show.timeToGo, for: timeLabel)
+		configureTimeLabel(with: Int(show.timeToGo), for: timeLabel)
 	}
 	
 	deinit {
