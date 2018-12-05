@@ -15,13 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
 	var reachability: Reachability?
+	lazy var managedObjectContext: NSManagedObjectContext = persistentContainer.viewContext
+	
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		let nav = self.window?.rootViewController as! UINavigationController
 		nav.navigationBar.prefersLargeTitles = true
-//		let mainVc = nav.viewControllers[0] as! MainPageCollectionViewController
-		
+		let mainVc = nav.viewControllers[0] as! MainPageCollectionViewController
+		mainVc.managedObjectContext = managedObjectContext
+		print(applicationDirectory)
 		return true
 	}
 

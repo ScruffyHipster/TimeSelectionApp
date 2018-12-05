@@ -30,6 +30,8 @@
 		4A8AD45821ADB58700B106DC /* TimeSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8AD45721ADB58700B106DC /* TimeSelectorTableViewCell.swift */; };
 		4A94E31821B19C40008FBC3D /* functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A94E31721B19C40008FBC3D /* functions.swift */; };
 		4AAFE7A72190AFE700F9C081 /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */; };
+		4ACA68DB21B7D4080084967E /* Show+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA68D921B7D4070084967E /* Show+CoreDataProperties.swift */; };
+		4ACA68DC21B7D4080084967E /* Show+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA68DA21B7D4070084967E /* Show+CoreDataClass.swift */; };
 		4AF6694321A2D71700A23018 /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF6694221A2D71700A23018 /* SelectButton.swift */; };
 		5EFC49D4FD24B6FFF2E4959A /* Pods_LPHSignageLiveV1Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F63A308017F9F4DFBE44E6FD /* Pods_LPHSignageLiveV1Tests.framework */; };
 		EFAD0AA18E44EB00D52E3E53 /* Pods_LPHSignageLiveV1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57AF8EAA29EAF7811FA06D56 /* Pods_LPHSignageLiveV1.framework */; };
@@ -74,6 +76,8 @@
 		4A8AD45721ADB58700B106DC /* TimeSelectorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSelectorTableViewCell.swift; sourceTree = "<group>"; };
 		4A94E31721B19C40008FBC3D /* functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = functions.swift; path = LPHSignageLiveV1/functions.swift; sourceTree = SOURCE_ROOT; };
 		4AAFE7A62190AFE700F9C081 /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
+		4ACA68D921B7D4070084967E /* Show+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Show+CoreDataProperties.swift"; path = "/Users/tom.murray/Documents/iOS Apps/Projects/WorkProjects/LPHSignageLive (working version)/LPHSignageLiveV1/Models/Show+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		4ACA68DA21B7D4070084967E /* Show+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Show+CoreDataClass.swift"; path = "/Users/tom.murray/Documents/iOS Apps/Projects/WorkProjects/LPHSignageLive (working version)/LPHSignageLiveV1/Models/Show+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		4AF6694221A2D71700A23018 /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
 		57AF8EAA29EAF7811FA06D56 /* Pods_LPHSignageLiveV1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LPHSignageLiveV1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EBBCAC0EBA37243E41AB5F /* Pods-LPHSignageLiveV1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LPHSignageLiveV1.release.xcconfig"; path = "Pods/Target Support Files/Pods-LPHSignageLiveV1/Pods-LPHSignageLiveV1.release.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 		4A44FA9A2189CCBD00AC735A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4ACA68DA21B7D4070084967E /* Show+CoreDataClass.swift */,
+				4ACA68D921B7D4070084967E /* Show+CoreDataProperties.swift */,
 				4A8AD45A21ADB5D000B106DC /* HTTP */,
 				4A41020321A5C7BB00F6B491 /* Enums */,
 				4A41020421A5C7C300F6B491 /* Delegates */,
@@ -459,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ACA68DC21B7D4080084967E /* Show+CoreDataClass.swift in Sources */,
 				4AAFE7A72190AFE700F9C081 /* HTTPRequest.swift in Sources */,
 				4A8AD45821ADB58700B106DC /* TimeSelectorTableViewCell.swift in Sources */,
 				4A8AD45621ADB4C100B106DC /* Show.swift in Sources */,
@@ -471,6 +478,7 @@
 				4A94E31821B19C40008FBC3D /* functions.swift in Sources */,
 				4A44FA9E2189E3DC00AC735A /* TimeSelectorViewController.swift in Sources */,
 				4A07B8DE21931C2C00E86E08 /* EmergencyEventViewController.swift in Sources */,
+				4ACA68DB21B7D4080084967E /* Show+CoreDataProperties.swift in Sources */,
 				4A41020221A5AFDF00F6B491 /* TimeSelectionViewState.swift in Sources */,
 				4A1E6CF7219C209B00625F15 /* NoInternetViewController.swift in Sources */,
 				4A07B8E0219332B100E86E08 /* HUDView.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 import MSCircularSlider
 import Reachability
+import CoreData
 
 protocol TimeSelectorViewControllerDelegate: class {
 	
@@ -64,8 +65,9 @@ class TimeSelectorViewController: UIViewController {
 	var interrupt: HTTPRequest.Interrupt?
 	var reachability = Reachability()
 	weak var delegate: TimeSelectorViewControllerDelegate?
-	var defaults: UserDefaults?
 	
+	var defaults: UserDefaults?
+	var managedObjectContext: NSManagedObjectContext!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -143,7 +145,10 @@ extension TimeSelectorViewController {
 					self.reset()
 					self.delegate?.requestWasSent(self, requestSuccess: success)
 				})
-				let show = Show(timeToGo: Int(self.countDownTime(self.timeToSend)), theatreName: theatreName, theatre: theatre)
+//				let show = Show(timeToGo: Int(self.countDownTime(self.timeToSend)), theatreName: theatreName, theatre: theatre)
+				
+				let show = Show(context: managedObjectContext)
+				
 				self.delegate?.didSelectTime(self, didAddShow: show)
 			} else {
 				print("boo")

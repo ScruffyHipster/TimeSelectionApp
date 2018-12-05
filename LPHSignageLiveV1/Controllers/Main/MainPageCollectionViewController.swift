@@ -8,6 +8,7 @@
 
 import UIKit
 import Reachability
+import CoreData
 
 private let reuseIdentifier = "Cell"
 
@@ -30,6 +31,7 @@ class MainPageCollectionViewController: UICollectionViewController {
 	private var timeToSet: Int?
 	private var timeStringStatus = ""
 	private var timeSelectionCell: MainCollectionViewCell?
+	var managedObjectContext: NSManagedObjectContext!
 	
 	//MARK:- View did load
 	override func viewDidLoad() {
@@ -80,6 +82,7 @@ class MainPageCollectionViewController: UICollectionViewController {
 			vc.defaults = defaults
 			//Set main page to be the delegate for the PrimaryTimeVC
 			vc.delegate = self
+			vc.managedObjectContext = managedObjectContext
 		}
 		if segue.identifier == "emergencySegue" {
 			let vc = segue.destination as! EmergencyEventViewController

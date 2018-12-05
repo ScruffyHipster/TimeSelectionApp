@@ -35,3 +35,8 @@ public func selectTheatre(for theatre: Int) -> String {
 	}
 	return name
 }
+
+let applicationDirectory: URL = {
+	let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+	return url[0]
+}()

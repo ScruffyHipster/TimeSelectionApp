@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol PrimaryViewControllerDelegate: class {
 	func numberOfTimersRunning(_ controller: PrimaryTimerViewController, numberOf shows: Int)
@@ -88,7 +89,8 @@ class PrimaryTimerViewController: UIViewController {
 	}()
 	//placeholder for a focused time
 	var theatreTimeFocus: Show?
-	
+	//for coreData
+	var managedObjectContext: NSManagedObjectContext!
 	
 	//MARK:- Actions
 	@IBAction func resetCountdown(_ sender: UIButton) {
@@ -178,6 +180,7 @@ class PrimaryTimerViewController: UIViewController {
 		if self.children[0] == vc {
 			vc.delegate = self
 			vc.defaults = defaults
+			vc.managedObjectContext = managedObjectContext
 		}
 		
 		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizer(recognizer:)))
@@ -246,7 +249,6 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 	//called when time has been selected
 	
 	func didSelectTime(_ controller: TimeSelectorViewController, didAddShow show: Show) {
-		theatreName = TheatreSelectionName(rawValue: show.theatreName.rawValue)
 		//create new index dependant on the number of items in the shows array and add them to the tablerow
 		let newIndex = shows.count
 
@@ -261,6 +263,7 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 		
 		//only run if the shows array has an object in it. Prevents the time label from being mis labelled
 		if shows.count > 0 {
+			theatreName = TheatreSelectionName(rawValue: show.theatreName.rawValue)
 			//sets the timer running on the create theatre object
 			timeToSet = 0
 			timeToSet = show.timeToGo
