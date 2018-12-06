@@ -200,12 +200,6 @@ class PrimaryTimerViewController: UIViewController {
 		vc.handleView.addGestureRecognizer(panGesture)
 		vc.handleView.addGestureRecognizer(tapGesture)
 	}
-	
-	func createAlert(title: String, message: String, buttonTitle: String) -> UIAlertController {
-		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
-		return alert
-	}
 }
 
 
@@ -290,7 +284,22 @@ extension PrimaryTimerViewController: UITableViewDelegate, UITableViewDataSource
 	}
 	
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-		//TODO: add way of removing the timers
+		let show = shows[indexPath.row]
+		show.timer?.invalidate()
+		shows.remove(at: indexPath.row)
+		timeSelectionView?.shows.remove(at: indexPath.row)
+		tableView.deleteRows(at: [indexPath], with: .automatic)
+		managedObjectContext.delete(show)
+		do {
+			try managedObjectContext.save()
+		} catch {
+			print("Error occured \(error)")
+		}
+		if shows.count == 0 {
+			cancelButton.isEnabled = false
+			theatreSelection.text = TheatreSelectionName.noTheatre.rawValue
+		}
+		delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

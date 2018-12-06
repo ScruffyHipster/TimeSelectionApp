@@ -8,6 +8,14 @@
 
 import UIKit
 
+
+//************Helper Functions*************//
+func createAlert(title: String, message: String, buttonTitle: String) -> UIAlertController {
+	let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+	alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
+	return alert
+}
+
 public func configureTimeLabel(with time: Int32, for label: UILabel) {
 	
 	let minutes = time / 60 % 60
@@ -36,11 +44,7 @@ public func selectTheatre(for theatre: Int) -> String {
 	return name
 }
 
-let applicationDirectory: URL = {
-	let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-	return url[0]
-}()
-
+//*********Core Data Helpers***************//
 let coreDataSaveFailedNotification = Notification.Name(rawValue: "CoreDataSaveFailedNotification")
 
 func fataCoreDataError(error: Error) {
@@ -48,5 +52,7 @@ func fataCoreDataError(error: Error) {
 	NotificationCenter.default.post(name: coreDataSaveFailedNotification, object: nil)
 }
 
-
-
+let applicationDirectory: URL = {
+	let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+	return url[0]
+}()
