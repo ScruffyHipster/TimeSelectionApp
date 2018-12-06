@@ -65,9 +65,8 @@ class TimeSelectorViewController: UIViewController {
 	var interrupt: HTTPRequest.Interrupt?
 	var reachability = Reachability()
 	weak var delegate: TimeSelectorViewControllerDelegate?
-	
-
 	var managedObjectContext: NSManagedObjectContext!
+	var shows = [Show]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -107,6 +106,8 @@ extension TimeSelectorViewController {
 	//MARK:- http methods
 	
 	func sendTime() {
+		//check is the theatre is already in the show array
+		
 		UIView.animate(withDuration: 0.2) {
 			self.blurView.alpha = 1
 			self.view.layoutIfNeeded()
@@ -133,11 +134,21 @@ extension TimeSelectorViewController {
 		}
 		guard let theatreName = theatreName else {return}
 		
+		for show in shows {
+			if show.theatreName == theatreName {
+				UIView.animate(withDuration: 1) {
+					hudView.hide()
+					self.blurView.alpha = 0
+					self.reset()
+					self.delegate?.requestWasSent(self, requestSuccess: false)
+				}
+				return
+			}
+		}
 		
 		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
 			if success == true {
 				print("yay")
-//				let show = Show(timeToGo: Int(self.countDownTime(self.timeToSend)), theatreName: theatreName, theatre: theatre)
 				//create a managed object to then save to coreData
 				let show = Show(context: self.managedObjectContext)
 				show.timeToGo = Int32(self.countDownTime(self.timeToSend))

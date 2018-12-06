@@ -78,6 +78,7 @@ class PrimaryTimerViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
 		return alert
 	}()
+	
 	//placeholder for a focused time
 	var theatreTimeFocus: Show?
 	//for coreData
@@ -93,6 +94,7 @@ class PrimaryTimerViewController: UIViewController {
 			show.timer?.invalidate()
 			show.timer = nil
 			shows.remove(at: index)
+			timeSelectionView?.shows.remove(at: index)
 			managedObjectContext.delete(show)
 			do {
 				try managedObjectContext.save()
@@ -154,6 +156,7 @@ class PrimaryTimerViewController: UIViewController {
 		theatreSelection.text = theatre.theatreName
 		startTimeLabelTimer()
 		cancelButton.isEnabled = true
+		timeSelectionView?.shows = shows
 		delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 	}
 	
@@ -198,8 +201,11 @@ class PrimaryTimerViewController: UIViewController {
 		vc.handleView.addGestureRecognizer(tapGesture)
 	}
 	
-	
-	
+	func createAlert(title: String, message: String, buttonTitle: String) -> UIAlertController {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
+		return alert
+	}
 }
 
 
@@ -213,6 +219,10 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 		let newIndex = shows.count
 		
 		shows.append(show)
+		
+		//adds to the timeselectionview array so it can be checked for duplicate shows and prevent it from being created
+		timeSelectionView?.shows.append(show)
+		
 		//doesnt add another time if the array already has three (i.e number of supported theatres)
 		if newIndex < 3 {
 			let indexPaths = IndexPath(item: newIndex, section: 0)
@@ -249,8 +259,9 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 		case true:
 			animateTranistion(fromState: menuState, withDuration: 1)
 		case false:
-			break
-			//MARK:- TODO add if returns false function
+			animateTranistion(fromState: menuState, withDuration: 1)
+			let alert = createAlert(title: "Failed", message: "Issue occured", buttonTitle: "Ok")
+			present(alert, animated: true)
 		}
 	}
 }
@@ -315,6 +326,7 @@ extension PrimaryTimerViewController {
 			}
 		} else {
 			present(noMoreTimerAlert, animated: true)
+			return
 		}
 	}
 	
