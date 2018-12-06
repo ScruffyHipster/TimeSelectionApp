@@ -60,13 +60,13 @@ class TimeSelectorViewController: UIViewController {
 			return theatreSelection.selectedSegmentIndex
 		}
 	}
-	var theatreName: TheatreSelectionName?
+	var theatreName: String?
 	var httpRequest: HTTPRequest?
 	var interrupt: HTTPRequest.Interrupt?
 	var reachability = Reachability()
 	weak var delegate: TimeSelectorViewControllerDelegate?
 	
-	var defaults: UserDefaults?
+
 	var managedObjectContext: NSManagedObjectContext!
 	
 	override func viewDidLoad() {
@@ -120,14 +120,14 @@ extension TimeSelectorViewController {
 		guard let interrupt = HTTPRequest.Interrupt(rawValue: timeToSend) else {return}
 		//gets the group from the segmented selection using the unwrapped var above
 		guard let group = HTTPRequest.Group(rawValue: theatre) else {return}
-		
+		//set the theatre name dependant on selected theatre from the segemented index
 		switch theatre {
 		case 0:
-			theatreName = TheatreSelectionName.quarryTheatre
+			theatreName = TheatreSelectionName.quarryTheatre.rawValue
 		case 1:
-			theatreName = TheatreSelectionName.theatre2
+			theatreName = TheatreSelectionName.theatre2.rawValue
 		case 2:
-			theatreName = TheatreSelectionName.theatre3
+			theatreName = TheatreSelectionName.theatre3.rawValue
 		default:
 			break
 		}
@@ -141,12 +141,12 @@ extension TimeSelectorViewController {
 				//create a managed object to then save to coreData
 				let show = Show(context: self.managedObjectContext)
 				show.timeToGo = Int32(self.countDownTime(self.timeToSend))
-				show.theatreName = theatreName.rawValue
+				show.theatreName = theatreName
 				show.theatre = Int32(theatre)
 				do {
 					try self.managedObjectContext.save()
 				} catch {
-					print(error)
+					NotificationCenter.default.post(name: coreDataSaveFailedNotification, object: nil)
 				}
 				UIView.animate(withDuration: 0.2, animations: {
 					hudView.hide()

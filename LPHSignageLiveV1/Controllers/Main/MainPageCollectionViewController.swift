@@ -24,7 +24,6 @@ class MainPageCollectionViewController: UICollectionViewController {
 	private var emergencyStatus = false
 	private var timeStatus: Int?
 	private let hostNames = [nil, "google.com", "invalid host"]
-	private let defaults = UserDefaults.standard
 	private let host = 1
 	private var features = [Features]()
 	private var timer: Timer?
@@ -78,8 +77,6 @@ class MainPageCollectionViewController: UICollectionViewController {
 		}
 		if segue.identifier == "TimeSegue" {
 			let vc = segue.destination as! PrimaryTimerViewController
-			//Set the saved defaults
-			vc.defaults = defaults
 			//Set main page to be the delegate for the PrimaryTimeVC
 			vc.delegate = self
 			vc.managedObjectContext = managedObjectContext
@@ -191,8 +188,6 @@ extension MainPageCollectionViewController {
 			let alert = UIAlertController(title: "Feature not currently available", message: "This feature is not currently built for your device", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
 			present(alert, animated: true)
-			let domain = Bundle.main.bundleIdentifier!
-			UserDefaults.standard.removePersistentDomain(forName: domain)
 		}
 	}
 }
@@ -219,15 +214,13 @@ extension MainPageCollectionViewController: PrimaryViewControllerDelegate {
 	@objc func updateCountdown() {
 		timeToSet! -= 1
 		if timeToSet! > 0 {
-			configureTimeLabel(with: timeToSet!, for: timeSelectionCell!.status)
-			defaults.set(timeToSet, forKey: "widgetCountDowntime")
+			configureTimeLabel(with: Int32(timeToSet!), for: timeSelectionCell!.status)
 			//Formats the time into a string
 			timeSelectionCell?.status.text = timeStringStatus
 		} else {
 			timer?.invalidate()
 			timeStringStatus = ""
 			timeSelectionCell?.status.text = timeStringStatus
-			defaults.set(nil, forKey: "widgetCountDowntime")
 		}
 	}
 }

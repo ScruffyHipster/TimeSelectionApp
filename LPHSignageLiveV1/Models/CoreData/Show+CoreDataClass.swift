@@ -12,7 +12,8 @@ import CoreData
 
 @objc(Show)
 public class Show: NSManagedObject {
+	public var timer: Timer?
 	deinit {
-		print("\(theatreName) has now been deallocated")
+		print("\(String(describing: theatreName)) has now been deallocated")
 	}
 }

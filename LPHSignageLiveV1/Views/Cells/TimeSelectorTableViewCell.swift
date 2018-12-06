@@ -12,30 +12,37 @@ class TimeSelectorTableViewCell: UITableViewCell {
 	@IBOutlet weak var timeLabel: UILabel!
 	@IBOutlet weak var theatreLabel: UILabel!
 	
+	var timer: Timer?
 	
 	override func prepareForReuse() {
-		super.prepareForReuse()
+	    super.prepareForReuse()
+		timer?.invalidate()
 	}
 	
 	//Configures the cell
 	func configureCell(_ cell: TimeSelectorTableViewCell, withShow show: Show) {
 		//gets the name of the theatre for the label
 		switch show.theatreName {
-		case .quarryTheatre:
+		case "Quarry Theatre":
 			self.theatreLabel.text = "Quarry"
-		case .theatre2:
+		case "Theatre two":
 			self.theatreLabel.text = "Theatre 2"
-		case .theatre3:
+		case "Theatre three":
 			self.theatreLabel.text = "Theatre 3"
-		case .noTheatre:
+		case "Select Theatre":
+			break
+		default:
 			break
 		}
-		configureTimeLabel(with: Int(show.timeToGo), for: timeLabel)
+		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (_) in
+			configureTimeLabel(with: show.timeToGo, for: self.timeLabel)
+		})
 	}
 	
 	deinit {
-		print("\(timeLabel.text) has been removed")
+		if timer?.isValid ?? false {
+			timer?.invalidate()
+		}
+		print("tableview cell has been removed. This cell contained")
 	}
-	
-
 }

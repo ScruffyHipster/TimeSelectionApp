@@ -8,7 +8,7 @@
 
 import UIKit
 
-public func configureTimeLabel(with time: Int, for label: UILabel) {
+public func configureTimeLabel(with time: Int32, for label: UILabel) {
 	
 	let minutes = time / 60 % 60
 	let seconds = time % 60
@@ -40,3 +40,13 @@ let applicationDirectory: URL = {
 	let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 	return url[0]
 }()
+
+let coreDataSaveFailedNotification = Notification.Name(rawValue: "CoreDataSaveFailedNotification")
+
+func fataCoreDataError(error: Error) {
+	print("*** Fatal error \(error) ***")
+	NotificationCenter.default.post(name: coreDataSaveFailedNotification, object: nil)
+}
+
+
+

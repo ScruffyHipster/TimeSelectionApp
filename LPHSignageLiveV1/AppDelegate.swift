@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let mainVc = nav.viewControllers[0] as! MainPageCollectionViewController
 		mainVc.managedObjectContext = managedObjectContext
 		print(applicationDirectory)
+		setUpNotifcationErrorObservers()
 		return true
 	}
 
@@ -95,6 +96,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
 	        }
 	    }
+	}
+	func setUpNotifcationErrorObservers() {
+		NotificationCenter.default.addObserver(forName: coreDataSaveFailedNotification, object: nil, queue: OperationQueue.main) { (notification) in
+			let message = """
+There was a fatal error saving to the data base and the app cannot continue
+
+Press 'OK' to terminate the application and restart. Sorry for any inconvience
+"""
+			
+			let alert = UIAlertController(title: "Fatal Error", message: message, preferredStyle: .alert)
+			alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
+				let exception = NSException(name: NSExceptionName.internalInconsistencyException, reason: "Fatal core data error", userInfo: nil)
+				exception.raise()
+			}))
+			let nav = self.window?.rootViewController
+			nav!.present(alert, animated: true)
+		}
 	}
 
 }
