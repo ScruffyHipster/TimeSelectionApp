@@ -216,23 +216,19 @@
                                             </segmentedControl>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gtf-Om-fxo" userLabel="Buttons Stack">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gtf-Om-fxo" userLabel="Buttons Stack">
                                         <rect key="frame" x="0.0" y="198" width="414" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSh-uX-xP3" customClass="RoundedButtons" customModule="LPHSignageLiveV1" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
-                                                <state key="normal" title="Select">
-                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSh-uX-xP3">
+                                                <rect key="frame" x="0.0" y="0.0" width="202" height="30"/>
+                                                <state key="normal" title="Select"/>
                                                 <connections>
                                                     <action selector="selectLabelTapped:" destination="b9d-Yt-opf" eventType="touchUpInside" id="BqJ-BE-kw1"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5oz-NZ-ZtT" customClass="RoundedButtons" customModule="LPHSignageLiveV1" customModuleProvider="target">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="30"/>
-                                                <state key="normal" title="Reset">
-                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
+                                                <rect key="frame" x="212" y="0.0" width="202" height="30"/>
+                                                <state key="normal" title="Reset"/>
                                                 <connections>
                                                     <action selector="resetTimer:" destination="b9d-Yt-opf" eventType="touchUpInside" id="igy-iz-TKl"/>
                                                 </connections>
@@ -243,7 +239,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="Peo-MZ-baP"/>
                                     <constraint firstItem="pN4-lV-OWO" firstAttribute="width" secondItem="tTa-IU-w0N" secondAttribute="width" id="afi-cF-Dvi"/>
-                                    <constraint firstItem="gtf-Om-fxo" firstAttribute="width" secondItem="pN4-lV-OWO" secondAttribute="width" id="bhM-6m-z2G"/>
+                                    <constraint firstItem="gtf-Om-fxo" firstAttribute="width" secondItem="tTa-IU-w0N" secondAttribute="width" id="bhM-6m-z2G"/>
                                 </constraints>
                             </stackView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJi-RN-zHd">
@@ -363,7 +359,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="mcF-wL-MCK">
                                 <rect key="frame" x="76" y="149" width="262.5" height="683"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6o-hU-y80">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency event" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6o-hU-y80">
                                         <rect key="frame" x="19.5" y="0.0" width="223.5" height="36"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                         <nil key="textColor"/>
@@ -403,11 +399,12 @@
                     </view>
                     <connections>
                         <outlet property="eventSwitch" destination="5bc-J8-2Pv" id="T3u-7H-3IF"/>
-                        <outlet property="flashView" destination="Izu-iB-dSX" id="WHC-Yu-hKj"/>
+                        <outlet property="flashView" destination="Izu-iB-dSX" id="z9s-55-Swx"/>
                         <outlet property="heading" destination="N6o-hU-y80" id="aae-DT-1ws"/>
                         <outlet property="selectButton" destination="14f-Cz-dgN" id="LZb-g7-0TX"/>
                         <outlet property="stackViewLeadingConstraint" destination="N18-Hp-nJb" id="DhS-Q6-sTs"/>
                         <outlet property="stackViewTrailingContstraint" destination="9R9-Y6-HCj" id="vzI-z1-6bg"/>
+                        <outlet property="textView" destination="CVm-Lz-npP" id="8SW-f4-vXS"/>
                         <outlet property="vStack" destination="mcF-wL-MCK" id="ke2-81-9V9"/>
                     </connections>
                 </viewController>

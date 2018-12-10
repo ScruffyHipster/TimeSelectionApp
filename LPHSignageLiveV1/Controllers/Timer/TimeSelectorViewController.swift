@@ -45,7 +45,7 @@ class TimeSelectorViewController: UIViewController {
 		reset()
 	}
 	@IBAction func selectLabelTapped(_ sender: UIButton) {
-		sendTime()
+		sendTime1()
 	}
 	
 	
@@ -55,24 +55,32 @@ class TimeSelectorViewController: UIViewController {
 			return Double(sliderView!.currentValue)
 		}
 	}
+	
 	var theatre: Int? {
 		get {
 			return theatreSelection.selectedSegmentIndex
 		}
 	}
+	
 	var theatreName: String?
 	var httpRequest: HTTPRequest?
-	var interrupt: HTTPRequest.Interrupt?
+	var httpRequest2: Httpv2?
+//	var interrupt: HTTPRequest.Interrupt?
+	var timeToShow2: Int?
 	var reachability = Reachability()
 	weak var delegate: TimeSelectorViewControllerDelegate?
 	var managedObjectContext: NSManagedObjectContext!
 	var shows = [Show]()
+	
+	var interupt: Httpv2.Interrupt?
+	var group: Httpv2.Group?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		selectTimeButton.isEnabled = false
 		sliderView.delegate = self
 		httpRequest = HTTPRequest.shared
+		httpRequest2 = Httpv2.shared
 	}
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +93,7 @@ class TimeSelectorViewController: UIViewController {
 			theatreSelection.selectedSegmentIndex = 0
 		}
 	}
+	
 	
 	func countDownTime(_ time: Double) -> Double {
 		switch time {
@@ -103,61 +112,81 @@ class TimeSelectorViewController: UIViewController {
 }
 
 extension TimeSelectorViewController {
+	
 	//MARK:- http methods
 	
-	func sendTime() {
-		//check is the theatre is already in the show array
+	func sendTime1() {
 		
 		UIView.animate(withDuration: 0.2) {
 			self.blurView.alpha = 1
 			self.view.layoutIfNeeded()
 		}
-		//hudView with spinning animator
+		
 		let hudView = HUDView.hud(inView: (navigationController?.view)!, animated: true)
 		hudView.text = "Sending request"
-		//unwraps options theatre screens first
-		guard let theatre = theatre else {return}
-		//gets the time to send from the slider view
-		guard let interrupt = HTTPRequest.Interrupt(rawValue: timeToSend) else {return}
-		//gets the group from the segmented selection using the unwrapped var above
-		guard let group = HTTPRequest.Group(rawValue: theatre) else {return}
-		//set the theatre name dependant on selected theatre from the segemented index
+		
+		//TODO: carry on changing this network request
+		
+		switch timeToSend {
+		case 10:
+			interupt = Httpv2.Interrupt.ten
+			timeToShow2 = 600
+		case 20:
+			interupt = Httpv2.Interrupt.twenty
+			timeToShow2 = 1200
+		case 30:
+			interupt = Httpv2.Interrupt.thirty
+			timeToShow2 = 1800
+		default:
+			break
+		}
+		
+		
+		//sorts out the theatre to interact with
 		switch theatre {
 		case 0:
+			group = Httpv2.Group.theatreOne
 			theatreName = TheatreSelectionName.quarryTheatre.rawValue
 		case 1:
+			group = Httpv2.Group.theatreTwo
 			theatreName = TheatreSelectionName.theatre2.rawValue
 		case 2:
+			group = Httpv2.Group.theatreThree
 			theatreName = TheatreSelectionName.theatre3.rawValue
 		default:
 			break
 		}
-		guard let theatreName = theatreName else {return}
 		
+		
+		guard let interupt = interupt else {return}
+		guard let group = group else {return}
+		theatreName = theatreName ?? "No theatre selected"
+		
+		//checks if the show has already been added to the shows array. if it has, dont send the request.
 		for show in shows {
 			if show.theatreName == theatreName {
-				UIView.animate(withDuration: 1) {
-					hudView.hide()
+				UIView.animate(withDuration: 1, animations: {
 					self.blurView.alpha = 0
 					self.reset()
+					hudView.hide()
 					self.delegate?.requestWasSent(self, requestSuccess: false)
-				}
+				})
 				return
 			}
 		}
 		
-		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
-			if success == true {
-				print("yay")
-				//create a managed object to then save to coreData
+		let url = httpRequest2?.urlRequestSL(group: group, interrupt: interupt)
+		httpRequest2?.sendRequest(for: url!, completion: { (success) in
+			if success {
 				let show = Show(context: self.managedObjectContext)
 				show.timeToGo = Int32(self.countDownTime(self.timeToSend))
-				show.theatreName = theatreName
-				show.theatre = Int32(theatre)
+				show.theatreName = self.theatreName
+				show.theatre = Int32(self.theatre!)
 				do {
 					try self.managedObjectContext.save()
 				} catch {
 					NotificationCenter.default.post(name: coreDataSaveFailedNotification, object: nil)
+					print("An error has occured when trying to save \(error.localizedDescription)")
 				}
 				UIView.animate(withDuration: 0.2, animations: {
 					hudView.hide()
@@ -165,19 +194,24 @@ extension TimeSelectorViewController {
 					self.view.layoutIfNeeded()
 				}, completion: { _ in
 					self.reset()
-					self.delegate?.requestWasSent(self, requestSuccess: success)
+					self.delegate?.requestWasSent(self, requestSuccess: true)
 				})
 				self.delegate?.didSelectTime(self, didAddShow: show)
+				self.interupt = nil
+				self.theatreName = nil
+				print("success")
 			} else {
-				print("boo")
 				UIView.animate(withDuration: 0.2, animations: {
 					hudView.hide()
 					self.blurView.alpha = 0
 					self.view.layoutIfNeeded()
 				})
+				print("failed")
 			}
 		})
 	}
+	
+
 }
 
 extension TimeSelectorViewController: MSCircularSliderDelegate {
@@ -212,3 +246,81 @@ extension TimeSelectorViewController: MSCircularSliderDelegate {
 		//Optional
 	}
 }
+
+
+
+
+
+//	func sendTime() {
+//		//check is the theatre is already in the show array
+//
+//		UIView.animate(withDuration: 0.2) {
+//			self.blurView.alpha = 1
+//			self.view.layoutIfNeeded()
+//		}
+//		//hudView with spinning animator
+//		let hudView = HUDView.hud(inView: (navigationController?.view)!, animated: true)
+//		hudView.text = "Sending request"
+//		//unwraps options theatre screens first
+//		guard let theatre = theatre else {return}
+//		//gets the time to send from the slider view
+//		guard let interrupt = HTTPRequest.Interrupt(rawValue: timeToSend) else {return}
+//		//gets the group from the segmented selection using the unwrapped var above
+//		guard let group = HTTPRequest.Group(rawValue: theatre) else {return}
+//		//set the theatre name dependant on selected theatre from the segemented index
+//		switch theatre {
+//		case 0:
+//			theatreName = TheatreSelectionName.quarryTheatre.rawValue
+//		case 1:
+//			theatreName = TheatreSelectionName.theatre2.rawValue
+//		case 2:
+//			theatreName = TheatreSelectionName.theatre3.rawValue
+//		default:
+//			break
+//		}
+//		guard let theatreName = theatreName else {return}
+//
+//		for show in shows {
+//			if show.theatreName == theatreName {
+//				UIView.animate(withDuration: 1) {
+//					hudView.hide()
+//					self.blurView.alpha = 0
+//					self.reset()
+//					self.delegate?.requestWasSent(self, requestSuccess: false)
+//				}
+//				return
+//			}
+//		}
+//
+//		httpRequest?.setTime(for: group, with: interrupt, completion: { (success) in
+//			if success == true {
+//				print("yay")
+//				//create a managed object to then save to coreData
+//				let show = Show(context: self.managedObjectContext)
+//				show.timeToGo = Int32(self.countDownTime(self.timeToSend))
+//				show.theatreName = theatreName
+//				show.theatre = Int32(theatre)
+//				do {
+//					try self.managedObjectContext.save()
+//				} catch {
+//					NotificationCenter.default.post(name: coreDataSaveFailedNotification, object: nil)
+//				}
+//				UIView.animate(withDuration: 0.2, animations: {
+//					hudView.hide()
+//					self.blurView.alpha = 0
+//					self.view.layoutIfNeeded()
+//				}, completion: { _ in
+//					self.reset()
+//					self.delegate?.requestWasSent(self, requestSuccess: true)
+//				})
+//				self.delegate?.didSelectTime(self, didAddShow: show)
+//			} else {
+//				print("boo")
+//				UIView.animate(withDuration: 0.2, animations: {
+//					hudView.hide()
+//					self.blurView.alpha = 0
+//					self.view.layoutIfNeeded()
+//				})
+//			}
+//		})
+//	}

@@ -14,6 +14,7 @@ class SelectButton: UIButton {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 		layer.cornerRadius = self.frame.height / 2
+		bounds.size.height = 60
     }
 	
 

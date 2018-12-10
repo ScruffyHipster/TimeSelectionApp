@@ -181,7 +181,13 @@ extension MainPageCollectionViewController {
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		switch indexPath.row {
 		case 0:
-			performSegue(withIdentifier: "TimeSegue", sender: self)
+			if !emergencyStatus {
+				performSegue(withIdentifier: "TimeSegue", sender: self)
+			} else {
+				let alert = UIAlertController(title: "Emergency", message: "This feature is unavailable when an emergency is in progress", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+				present(alert, animated: true)
+			}
 		case 1:
 			performSegue(withIdentifier: "emergencySegue", sender: self)
 		default:
@@ -228,6 +234,7 @@ extension MainPageCollectionViewController: PrimaryViewControllerDelegate {
 
 extension MainPageCollectionViewController: EmergencyEventViewControllerProtocol {
 	func didSetEmergencyEvent(_ controller: EmergencyEventViewController, didSetEvent: Bool) {
+		emergencyStatus = didSetEvent
 		let startIndex = features.startIndex
 		let indexPath = IndexPath(item: startIndex + 1, section: 0)
 		let emergencyCell = collectionView.cellForItem(at: indexPath) as! MainCollectionViewCell
@@ -236,7 +243,6 @@ extension MainPageCollectionViewController: EmergencyEventViewControllerProtocol
 			emergencyCell.status.text = "Emergency in progress"
 		case false:
 			emergencyCell.status.text = "All is fine"
-			//
 		}
 	}
 }
