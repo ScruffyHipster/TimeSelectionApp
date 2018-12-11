@@ -68,7 +68,8 @@ class PrimaryTimerViewController: UIViewController {
 		}
 	}
 	//references
-	var httprequest: HTTPRequest?
+	var httprequest: Httpv2?
+	var group: Httpv2.Group?
 	//delegate
 	weak var delegate: PrimaryViewControllerDelegate?
 	//placeholder to save show times in tableview
@@ -103,10 +104,22 @@ class PrimaryTimerViewController: UIViewController {
 			}
 			print("there are \(shows.count) shows left after deleting from CD")
 			print("removed timer for theatre \(String(describing: show.theatreName))")
+			
 			//create an indexpath for the object and then delete it from the tableview
 			let indexPaths = IndexPath(item: index, section: 0)
 			let indexPath = [indexPaths]
 			tableView.deleteRows(at: indexPath, with: .automatic)
+			switch show.theatre {
+			case 0:
+				group = Httpv2.Group.theatreOne
+			case 1:
+				group = Httpv2.Group.theatreTwo
+			case 2:
+				group = Httpv2.Group.theatreThree
+			default:
+				break
+			}
+			cancelRequest(for: group!)
 			if shows.count > 0 {
 				//if there is still another show in the array change the information to reflect this
 				let show = shows.first
@@ -129,11 +142,22 @@ class PrimaryTimerViewController: UIViewController {
 		delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 	}
 	
+	func cancelRequest(for group: Httpv2.Group) {
+		let url = httprequest?.urlRequestSL(group: group, interrupt: .cancel)
+		httprequest?.sendRequest(for: url!, completion: { (success) in
+			if success {
+				print("removed")
+			} else {
+				print("failed to remove")
+			}
+		})
+	}
+	
 	//MARK:- ViewDidLoad
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		navigationItem.title = "Select Time"
-		httprequest = HTTPRequest.shared
+		httprequest = Httpv2.shared
 		setUpCardView()
 		
 		let fetchRequest = NSFetchRequest<Show>()
@@ -289,6 +313,17 @@ extension PrimaryTimerViewController: UITableViewDelegate, UITableViewDataSource
 		shows.remove(at: indexPath.row)
 		timeSelectionView?.shows.remove(at: indexPath.row)
 		tableView.deleteRows(at: [indexPath], with: .automatic)
+		switch show.theatre {
+		case 0:
+			group = Httpv2.Group.theatreOne
+		case 1:
+			group = Httpv2.Group.theatreTwo
+		case 2:
+			group = Httpv2.Group.theatreThree
+		default:
+			break
+		}
+		cancelRequest(for: group!)
 		managedObjectContext.delete(show)
 		do {
 			try managedObjectContext.save()
