@@ -100,6 +100,7 @@ class EmergencyEventViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in
 			self.eventSwitch.isOn = false
 			self.isTriggerSet = false
+			self.selectButton.isEnabled = false
 			self.defaults?.set(self.isTriggerSet, forKey: "isTriggerSet")
 		}))
 		present(alert, animated: true)
@@ -111,9 +112,9 @@ class EmergencyEventViewController: UIViewController {
 		if mySwitch.isOn {
 			if !triggerSet {
 				selectButton.isEnabled = true
-				isTriggerSet = true
 			}
 		} else if !mySwitch.isOn {
+			selectButton.isEnabled = false
 			if triggerSet {
 				let alert = UIAlertController(title: "Turn off", message: "Are you sure you want to turn off the emergency alert", preferredStyle: .actionSheet)
 				alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { (_) in

@@ -47,8 +47,12 @@ class PrimaryTimerViewController: UIViewController {
 	var menuState: TimeSelectionViewState {
 		return menusVisible ? .compressed : .fullHeight
 	}
-	var menuHeight: CGFloat = 720
-	var compressedHeight: CGFloat = 70
+	var menuHeight: CGFloat {
+		//sets the height to be 120 points lower that the top of any device screen
+		return UIScreen.main.bounds.height - 120
+	}
+	var compressedHeight: CGFloat = 50
+	
 	var timeSelectionView: TimeSelectorViewController?
 	var runningAnimations = [UIViewPropertyAnimator]()
 	var animationProgressWhenInteruppted: CGFloat = 0
@@ -205,7 +209,7 @@ class PrimaryTimerViewController: UIViewController {
 		vc.didMove(toParent: self)
 		self.view.addSubview(vc.view)
 		
-		vc.view.frame = CGRect(x: 0, y: self.view.frame.height - compressedHeight, width: self.view.frame.width, height: self.view.frame.height)
+		vc.view.frame = CGRect(x: 0, y: self.view.frame.height - compressedHeight, width: self.view.frame.width, height: self.view.frame.height - 40)
 		
 		vc.handleView.layer.cornerRadius = 8.0
 		vc.view.layer.cornerRadius = 8.0
@@ -400,8 +404,10 @@ extension PrimaryTimerViewController {
 			let frameAnimator = UIViewPropertyAnimator(duration: 0.8, dampingRatio: 0.7) {
 				switch state {
 				case .compressed:
+//					timeSelectionView.view.frame = CGRect(x: 0, y: self.compressedHeight, width: self.view.frame.width, height: self.view.frame.height)
 					timeSelectionView.view.frame.origin.y = self.view.frame.height - self.compressedHeight
 				case .fullHeight:
+//					timeSelectionView.view.frame = CGRect(x: 0, y: self.menuHeight, width: self.view.frame.width, height: self.view.frame.height)
 					timeSelectionView.view.frame.origin.y = self.view.frame.height - self.menuHeight
 				}
 			}
