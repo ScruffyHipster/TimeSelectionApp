@@ -29,6 +29,7 @@ class TimeSelectorViewController: UIViewController {
 	@IBOutlet weak var resetButton: UIButton!
 	@IBOutlet weak var handleView: UIView!
 	@IBOutlet weak var selectTimeButton: UIButton!
+	@IBOutlet weak var topLayer: UIView!
 	@IBOutlet weak var blurView: UIView! {
 		didSet {
 			blurView.alpha = 0
@@ -65,7 +66,6 @@ class TimeSelectorViewController: UIViewController {
 	var theatreName: String?
 	var httpRequest: HTTPRequest?
 	var httpRequest2: Httpv2?
-//	var interrupt: HTTPRequest.Interrupt?
 	var timeToShow2: Int?
 	var reachability = Reachability()
 	weak var delegate: TimeSelectorViewControllerDelegate?
@@ -182,13 +182,15 @@ extension TimeSelectorViewController {
 				show.timeToGo = Int32(self.countDownTime(self.timeToSend))
 				show.theatreName = self.theatreName
 				show.theatre = Int32(self.theatre!)
+				let hudSuccess = HUDView()
+				hudSuccess.text = "success"
 				do {
 					try self.managedObjectContext.save()
 				} catch {
 					NotificationCenter.default.post(name: coreDataSaveFailedNotification, object: nil)
 					print("An error has occured when trying to save \(error.localizedDescription)")
 				}
-				UIView.animate(withDuration: 0.2, animations: {
+				UIView.animate(withDuration: 0.4, animations: {
 					hudView.hide()
 					self.blurView.alpha = 0
 					self.view.layoutIfNeeded()

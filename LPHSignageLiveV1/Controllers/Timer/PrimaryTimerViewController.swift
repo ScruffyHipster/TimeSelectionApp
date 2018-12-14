@@ -30,6 +30,7 @@ class PrimaryTimerViewController: UIViewController {
 		didSet {
 			if shows.count == 0 {
 				cancelButton.isEnabled = false
+				cancelButton.alpha = 0
 			}
 		}
 	}
@@ -37,6 +38,7 @@ class PrimaryTimerViewController: UIViewController {
 	@IBOutlet weak var timeStack: UIStackView!
 	@IBOutlet weak var theatreSelection: UILabel!
 	@IBOutlet weak var tableView: UITableView!
+
 	
 	//MARK:- Properties
 	
@@ -130,7 +132,9 @@ class PrimaryTimerViewController: UIViewController {
 				theatreTimeFocus = show
 				startTimeLabelTimer()
 				theatreName = theatreTimeFocus?.theatreName
-			}//else if nothing left in the show array remove any timer left
+			} else {
+				cancelButtonShow(false)
+			}
 		}
 		if shows.count == 0 {
 			shows = []
@@ -183,7 +187,10 @@ class PrimaryTimerViewController: UIViewController {
 		theatreTimeFocus = theatre
 		theatreSelection.text = theatre.theatreName
 		startTimeLabelTimer()
-		cancelButton.isEnabled = true
+		if shows.count > 0 {
+			cancelButton.isEnabled = true
+			cancelButton.alpha = 1
+		}
 		timeSelectionView?.shows = shows
 		delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 	}
@@ -210,13 +217,17 @@ class PrimaryTimerViewController: UIViewController {
 		self.view.addSubview(vc.view)
 		
 		vc.view.frame = CGRect(x: 0, y: self.view.frame.height - compressedHeight, width: self.view.frame.width, height: self.view.frame.height - 40)
-		
-		vc.handleView.layer.cornerRadius = 8.0
-		vc.view.layer.cornerRadius = 8.0
+		vc.topLayer.layer.cornerRadius = 8
+		vc.handleView.layer.cornerRadius = 8
+		vc.view.layer.cornerRadius = 8
+		vc.blurView.layer.cornerRadius = 8
+		vc.blurView.clipsToBounds = true
 		vc.handleView.clipsToBounds = true
-		vc.view.layer.shadowOpacity = 0.2
-		vc.handleView.layer.shadowOffset = CGSize(width: vc.handleView.frame.width, height: -2.00)
-		
+		vc.topLayer.clipsToBounds = true
+		vc.view.clipsToBounds = true
+		vc.view.layer.masksToBounds = false
+		vc.view.layer.shadowOffset = CGSize(width: 2, height: -2.0)
+		vc.view.layer.shadowOpacity = 0.4
 		//Inject below vars if subview has loaded
 		if self.children[0] == vc {
 			vc.delegate = self
@@ -265,8 +276,27 @@ extension PrimaryTimerViewController: TimeSelectorViewControllerDelegate {
 			delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 		}
 		timerIsRunning = true
+		cancelButtonShow(true)
 		cancelButton.isEnabled = true
 		tableView.reloadData()
+	}
+	
+	func cancelButtonShow(_ show: Bool) {
+		let rotate = CGAffineTransform(rotationAngle: .pi / 2)
+		if show {
+			if !cancelButton.isEnabled {
+				UIView.transition(with: cancelButton, duration: 0.8, options: .curveEaseIn, animations: {
+					self.cancelButton.transform = rotate
+//					self.cancelButton.transform = CGAffineTransform(scaleX: 1, y: 0)
+					self.cancelButton.alpha = 1
+				}, completion: nil)
+			}
+		} else {
+			UIView.transition(with: cancelButton, duration: 0.4, options: .curveEaseIn, animations: {
+				self.cancelButton.transform = .identity
+				self.cancelButton.alpha = 0
+			}, completion: nil)
+		}
 	}
 	
 	func startTimeLabelTimer() {
@@ -337,6 +367,7 @@ extension PrimaryTimerViewController: UITableViewDelegate, UITableViewDataSource
 		if shows.count == 0 {
 			cancelButton.isEnabled = false
 			theatreSelection.text = TheatreSelectionName.noTheatre.rawValue
+			cancelButtonShow(false)
 		}
 		delegate?.numberOfTimersRunning(self, numberOf: shows.count)
 	}
@@ -345,8 +376,12 @@ extension PrimaryTimerViewController: UITableViewDelegate, UITableViewDataSource
 		tableView.deselectRow(at: indexPath, animated: true)
 		timer = nil
 		theatreTimeFocus = shows[indexPath.row]
-		theatreName = theatreTimeFocus?.theatreName
-		startTimeLabelTimer()
+		UIView.transition(with: theatreSelection, duration: 0.33, options: .transitionFlipFromBottom, animations: {
+			self.theatreName = self.theatreTimeFocus?.theatreName
+		}, completion: {_ in
+			self.startTimeLabelTimer()
+		})
+		UIView.transition(with: timeLabel, duration: 0.33, options: .transitionFlipFromBottom, animations: nil, completion: nil)
 		cancelButton.isEnabled = true
 	}
 }
@@ -419,13 +454,13 @@ extension PrimaryTimerViewController {
 			runningAnimations.append(frameAnimator)
 		}
 		
-		let fadeBackground = UIViewPropertyAnimator(duration: 0.8, dampingRatio: 0.7) {
+		let fadeBackground = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.7) {
 			switch state {
 			case .compressed:
 				self.fadeView.alpha = 0
 				break
 			case .fullHeight:
-				self.fadeView.alpha = 1
+				self.fadeView.alpha = 0.5
 				break
 			}
 		}

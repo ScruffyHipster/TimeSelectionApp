@@ -6,7 +6,7 @@
 //  Copyright © 2018 Tom Murray. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 
 class Httpv2 {
@@ -145,6 +145,7 @@ class Httpv2 {
 	
 	func sendRequest(for urlRequest: URLRequest, completion: @escaping sendData) {
 		let url = urlRequest
+		UIApplication.shared.isNetworkActivityIndicatorVisible = true
 		URLSession.shared.dataTask(with: url) { (data, response, error) in
 			guard let response = response as? HTTPURLResponse else {return}
 			if response.statusCode == 201 {
@@ -158,6 +159,7 @@ class Httpv2 {
 			}
 			DispatchQueue.main.async {
 				completion(self.success ?? false)
+				UIApplication.shared.isNetworkActivityIndicatorVisible = false
 			}
 		} .resume()
 	}

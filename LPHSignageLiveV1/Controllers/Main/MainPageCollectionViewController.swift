@@ -31,6 +31,7 @@ class MainPageCollectionViewController: UICollectionViewController {
 	private var timeStringStatus = ""
 	private var timeSelectionCell: MainCollectionViewCell?
 	var managedObjectContext: NSManagedObjectContext!
+
 	
 	//MARK:- View did load
 	override func viewDidLoad() {
@@ -39,6 +40,7 @@ class MainPageCollectionViewController: UICollectionViewController {
 		startReachability(at: host)
 		setUpFeatures()
 		navigationController?.navigationBar.prefersLargeTitles = true
+
 		navigationItem.title = "Main menu"
 	}
 	
@@ -59,11 +61,12 @@ class MainPageCollectionViewController: UICollectionViewController {
 	
 	func setupCollectionView() {
 		//set up cells
-		let width = view.frame.width - 10
-		let height = view.frame.height / 3
+		let width = view.frame.width - 40
+		let height = view.frame.height / 2
 		let cv = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 		cv.itemSize = CGSize(width: width, height: height)
-		collectionView.backgroundColor = UIColor.black
+		collectionView.backgroundColor = UIColor.white
+		collectionView.alpha = 1
 		let blur = UIBlurEffect(style: .dark)
 		let blurLayer = UIVisualEffectView(effect: blur)
 		collectionView.addSubview(blurLayer)
@@ -161,8 +164,15 @@ extension MainPageCollectionViewController {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
 		cell.title.text = features[indexPath.row].title
 		cell.image.image = UIImage(named: "cvcitem\(indexPath.row)")
-		cell.layer.cornerRadius = 10
+		cell.contentView.layer.masksToBounds = true
+		cell.contentView.layer.cornerRadius = 8
+		cell.contentView.layer.masksToBounds = true
 		cell.backgroundColor = UIColor.lightGray
+		cell.layer.masksToBounds = false
+		cell.layer.cornerRadius = 10
+		cell.layer.shadowRadius = 8
+		cell.layer.shadowOffset = CGSize(width: 2, height: 4)
+		cell.layer.shadowOpacity = 0.4
 		
 		switch indexPath.row {
 		case 0:
@@ -179,6 +189,9 @@ extension MainPageCollectionViewController {
 	
 	// MARK: UICollectionViewDelegate
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+		
+		
 		switch indexPath.row {
 		case 0:
 			if !emergencyStatus {
